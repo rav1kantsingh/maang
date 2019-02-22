@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.ravikantsingh.maang.Authentication.LoginActivity;
+import com.ravikantsingh.maang.Registration.RegistrationActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,5 +28,6 @@ public class MainActivity extends AppCompatActivity {
     public void checkRegistrationStatus(){
         //Todo check firebase for user registration.
         //if not registerd open registration activity and onsuccess finish that activity.
+        startActivity(new Intent(this, RegistrationActivity.class));
     }
 }
