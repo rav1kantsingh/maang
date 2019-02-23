@@ -2,20 +2,28 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/a"
             android:icon="@drawable/ic_arrow_drop_down"
-            android:title="RAVIKANT SINGH" />
+            android:title="Janta Darbar" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/b"
             android:icon="@drawable/ic_arrow_drop_down"
-            android:title="ATUL KUMAR" />
+            android:title="RTI" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/c"
             android:icon="@drawable/ic_arrow_drop_down"
-            android:title="SAURABH JHA" />
+            android:title="About" />
         <item
-            android:id="@+id/nav_manage"
+            android:id="@+id/d"
             android:icon="@drawable/ic_arrow_drop_down"
-            android:title="MP" />
+            android:title="Feedback" />
+        <item
+            android:id="@+id/e"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="Setting" />
+        <item
+            android:id="@+id/f"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="Logout" />
     </group>
 </menu>
