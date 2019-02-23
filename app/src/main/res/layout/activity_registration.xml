@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sign Up"
+            android:text="Registration"
             android:textColor="#fff"
             android:textStyle="normal"
             android:textSize="30dp"
@@ -70,8 +70,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/mpside"
-                android:layout_marginRight="20dp">
+                android:id="@+id/mpside">
 
                 <ImageView
                     android:layout_width="wrap_content"
@@ -90,27 +89,27 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/daside"
-                android:orientation="vertical">
+            <!--<LinearLayout-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:id="@+id/daside"-->
+                <!--android:orientation="vertical">-->
 
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_record_voice_over_black_24dp"/>
+                <!--<ImageView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:src="@drawable/ic_record_voice_over_black_24dp"/>-->
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DAs"
-                    android:textSize="15dp"
-                    android:textColor="#228C9B"
-                    android:layout_gravity="center"
-                    />
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:text="DAs"-->
+                    <!--android:textSize="15dp"-->
+                    <!--android:textColor="#228C9B"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--/>-->
 
-            </LinearLayout>
+            <!--</LinearLayout>-->
 
         </LinearLayout>
 
@@ -191,74 +190,78 @@
                     android:drawableLeft="@drawable/ic_person_outline"
                     android:paddingLeft="5dp"
                     android:maxLines="1"
+                    android:inputType="text"
                     android:paddingTop="5dp"
                     android:paddingBottom="5dp"
                     android:paddingRight="5dp"
                     android:textSize="20sp"
                     android:maxLength="20" />
 
-                <EditText
-                    android:id="@+id/email"
-                    android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
-                    android:gravity="center"
-                    android:hint="Email"
-                    android:textColor="#fff"
-                    android:textColorHint="#545E8A"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="60dp"
-                    android:drawableLeft="@drawable/ic_mail_outline"
-                    android:paddingLeft="5dp"
-                    android:maxLines="1"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="20sp"
-                    android:maxLength="20" />
+                <!--<EditText-->
+                    <!--android:id="@+id/email"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/round_border"-->
+                    <!--android:gravity="center"-->
+                    <!--android:hint="Email"-->
+                    <!--android:inputType="text"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:textColorHint="#545E8A"-->
+                    <!--android:layout_marginLeft="60dp"-->
+                    <!--android:layout_marginRight="60dp"-->
+                    <!--android:drawableLeft="@drawable/ic_mail_outline"-->
+                    <!--android:paddingLeft="5dp"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:paddingTop="5dp"-->
+                    <!--android:paddingBottom="5dp"-->
+                    <!--android:paddingRight="5dp"-->
+                    <!--android:textSize="20sp"-->
+                    <!--android:maxLength="20" />-->
 
-                <EditText
-                    android:id="@+id/password"
-                    android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
-                    android:gravity="center"
-                    android:hint="Password"
-                    android:textColor="#fff"
-                    android:textColorHint="#545E8A"
-                    android:drawableLeft="@drawable/ic_lock_outline"
-                    android:paddingLeft="5dp"
-                    android:maxLines="1"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="20sp"
-                    android:maxLength="20"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="60dp"/>
+                <!--<EditText-->
+                    <!--android:id="@+id/password"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/round_border"-->
+                    <!--android:gravity="center"-->
+                    <!--android:hint="Password"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:textColorHint="#545E8A"-->
+                    <!--android:inputType="text"-->
+                    <!--android:drawableLeft="@drawable/ic_lock_outline"-->
+                    <!--android:paddingLeft="5dp"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:paddingTop="5dp"-->
+                    <!--android:paddingBottom="5dp"-->
+                    <!--android:paddingRight="5dp"-->
+                    <!--android:textSize="20sp"-->
+                    <!--android:maxLength="20"-->
+                    <!--android:layout_marginLeft="60dp"-->
+                    <!--android:layout_marginRight="60dp"/>-->
 
-                <EditText
-                    android:id="@+id/conf_password"
-                    android:layout_marginLeft="60dp"
-                    android:layout_marginRight="60dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
-                    android:gravity="center"
-                    android:hint="Confirm Password"
-                    android:textColor="#fff"
-                    android:textColorHint="#545E8A"
-                    android:drawableLeft="@drawable/ic_lock_outline"
-                    android:paddingLeft="5dp"
-                    android:maxLines="1"
-                    android:paddingTop="5dp"
-                    android:paddingBottom="5dp"
-                    android:paddingRight="5dp"
-                    android:textSize="20sp"
-                    android:maxLength="20" />
+                <!--<EditText-->
+                    <!--android:id="@+id/conf_password"-->
+                    <!--android:layout_marginLeft="60dp"-->
+                    <!--android:layout_marginRight="60dp"-->
+                    <!--android:layout_marginTop="15dp"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:background="@drawable/round_border"-->
+                    <!--android:gravity="center"-->
+                    <!--android:hint="Confirm Password"-->
+                    <!--android:textColor="#fff"-->
+                    <!--android:textColorHint="#545E8A"-->
+                    <!--android:inputType="text"-->
+                    <!--android:drawableLeft="@drawable/ic_lock_outline"-->
+                    <!--android:paddingLeft="5dp"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:paddingTop="5dp"-->
+                    <!--android:paddingBottom="5dp"-->
+                    <!--android:paddingRight="5dp"-->
+                    <!--android:textSize="20sp"-->
+                    <!--android:maxLength="20" />-->
 
                 <EditText
                     android:id="@+id/aadhar"
@@ -271,6 +274,7 @@
                     android:gravity="center"
                     android:hint="AADHAR NO."
                     android:textColor="#fff"
+                    android:inputType="text"
                     android:textColorHint="#545E8A"
                     android:drawableLeft="@drawable/ic_lock_outline"
                     android:paddingLeft="5dp"
@@ -289,6 +293,7 @@
                     android:gravity="center"
                     android:layout_marginTop="15dp"
                     android:hint="D.O.B"
+                    android:inputType="text"
                     android:textColor="#fff"
                     android:textColorHint="#545E8A"
                     android:layout_marginLeft="60dp"
@@ -311,6 +316,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/round_border"
                     android:gravity="center"
+                    android:inputType="text"
                     android:hint="Contact No."
                     android:textColor="#fff"
                     android:textColorHint="#545E8A"
@@ -335,6 +341,7 @@
                     android:hint="Whatsapp No."
                     android:textColor="#fff"
                     android:textColorHint="#545E8A"
+                    android:inputType="text"
                     android:drawableLeft="@drawable/ic_call_black"
                     android:paddingLeft="5dp"
                     android:maxLines="1"
@@ -530,32 +537,33 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:text="Sign Up"
+            android:text="Reguster"
             android:background="@drawable/round_corner_button_signup_withgradient"
             android:textStyle="bold"
             android:textAllCaps="false"
+            android:layout_marginBottom="10dp"
             android:textColor="#fff"/>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp">
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginTop="30dp">-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Already have an account."
-                android:textColor="#fff"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="Already have an account."-->
+                <!--android:textColor="#fff"/>-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text=" Login here"
-                android:textStyle="bold|italic"
-                android:textColor="#D86336"/>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text=" Login here"-->
+                <!--android:textStyle="bold|italic"-->
+                <!--android:textColor="#D86336"/>-->
 
-        </LinearLayout>
+        <!--</LinearLayout>-->
 
     </LinearLayout>
 

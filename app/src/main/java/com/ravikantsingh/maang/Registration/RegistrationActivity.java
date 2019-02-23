@@ -1,6 +1,9 @@
 package com.ravikantsingh.maang.Registration;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
@@ -10,13 +13,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.ravikantsingh.maang.MainActivity;
 import com.ravikantsingh.maang.R;
+import com.ravikantsingh.maang.StringVariables;
+
+import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    EditText nameTv, emailTv, passwordTv, confirm_passwordTv, addharTv, dobTv, contactNoTv, whatsappNoTv;
-    String name = "", email = "", password = "", confirm_password = "", addhar, dob = "", contactNo = "", whatsappNo = "", gender = "";
+    EditText nameTv, emailTv, passwordTv, confirm_passwordTv, aadharTv, dobTv, contactNoTv, whatsappNoTv;
+    String name = "", email = "", password = "", confirm_password = "", aadhar, dob = "", contactNo = "", whatsappNo = "", gender = "";
     Button submitBtn, male, female, other;
+    DatabaseReference databaseReference;
+    String userUID = "";
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +41,10 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         init();
-
+        try {
+            userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        }catch (Exception e){
+        }
         male.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,8 +68,36 @@ public class RegistrationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Todo check for gender validity.
+                boolean isAllDataRight;
+                databaseReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
                 readValue();
-                checkDataEntered();
+                isAllDataRight = checkDataEntered();
+                if (isAllDataRight) {
+
+                    progressDialog = new ProgressDialog(RegistrationActivity.this);
+                    progressDialog.setMessage("Creating User");
+                    progressDialog.show();
+
+                    HashMap<String, String> map = new HashMap<>();
+                    map.put("name", name);
+                    map.put("aadhar", aadhar);
+                    map.put("DOB", dob);
+                    map.put("gender",gender);
+                    map.put("phoneNo", contactNo);
+                    map.put("whatsapp", whatsappNo);
+
+                    databaseReference.child(userUID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (progressDialog.isShowing()) {
+                                progressDialog.dismiss();
+                            }
+                            Intent i = new Intent(RegistrationActivity.this, MainActivity.class);
+                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(i);
+                        }
+                    });
+                }
             }
         });
 
@@ -59,10 +105,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     void init() {
         nameTv = findViewById(R.id.name);
-        emailTv = findViewById(R.id.email);
-        passwordTv = findViewById(R.id.password);
-        confirm_passwordTv = findViewById(R.id.conf_password);
-        addharTv = findViewById(R.id.aadhar);
+        aadharTv = findViewById(R.id.aadhar);
         dobTv = findViewById(R.id.dob);
         contactNoTv = findViewById(R.id.contactNo);
         whatsappNoTv = findViewById(R.id.whatsapp);
@@ -74,25 +117,17 @@ public class RegistrationActivity extends AppCompatActivity {
 
     void readValue() {
         name = String.valueOf(nameTv.getText());
-        email = String.valueOf(emailTv.getText());
-        password = String.valueOf(passwordTv.getText());
-        confirm_password = String.valueOf(confirm_passwordTv.getText());
-        addhar = String.valueOf(addharTv.getText());
+        aadhar = String.valueOf(aadharTv.getText());
         dob = String.valueOf(dobTv.getText());
         contactNo = String.valueOf(contactNoTv.getText());
         whatsappNo = String.valueOf(whatsappNoTv.getText());
     }
 
-    void checkDataEntered() {
+    boolean checkDataEntered() {
+        boolean isAllRight = false;
         if (isEmpty(name)) {
             Toast.makeText(this, "Please fill name", Toast.LENGTH_LONG).show();
-        } else if (isEmpty(email)) {
-            Toast.makeText(this, "Please fill email", Toast.LENGTH_LONG).show();
-        } else if (isEmpty(password)) {
-            Toast.makeText(this, "Please fill password", Toast.LENGTH_LONG).show();
-        } else if (isEmpty(confirm_password)) {
-            Toast.makeText(this, "Please fill confirm password", Toast.LENGTH_LONG).show();
-        } else if (isEmpty(addhar)) {
+        } else if (isEmpty(aadhar)) {
             Toast.makeText(this, "Please fill addhar number", Toast.LENGTH_LONG).show();
         } else if (isEmpty(dob)) {
             Toast.makeText(this, "Please fill Date of Birth", Toast.LENGTH_LONG).show();
@@ -104,7 +139,10 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter a valid Mobile No", Toast.LENGTH_LONG).show();
         } else if (!isValidMobile(whatsappNo)) {
             Toast.makeText(this, "Please enter a valid Whatsapp No", Toast.LENGTH_LONG).show();
+        } else {
+            isAllRight = true;
         }
+        return isAllRight;
     }
 
     boolean isEmpty(String text) {

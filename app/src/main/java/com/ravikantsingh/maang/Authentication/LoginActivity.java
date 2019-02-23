@@ -24,8 +24,15 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.ravikantsingh.maang.MainActivity;
 import com.ravikantsingh.maang.R;
+import com.ravikantsingh.maang.Registration.RegistrationActivity;
+import com.ravikantsingh.maang.StringVariables;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -35,6 +42,8 @@ public class LoginActivity extends AppCompatActivity {
     ConstraintLayout googleSignupButton;
     private FirebaseAuth mAuth;
     private ProgressDialog signInDialog;
+    DatabaseReference databaseReference;
+    String userUID;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,7 +113,33 @@ public class LoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
-                            finish();
+
+                            try {
+                                userUID = mAuth.getCurrentUser().getUid();
+                            } catch (Exception e) {
+                            }
+                                databaseReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
+                                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(DataSnapshot dataSnapshot) {
+                                        if (String.valueOf(dataSnapshot.child(userUID).getValue()).equals("") || String.valueOf(dataSnapshot.child(userUID).getValue()).equals("null")) {
+                                            Intent i = new Intent(LoginActivity.this,RegistrationActivity.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(i);
+                                        }
+                                        else{
+                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(i);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onCancelled(DatabaseError databaseError) {
+
+                                    }
+                                });
+
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/first"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Post" />
+
+    <item
+        android:id="@+id/second"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+        android:title="Our MP" />
+
+    <item
+        android:id="@+id/third"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="WMS Report" />
+    <item
+        android:id="@+id/fourth"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="WMS Report" />
+    <item
+        android:id="@+id/fifth"
+        android:icon="@drawable/ic_notifications_black_24dp"
+        android:title="WMS Report" />
+
+</menu>
