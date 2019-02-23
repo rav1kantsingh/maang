@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "49948992630",
+    "firebase_url": "https://maang-23762.firebaseio.com",
+    "project_id": "maang-23762",
+    "storage_bucket": "maang-23762.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:49948992630:android:392ca8fe0c949197",
+        "android_client_info": {
+          "package_name": "com.ravikantsingh.maang"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "49948992630-81rbe2j9suv2gj08je7a40nq348lceii.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ravikantsingh.maang",
+            "certificate_hash": "936c4171b034ed18b8b1e38d0229cab1f671b049"
+          }
+        },
+        {
+          "client_id": "49948992630-siivm1pc41caqa31j47drmgb4ac145sk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0oFHvC9UsLHgfhSK43fs0_AovtlPh3Vk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "49948992630-siivm1pc41caqa31j47drmgb4ac145sk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
