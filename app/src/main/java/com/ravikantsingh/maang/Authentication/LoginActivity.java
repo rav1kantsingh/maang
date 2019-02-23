@@ -118,27 +118,26 @@ public class LoginActivity extends AppCompatActivity {
                                 userUID = mAuth.getCurrentUser().getUid();
                             } catch (Exception e) {
                             }
-                                databaseReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
-                                databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(DataSnapshot dataSnapshot) {
-                                        if (String.valueOf(dataSnapshot.child(userUID).getValue()).equals("") || String.valueOf(dataSnapshot.child(userUID).getValue()).equals("null")) {
-                                            Intent i = new Intent(LoginActivity.this,RegistrationActivity.class);
-                                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(i);
-                                        }
-                                        else{
-                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                            startActivity(i);
-                                        }
+                            databaseReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
+                            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+                                    if (String.valueOf(dataSnapshot.child(userUID).getValue()).equals("") || String.valueOf(dataSnapshot.child(userUID).getValue()).equals("null")) {
+                                        Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(i);
+                                    } else {
+                                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(i);
                                     }
+                                }
 
-                                    @Override
-                                    public void onCancelled(DatabaseError databaseError) {
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
 
-                                    }
-                                });
+                                }
+                            });
 
                         } else {
                             // If sign in fails, display a message to the user.

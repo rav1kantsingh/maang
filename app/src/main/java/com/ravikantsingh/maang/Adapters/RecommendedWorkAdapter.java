@@ -16,7 +16,7 @@ import com.ravikantsingh.maang.R;
 import java.util.List;
 
 public class RecommendedWorkAdapter extends
-        RecyclerView.Adapter<RecommendedWorkAdapter.ViewHolder>implements View.OnClickListener{
+        RecyclerView.Adapter<RecommendedWorkAdapter.ViewHolder> implements View.OnClickListener {
 
     List<WMSModelClass> list;
     Context context;
@@ -56,35 +56,35 @@ public class RecommendedWorkAdapter extends
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.complain_btn:{
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+        switch (v.getId()) {
+            case R.id.complain_btn: {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.suggestion_btn:{
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+            case R.id.suggestion_btn: {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.like:{
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+            case R.id.like: {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.share:{
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+            case R.id.share: {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.comments:{
-                Toast.makeText(context,"clicked",Toast.LENGTH_SHORT).show();
+            case R.id.comments: {
+                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                 break;
             }
 
         }
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView sector,scheme,implimentingAgencies,recommendDate,amount,like,share,comments;
-        Button complainBtn,suggestionBtn;
+        TextView sector, scheme, implimentingAgencies, recommendDate, amount, like, share, comments;
+        Button complainBtn, suggestionBtn;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

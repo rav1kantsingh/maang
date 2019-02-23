@@ -43,7 +43,7 @@ public class RegistrationActivity extends AppCompatActivity {
         init();
         try {
             userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         male.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,7 +82,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     map.put("name", name);
                     map.put("aadhar", aadhar);
                     map.put("DOB", dob);
-                    map.put("gender",gender);
+                    map.put("gender", gender);
                     map.put("phoneNo", contactNo);
                     map.put("whatsapp", whatsappNo);
 

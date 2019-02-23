@@ -1,7 +1,7 @@
 package com.ravikantsingh.maang.ModalClass;
 
 public class WMSModelClass {
-    String recommendationDate,amount,sector,scheme,implementingAgency;
+    String recommendationDate, amount, sector, scheme, implementingAgency;
 
     public WMSModelClass(String recommendationDate, String amount, String sector, String scheme, String implementingAgency) {
         this.recommendationDate = recommendationDate;

@@ -28,12 +28,13 @@ public class SplashActivity extends AppCompatActivity {
         LoadUserDetails();
 
     }
-    void init(){
+
+    void init() {
     }
 
-    void LoadUserDetails(){
+    void LoadUserDetails() {
         //user has never logged in.
-        if(FirebaseAuth.getInstance().getCurrentUser()==null){
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
             startActivity(new Intent(this, LoginActivity.class));
         }
 
@@ -51,8 +52,7 @@ public class SplashActivity extends AppCompatActivity {
                         Intent i = new Intent(SplashActivity.this, RegistrationActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
-                    }
-                    else{
+                    } else {
                         Intent i = new Intent(SplashActivity.this, MainActivity.class);
                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         startActivity(i);
