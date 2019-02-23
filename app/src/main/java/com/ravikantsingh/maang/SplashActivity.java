@@ -35,7 +35,9 @@ public class SplashActivity extends AppCompatActivity {
     void LoadUserDetails() {
         //user has never logged in.
         if (FirebaseAuth.getInstance().getCurrentUser() == null) {
-            startActivity(new Intent(this, LoginActivity.class));
+            Intent i = new Intent(SplashActivity.this, LoginActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(i);
         }
 
         //user has earlier logged in app.

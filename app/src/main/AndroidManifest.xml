@@ -11,9 +11,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".NavDrawer.SettingActivity"></activity>
+        <activity android:name=".NavDrawer.FeedBackActivity" />
+        <activity android:name=".NavDrawer.AboutActivity" />
+        <activity android:name=".NavDrawer.RTI_Activity" />
+        <activity android:name=".NavDrawer.JantaDarbarActivity" />
         <activity
             android:name=".MainActivity"
-            android:label="MAANG"></activity>
+            android:label="MAANG" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,7 +29,7 @@
         <activity
             android:name=".Registration.RegistrationActivity"
             android:theme="@style/NoActionAppTheme" />
-        <activity android:name=".Authentication.LoginActivity"></activity>
+        <activity android:name=".Authentication.LoginActivity" />
     </application>
 
 </manifest>
