@@ -60,7 +60,6 @@ public class SplashActivity extends AppCompatActivity {
                         startActivity(i);
                     }
                 }
-
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
 
