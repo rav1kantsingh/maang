@@ -9,7 +9,7 @@
     <item
         android:id="@+id/second"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Complains/Suggestion" />
+        android:title="Complain&amp;Suggestion" />
 
     <item
         android:id="@+id/third"

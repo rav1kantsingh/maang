@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="4dp"
     app:cardCornerRadius="8dp"
     android:backgroundTint="#00171d">
 
@@ -51,7 +53,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="4dp"/>
 
-        <view
+        <View
             android:id="@+id/divider1"
             android:layout_width="match_parent"
             android:layout_height="1dp"
@@ -115,7 +117,7 @@
             android:textAllCaps="false"
             android:background="@drawable/round_in_complain"/>
 
-        <view
+        <View
             android:id="@+id/divider"
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"

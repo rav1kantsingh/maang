@@ -11,7 +11,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NavDrawer.SettingActivity"></activity>
+        <activity android:name=".WMSinnerActivity.StatusWorkActivity"></activity>
+        <activity android:name=".WMSinnerActivity.WorkDetailActivity" />
+        <activity android:name=".WMSinnerActivity.NonProgressiveWorkActivity" />
+        <activity android:name=".WMSinnerActivity.CompletedWorkActivity" />
+        <activity android:name=".WMSinnerActivity.WorkRegisterActivity" />
+        <activity android:name=".WMSinnerActivity.RecommendedWork" />
+        <activity android:name=".NavDrawer.SettingActivity" />
         <activity android:name=".NavDrawer.FeedBackActivity" />
         <activity android:name=".NavDrawer.AboutActivity" />
         <activity android:name=".NavDrawer.RTI_Activity" />

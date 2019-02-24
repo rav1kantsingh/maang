@@ -1,18 +1,17 @@
 package com.ravikantsingh.maang.Fragments;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
+import android.widget.Button;
 
 import com.ravikantsingh.maang.R;
 
 public class Complains_Suggestion extends Fragment {
 
-    LinearLayout giveYourSuggestion, seeOtherSuggestion, addYourComplaint, seeOtherComplains;
+    Button giveYourSuggestion, seeOtherSuggestion, addYourComplaint, seeOtherComplains;
 
     public Complains_Suggestion() {
     }
@@ -27,13 +26,6 @@ public class Complains_Suggestion extends Fragment {
         seeOtherComplains = v.findViewById(R.id.see_other_complains);
         addYourComplaint = v.findViewById(R.id.add_your_complaint);
 
-        return v;
-
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         giveYourSuggestion.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,6 +55,8 @@ public class Complains_Suggestion extends Fragment {
 
             }
         });
+
+        return v;
 
     }
 }
