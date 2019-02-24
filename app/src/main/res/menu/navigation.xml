@@ -9,7 +9,7 @@
     <item
         android:id="@+id/second"
         android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Forums" />
+        android:title="Complains/Suggestion" />
 
     <item
         android:id="@+id/third"
@@ -22,6 +22,6 @@
     <item
         android:id="@+id/fifth"
         android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="My Profile" />
+        android:title="Forums" />
 
 </menu>
