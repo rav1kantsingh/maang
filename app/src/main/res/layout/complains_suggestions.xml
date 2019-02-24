@@ -41,6 +41,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/complain_wala_me"
                 android:text="Add your complaint"
+                android:id="@+id/add_your_complaint"
                 android:textAllCaps="false"
                 android:textColor="#1A154D"
                 android:textSize="12dp" />
@@ -53,6 +54,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/complain_wala_me"
                 android:text="See others complaint"
+                android:id="@+id/see_other_complains"
                 android:textAllCaps="false"
                 android:textColor="#1A154D"
                 android:textSize="12dp" />
@@ -90,6 +92,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/complain_wala_me"
                 android:text="Give your Suggestion"
+                android:id="@+id/give_your_suggestion"
                 android:textAllCaps="false"
                 android:textColor="#8C578F"
                 android:textSize="12dp" />
@@ -102,6 +105,7 @@
                 android:layout_marginRight="20dp"
                 android:background="@drawable/complain_wala_me"
                 android:text="See others Suggestion"
+                android:id="@+id/see_other_suggestion"
                 android:textAllCaps="false"
                 android:textColor="#8C578F"
                 android:textSize="12dp" />

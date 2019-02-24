@@ -165,6 +165,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_in_wms"
+                android:id="@+id/work_detail"
                 android:orientation="vertical">
 
                 <ImageView
@@ -193,6 +194,7 @@
                 android:layout_marginBottom="130dp"
                 android:layout_weight="1"
                 android:background="@drawable/round_in_wms"
+                android:id="@+id/status_work"
                 android:orientation="vertical">
 
                 <ImageView
@@ -222,6 +224,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
         android:background="#fff"
+        android:id="@+id/fund_release_statement"
         android:text="Fund Release Statements"
         android:textAllCaps="false"
         android:textColor="#212025"

@@ -17,7 +17,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.ravikantsingh.maang.Authentication.LoginActivity;
 import com.ravikantsingh.maang.Fragments.FeedsFrag;
 import com.ravikantsingh.maang.Fragments.ForumsFrag;
-import com.ravikantsingh.maang.Fragments.MyProfileFrag;
+import com.ravikantsingh.maang.Fragments.Complains_Suggestion;
 import com.ravikantsingh.maang.Fragments.OurMPFrag;
 import com.ravikantsingh.maang.Fragments.WMSReportFrag;
 import com.ravikantsingh.maang.NavDrawer.AboutActivity;
@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     NavigationView navigationView;
     FeedsFrag feedsFrag;
     ForumsFrag forumsFrag;
-    MyProfileFrag myProfileFrag;
+    Complains_Suggestion myProfileFrag;
     OurMPFrag ourMPFrag;
     WMSReportFrag wmsReportFrag;
     FragmentManager fm;
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchToFragment5() {
         if (myProfileFrag == null) {
-            myProfileFrag = new MyProfileFrag();
+            myProfileFrag = new Complains_Suggestion();
             fm.beginTransaction().add(R.id.frame_container, myProfileFrag).hide(currentFragment).show(myProfileFrag).commit();
         } else {
             fm.beginTransaction().hide(currentFragment).show(myProfileFrag).commit();
