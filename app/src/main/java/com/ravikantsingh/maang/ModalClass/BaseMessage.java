@@ -2,6 +2,16 @@ package com.ravikantsingh.maang.ModalClass;
 
 public class BaseMessage {
     String message;
+    String UserImage;
+    String time;
+    String name;
+    int type;
+
+    public BaseMessage(String message, String time, int type) {
+        this.message = message;
+        this.time = time;
+        this.type = type;
+    }
 
     public String getMessage() {
         return message;
@@ -11,27 +21,43 @@ public class BaseMessage {
         this.message = message;
     }
 
-    public User getSender() {
-        return sender;
+    public String getUserImage() {
+        return UserImage;
     }
 
-    public void setSender(User sender) {
-        this.sender = sender;
+    public void setUserImage(String userImage) {
+        UserImage = userImage;
     }
 
-    public long getCreatedAt() {
-        return createdAt;
+    public String getTime() {
+        return time;
     }
 
-    public void setCreatedAt(long createdAt) {
-        this.createdAt = createdAt;
+    public void setTime(String time) {
+        this.time = time;
     }
 
-    User sender;
-    long createdAt;
+    public String getName() {
+        return name;
+    }
 
-    class User {
-        String nickname;
-        String profileUrl;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    public BaseMessage(String message, String userImage, String time, String name, int type) {
+        this.message = message;
+        UserImage = userImage;
+        this.time = time;
+        this.name = name;
+        this.type = type;
     }
 }

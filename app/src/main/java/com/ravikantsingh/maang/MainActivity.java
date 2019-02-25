@@ -11,13 +11,17 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ravikantsingh.maang.Authentication.LoginActivity;
+import com.ravikantsingh.maang.Fragments.Complains_Suggestion;
 import com.ravikantsingh.maang.Fragments.FeedsFrag;
 import com.ravikantsingh.maang.Fragments.ForumsFrag;
-import com.ravikantsingh.maang.Fragments.Complains_Suggestion;
 import com.ravikantsingh.maang.Fragments.OurMPFrag;
 import com.ravikantsingh.maang.Fragments.WMSReportFrag;
 import com.ravikantsingh.maang.NavDrawer.AboutActivity;
@@ -26,7 +30,7 @@ import com.ravikantsingh.maang.NavDrawer.JantaDarbarActivity;
 import com.ravikantsingh.maang.NavDrawer.RTI_Activity;
 import com.ravikantsingh.maang.NavDrawer.SettingActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
@@ -39,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
     Fragment currentFragment;
     private GoogleApiClient mGoogleApiClient;
     private FirebaseAuth auth;
+    View headerview;
+    TextView drawerHeader1, drawerHeader2, drawerHeader3, name, zone;
+    SimpleDraweeView drawerProfileImage;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -82,7 +90,21 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        //handling data and click event on nav-drawer header
         navigationView = findViewById(R.id.nav_view);
+        headerview = navigationView.getHeaderView(0);
+        drawerHeader1 = headerview.findViewById(R.id.first);
+        drawerHeader2 = headerview.findViewById(R.id.second);
+        drawerHeader3 = headerview.findViewById(R.id.third);
+        name = headerview.findViewById(R.id.name);
+        zone = headerview.findViewById(R.id.zone);
+        drawerProfileImage = headerview.findViewById(R.id.profile);
+
+        drawerHeader1.setOnClickListener(this);
+        drawerHeader2.setOnClickListener(this);
+        drawerHeader3.setOnClickListener(this);
+
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -101,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
                         } else if (id == R.id.e) {
                             startActivity(new Intent(MainActivity.this, SettingActivity.class));
                         } else if (id == R.id.f) {
-                           signOut();
+                            signOut();
                         }
                         return true;
                     }
@@ -177,11 +199,26 @@ public class MainActivity extends AppCompatActivity {
     private void signOut() {
         auth = FirebaseAuth.getInstance();
         FirebaseUser currentuser = auth.getCurrentUser();
-        if(currentuser!=null){
+        if (currentuser != null) {
             auth.signOut();
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.first: {
+                //Todo add click for nav header
+            }
+            case R.id.second: {
+
+            }
+            case R.id.third: {
+
+            }
         }
     }
 }
