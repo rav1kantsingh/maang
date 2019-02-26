@@ -12,7 +12,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WMSinnerActivity.StatusWorkActivity"></activity>
+        <activity android:name=".SuggestionActivity"></activity>
+        <activity android:name=".AddSuggestionActivity" />
+        <activity android:name=".AddPostActivity" />
+        <activity android:name=".AddComplainActivity" />
+        <activity android:name=".PdfViewerActivity" />
+        <activity android:name=".ComplaintActivity" />
+        <activity android:name=".WMSinnerActivity.StatusWorkActivity" />
         <activity android:name=".WMSinnerActivity.WorkDetailActivity" />
         <activity android:name=".WMSinnerActivity.NonProgressiveWorkActivity" />
         <activity android:name=".WMSinnerActivity.CompletedWorkActivity" />

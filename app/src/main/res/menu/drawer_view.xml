@@ -12,17 +12,21 @@
         <item
             android:id="@+id/c"
             android:icon="@drawable/ic_arrow_drop_down"
-            android:title="About" />
+            android:title="MPLADS Guidlines" />
         <item
             android:id="@+id/d"
             android:icon="@drawable/ic_arrow_drop_down"
-            android:title="Feedback" />
+            android:title="About" />
         <item
             android:id="@+id/e"
             android:icon="@drawable/ic_arrow_drop_down"
-            android:title="Setting" />
+            android:title="Feedback" />
         <item
             android:id="@+id/f"
+            android:icon="@drawable/ic_arrow_drop_down"
+            android:title="Setting" />
+        <item
+            android:id="@+id/g"
             android:icon="@drawable/ic_arrow_drop_down"
             android:title="Logout" />
     </group>

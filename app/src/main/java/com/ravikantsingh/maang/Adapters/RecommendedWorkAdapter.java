@@ -1,6 +1,7 @@
 package com.ravikantsingh.maang.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ravikantsingh.maang.AddComplainActivity;
+import com.ravikantsingh.maang.AddSuggestionActivity;
 import com.ravikantsingh.maang.ModalClass.WMSModelClass;
 import com.ravikantsingh.maang.R;
 
@@ -58,11 +61,11 @@ public class RecommendedWorkAdapter extends
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.complain_btn: {
-                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                context.startActivity(new Intent(context, AddComplainActivity.class));
                 break;
             }
             case R.id.suggestion_btn: {
-                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                context.startActivity(new Intent(context, AddSuggestionActivity.class));
                 break;
             }
             case R.id.like: {

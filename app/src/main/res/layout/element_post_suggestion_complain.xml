@@ -20,6 +20,7 @@
             android:src="@drawable/ic_person_outline"/>
 
         <TextView
+            android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/userprofilepic"
@@ -27,6 +28,7 @@
             android:textColor="#fff"
             android:layout_marginTop="5dp"/>
         <TextView
+            android:id="@+id/timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5 min ago"
@@ -44,17 +46,89 @@
         android:layout_marginRight="2dp"
         android:src="@drawable/round_corner_button_signup_withgradient"/>
 
+        <View
+            android:id="@+id/divider1"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/contentimg"
+            android:background="#fff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RelatedSector"
+            android:layout_marginLeft="5dp"
+            android:text="Related Sector :"
+            android:textSize="12dp"
+            android:textColor="#fff"
+            android:layout_below="@+id/divider1"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatedsector"
+            android:layout_toRightOf="@+id/RelatedSector"
+            android:layout_below="@+id/divider1"
+            android:text="Sector Name"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#fff"
+            android:layout_marginLeft="5dp"/>
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/RelatedSector"
+            android:background="#fff"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/RelatedSchemes"
+            android:layout_marginLeft="5dp"
+            android:text="Related Schemes :"
+            android:textSize="12dp"
+            android:textColor="#fff"
+            android:layout_below="@+id/divider2"
+            android:layout_marginTop="3dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/relatedschemes"
+            android:layout_toRightOf="@+id/RelatedSchemes"
+            android:layout_below="@+id/divider2"
+            android:text="Scheme Name"
+            android:textSize="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#fff"
+            android:layout_marginLeft="5dp"/>
+
+        <View
+            android:id="@+id/divider4"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/RelatedSchemes"
+            android:background="#fff"/>
+
+
         <TextView
             android:id="@+id/descriptiontext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_below="@+id/contentimg"
-            android:textSize="15dp"
+            android:layout_below="@+id/divider4"
+            android:textSize="10dp"
+            android:layout_marginLeft="5dp"
             android:textColor="#fff"
             android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."/>
 
-        <view
+        <View
             android:id="@+id/divider"
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"
@@ -69,6 +143,7 @@
             android:orientation="horizontal">
 
             <RelativeLayout
+                android:id="@+id/likelayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -95,6 +170,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/commentlayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1">
@@ -121,6 +197,7 @@
             </RelativeLayout>
 
             <RelativeLayout
+                android:id="@+id/sharelayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp">

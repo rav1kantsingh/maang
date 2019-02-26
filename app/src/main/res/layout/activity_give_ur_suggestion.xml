@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#40465C">
 
+    <LinearLayout
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#40465C">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -14,43 +18,6 @@
         android:textStyle="bold"
         android:layout_gravity="center"
         android:layout_marginTop="20dp" />
-
-    <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Type"
-            android:textColor="#fff"
-            android:textSize="15dp"
-            android:layout_weight="1"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Suggestion to Mp"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:layout_weight="1"
-            android:background="@drawable/round_corner_button_signup_withgradient"/>
-
-        <Button
-            android:layout_marginLeft="5dp"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Suggestion to DAs"
-            android:layout_weight="1"
-            android:background="@drawable/round_corner_button_signup_withgradient"/>
-
-    </LinearLayout>
 
     <Spinner
         android:layout_marginTop="10dp"
@@ -149,7 +116,8 @@
         android:background="@drawable/round_gender_button"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginTop="10dp"/>
+    </LinearLayout>
 
-
-</LinearLayout>
+</ScrollView>

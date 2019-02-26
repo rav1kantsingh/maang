@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    FeedsFrag feedsFrag;
+    PostActivity feedsFrag;
     ForumsFrag forumsFrag;
     Complains_Suggestion myProfileFrag;
     OurMPFrag ourMPFrag;
@@ -117,14 +117,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         } else if (id == R.id.b) {
                             startActivity(new Intent(MainActivity.this, RTI_Activity.class));
                         } else if (id == R.id.c) {
-                            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                            startActivity(new Intent(MainActivity.this, PdfViewerActivity.class));
                         } else if (id == R.id.d) {
-                            startActivity(new Intent(MainActivity.this, FeedBackActivity.class));
+                            startActivity(new Intent(MainActivity.this, AboutActivity.class));
                         } else if (id == R.id.e) {
-                            startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                            startActivity(new Intent(MainActivity.this, FeedBackActivity.class));
                         } else if (id == R.id.f) {
+                            startActivity(new Intent(MainActivity.this, SettingActivity.class));
+                        }
+                        else if (id == R.id.g) {
                             signOut();
                         }
+
                         return true;
                     }
                 });
@@ -148,7 +152,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void switchToFragment1() {
         if (feedsFrag == null) {
-            feedsFrag = new FeedsFrag();
+            feedsFrag = new PostActivity();
             fm.beginTransaction().add(R.id.frame_container, feedsFrag).hide(currentFragment).show(feedsFrag).commit();
         } else {
             fm.beginTransaction().hide(currentFragment).show(feedsFrag).commit();
@@ -157,13 +161,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void switchToFragment2() {
-        if (forumsFrag == null) {
-            forumsFrag = new ForumsFrag();
-            fm.beginTransaction().add(R.id.frame_container, forumsFrag).hide(currentFragment).show(forumsFrag).commit();
+        if (myProfileFrag == null) {
+            myProfileFrag = new Complains_Suggestion();
+            fm.beginTransaction().add(R.id.frame_container, myProfileFrag).hide(currentFragment).show(myProfileFrag).commit();
         } else {
-            fm.beginTransaction().hide(currentFragment).show(forumsFrag).commit();
+            fm.beginTransaction().hide(currentFragment).show(myProfileFrag).commit();
         }
-        currentFragment = forumsFrag;
+        currentFragment = myProfileFrag;
     }
 
     public void switchToFragment3() {
@@ -187,13 +191,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     public void switchToFragment5() {
-        if (myProfileFrag == null) {
-            myProfileFrag = new Complains_Suggestion();
-            fm.beginTransaction().add(R.id.frame_container, myProfileFrag).hide(currentFragment).show(myProfileFrag).commit();
+        if (forumsFrag == null) {
+            forumsFrag = new ForumsFrag();
+            fm.beginTransaction().add(R.id.frame_container, forumsFrag).hide(currentFragment).show(forumsFrag).commit();
         } else {
-            fm.beginTransaction().hide(currentFragment).show(myProfileFrag).commit();
+            fm.beginTransaction().hide(currentFragment).show(forumsFrag).commit();
         }
-        currentFragment = myProfileFrag;
+        currentFragment = forumsFrag;
     }
 
     private void signOut() {
@@ -222,3 +226,4 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 }
+

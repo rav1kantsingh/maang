@@ -2,6 +2,7 @@ package com.ravikantsingh.maang.Registration;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -84,6 +85,16 @@ public class RegistrationActivity extends AppCompatActivity {
                     map.put("gender", gender);
                     map.put("phoneNo", contactNo);
                     map.put("whatsapp", whatsappNo);
+
+                    SharedPreferences preferences = getApplicationContext().getSharedPreferences("USER_SHARED_PREFERENCE",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("name",name);
+                    editor.putString("aadhar", aadhar);
+                    editor.putString("DOB", dob);
+                    editor.putString("gender", gender);
+                    editor.putString("phoneNo", contactNo);
+                    editor.putString("whatsapp", whatsappNo);
+                    editor.apply();
 
                     databaseReference.child(userUID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
