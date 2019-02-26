@@ -3,7 +3,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/h"
-            android:icon="@drawable/ic_male"
+            android:icon="@drawable/ic_salesman"
             android:title="My Profile" />
         <item
             android:id="@+id/a"
@@ -15,8 +15,8 @@
             android:title="RTI" />
         <item
             android:id="@+id/c"
-            android:icon="@drawable/ic_arrow_drop_down"
-            android:title="MPLADS Guidlines" />
+            android:icon="@drawable/ic_instruction"
+            android:title="MPLADS Guidelines" />
         <item
             android:id="@+id/d"
             android:icon="@drawable/ic_questions_about_abecedary"
@@ -31,7 +31,7 @@
             android:title="Setting" />
         <item
             android:id="@+id/g"
-            android:icon="@drawable/ic_logout"
+            android:icon="@drawable/ic_sign_out"
             android:title="Logout" />
     </group>
 </menu>

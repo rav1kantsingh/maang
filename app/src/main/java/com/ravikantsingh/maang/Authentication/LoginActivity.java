@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity {
                             }
 
                             SharedPreferences preferences = getSharedPreferences("UserLoggedIn", MODE_PRIVATE);
-                            SharedPreferences.Editor editor = preferences.edit();
+                            final SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("UserLoggedIn", 1);
                             editor.apply();
 
@@ -148,6 +148,24 @@ public class LoginActivity extends AppCompatActivity {
                                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(i);
                                     } else {
+
+                                        SharedPreferences preferences1 = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE, MODE_PRIVATE);
+                                        SharedPreferences.Editor editor1 = preferences1.edit();
+                                        String name = String.valueOf(dataSnapshot.child(userUID).child("name")),
+                                                aadhar = String.valueOf(dataSnapshot.child(userUID).child("aadhar")),
+                                                dob = String.valueOf(dataSnapshot.child(userUID).child("DOB")),
+                                                gender = String.valueOf(dataSnapshot.child(userUID).child("gender")),
+                                                contactNo = String.valueOf(dataSnapshot.child(userUID).child("phoneNo")),
+                                                whatsappNo = String.valueOf(dataSnapshot.child(userUID).child("whatsapp"));
+
+                                        editor1.putString("name", name);
+                                        editor1.putString("aadhar", aadhar);
+                                        editor1.putString("DOB", dob);
+                                        editor1.putString("gender", gender);
+                                        editor1.putString("phoneNo", contactNo);
+                                        editor1.putString("whatsapp", whatsappNo);
+                                        editor1.putInt("registered", 1);
+                                        editor.apply();
                                         Intent i = new Intent(LoginActivity.this, MainActivity.class);
                                         i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivity(i);

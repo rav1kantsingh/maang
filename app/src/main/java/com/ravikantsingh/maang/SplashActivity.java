@@ -3,21 +3,39 @@ package com.ravikantsingh.maang;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.ravikantsingh.maang.Authentication.LoginActivity;
 import com.ravikantsingh.maang.Registration.RegistrationActivity;
 
+
+
 public class SplashActivity extends AppCompatActivity {
 
     SharedPreferences preferences;
+    ImageView maangSplash, splashLine;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        maangSplash = (ImageView) findViewById(R.id.maang_splash) ;
+        splashLine = (ImageView) findViewById(R.id.splash_line) ;
 
-        LoadUserDetails();
+        Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
+        maangSplash.startAnimation(myanim);
+        splashLine.startAnimation(myanim);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                LoadUserDetails();
+            }
+        }, 3000);
     }
 
     void LoadUserDetails() {

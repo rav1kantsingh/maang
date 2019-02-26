@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SuggestionActivity"></activity>
+        <activity android:name=".NavDrawer.RTI"></activity>
+        <activity android:name=".SuggestionActivity" />
         <activity android:name=".AddSuggestionActivity" />
         <activity android:name=".AddPostActivity" />
         <activity android:name=".AddComplainActivity" />
@@ -27,7 +28,6 @@
         <activity android:name=".NavDrawer.SettingActivity" />
         <activity android:name=".NavDrawer.FeedBackActivity" />
         <activity android:name=".NavDrawer.AboutActivity" />
-        <activity android:name=".NavDrawer.RTI_Activity" />
         <activity android:name=".NavDrawer.JantaDarbarActivity" />
         <activity
             android:name=".MainActivity"

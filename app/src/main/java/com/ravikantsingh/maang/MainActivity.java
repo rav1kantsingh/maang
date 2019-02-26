@@ -1,6 +1,7 @@
 package com.ravikantsingh.maang;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -27,7 +28,7 @@ import com.ravikantsingh.maang.Fragments.WMSReportFrag;
 import com.ravikantsingh.maang.NavDrawer.AboutActivity;
 import com.ravikantsingh.maang.NavDrawer.FeedBackActivity;
 import com.ravikantsingh.maang.NavDrawer.JantaDarbarActivity;
-import com.ravikantsingh.maang.NavDrawer.RTI_Activity;
+import com.ravikantsingh.maang.NavDrawer.RTI;
 import com.ravikantsingh.maang.NavDrawer.SettingActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -115,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         if (id == R.id.a) {
                             startActivity(new Intent(MainActivity.this, JantaDarbarActivity.class));
                         } else if (id == R.id.b) {
-                            startActivity(new Intent(MainActivity.this, RTI_Activity.class));
+                            startActivity(new Intent(MainActivity.this, RTI.class));
                         } else if (id == R.id.c) {
                             startActivity(new Intent(MainActivity.this, PdfViewerActivity.class));
                         } else if (id == R.id.d) {
@@ -205,6 +206,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FirebaseUser currentuser = auth.getCurrentUser();
         if (currentuser != null) {
             auth.signOut();
+            SharedPreferences preferences_login = getSharedPreferences("UserLoggedIn", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = preferences_login.edit();
+            editor1.putInt("UserLoggedIn", 0);
+            editor1.apply();
+
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);

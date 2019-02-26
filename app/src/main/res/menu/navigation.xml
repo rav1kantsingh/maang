@@ -17,7 +17,7 @@
         android:title="WMS Report" />
     <item
         android:id="@+id/fourth"
-        android:icon="@drawable/ic_boss"
+        android:icon="@drawable/ic_interview"
         android:title="Our MP" />
     <item
         android:id="@+id/fifth"
