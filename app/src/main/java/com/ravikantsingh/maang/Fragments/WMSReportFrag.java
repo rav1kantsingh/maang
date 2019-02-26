@@ -82,7 +82,7 @@ public class WMSReportFrag extends Fragment {
         fundReleaseStatement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().startActivity(new Intent(getActivity(), CompletedWorkActivity.class));
+
             }
         });
 

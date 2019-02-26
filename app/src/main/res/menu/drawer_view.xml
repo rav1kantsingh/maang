@@ -2,12 +2,16 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
+            android:id="@+id/h"
+            android:icon="@drawable/ic_male"
+            android:title="My Profile" />
+        <item
             android:id="@+id/a"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_meeting"
             android:title="Janta Darbar" />
         <item
             android:id="@+id/b"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_application"
             android:title="RTI" />
         <item
             android:id="@+id/c"
@@ -15,19 +19,19 @@
             android:title="MPLADS Guidlines" />
         <item
             android:id="@+id/d"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_questions_about_abecedary"
             android:title="About" />
         <item
             android:id="@+id/e"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_rating"
             android:title="Feedback" />
         <item
             android:id="@+id/f"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_settings"
             android:title="Setting" />
         <item
             android:id="@+id/g"
-            android:icon="@drawable/ic_arrow_drop_down"
+            android:icon="@drawable/ic_logout"
             android:title="Logout" />
     </group>
 </menu>

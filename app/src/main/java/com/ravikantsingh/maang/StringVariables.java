@@ -15,4 +15,7 @@ public class StringVariables {
     public static final String SCHEME = "Scheme";
     public static final String WMS_NON_PROGRESSIVE = "work-nonprogressive";
 
+    //shared preference file name.
+    public static final String SHARED_PREFERENCE_FILE = "user_shared_preference";
+
 }

@@ -6,10 +6,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -30,7 +30,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         public TextView username, time, description, relatedsector, relatedschemes;
-        public ImageView contentimg;
+        public SimpleDraweeView contentimg;
         public RelativeLayout like, comment, share;
 
         public MyViewHolder(View view) {
@@ -38,7 +38,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
             username = view.findViewById(R.id.username);
             time = view.findViewById(R.id.timestamp);
             description = view.findViewById(R.id.descriptiontext);
-            contentimg = view.findViewById(R.id.content_img);
+            contentimg = view.findViewById(R.id.contentimg);
             like = view.findViewById(R.id.likelayout);
             comment = view.findViewById(R.id.commentlayout);
             share = view.findViewById(R.id.sharelayout);
@@ -72,12 +72,15 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
         holder.description.setText(desc);
         holder.time.setText(modalClass.getTimestamp());
 
-        String imgurl = modalClass.getImglink();
+        try {
+            String imgurl = modalClass.getImglink();
 
-        StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl(imgurl);
-//        Glide.with(context).load(ref).into(holder.contentimg);
+            StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl(imgurl);
+            holder.contentimg.setImageURI(imgurl);
 
+        }catch (Exception e){
 
+        }
         holder.like.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

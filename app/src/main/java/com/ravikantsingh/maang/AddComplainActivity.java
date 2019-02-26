@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +33,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class AddComplainActivity extends AppCompatActivity implements View.OnClickListener {
@@ -43,7 +43,7 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
     private Button mUploadpdf, mSubmit;
     private ImageView mContentimg;
     private DatabaseReference mRefrence1, mRefrence2, mRefrence3;
-    private List<String> sectorlist, schemelist;
+    private ArrayList<String> sectorlist, schemelist;
     private int SELECT_FILE = 1;
     private Uri filePath, pathHolder;
     FirebaseStorage storage;
@@ -114,7 +114,7 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
-                                    schemelist.add(ds1.getValue().toString());
+                                    schemelist.add(String.valueOf(ds1.getValue()));
                                 }
                             }
 
