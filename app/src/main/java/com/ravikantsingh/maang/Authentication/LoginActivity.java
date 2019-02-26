@@ -2,6 +2,7 @@ package com.ravikantsingh.maang.Authentication;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -94,7 +95,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void signIn() {
-        Intent signInIntent =  Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);;
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        ;
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
 
@@ -131,6 +133,12 @@ public class LoginActivity extends AppCompatActivity {
                                 userUID = mAuth.getCurrentUser().getUid();
                             } catch (Exception e) {
                             }
+
+                            SharedPreferences preferences = getSharedPreferences("UserLoggedIn", MODE_PRIVATE);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("UserLoggedIn", 1);
+                            editor.apply();
+
                             databaseReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
                             databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
                                 @Override
