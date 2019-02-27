@@ -164,6 +164,7 @@ public class LoginActivity extends AppCompatActivity {
                                         editor1.putString("gender", gender);
                                         editor1.putString("phoneNo", contactNo);
                                         editor1.putString("whatsapp", whatsappNo);
+                                        editor1.putString("userUID",userUID);
                                         editor1.putInt("registered", 1);
                                         editor.apply();
                                         Intent i = new Intent(LoginActivity.this, MainActivity.class);

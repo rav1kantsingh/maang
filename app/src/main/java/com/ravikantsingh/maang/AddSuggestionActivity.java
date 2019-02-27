@@ -40,14 +40,13 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
 
     private Spinner related_sector;
     private Spinner related_schemes;
-    private TextView mDescriptionText,pdffile;
-    private Button mUploadpdf,mSubmit,suggestion_to_mp,suggestion_to_da;
+    private TextView mDescriptionText, pdffile;
+    private Button mUploadpdf, mSubmit, suggestion_to_mp, suggestion_to_da;
     private ImageView mContentimg;
-    private FirebaseDatabase mDatabase;
-    private DatabaseReference mRefrence1,mRefrence2,mRefrence3;
-    private List<String> sectorlist,schemelist;
+    private DatabaseReference mRefrence1, mRefrence2, mRefrence3;
+    private List<String> sectorlist, schemelist;
     private int SELECT_FILE = 1;
-    private Uri filePath,pathHolder;
+    private Uri filePath, pathHolder;
     FirebaseStorage storage;
     StorageReference storageReference;
     DatabaseReference userReference;
@@ -59,7 +58,7 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
         setContentView(R.layout.activity_give_ur_suggestion);
 
         related_schemes = findViewById(R.id.relatedshemesspinner);
-        related_sector  = findViewById(R.id.relatedsectorspinner);
+        related_sector = findViewById(R.id.relatedsectorspinner);
         mDescriptionText = findViewById(R.id.descriptiontext);
         mUploadpdf = findViewById(R.id.upload_pdf);
         mSubmit = findViewById(R.id.submit);
@@ -69,17 +68,14 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
         storageReference = storage.getReference();
         userReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
 
-        mRefrence1 = mDatabase.getReference().child("sectors");
-        mRefrence3 = mDatabase.getReference().child("suggestions");
+        mRefrence1 = FirebaseDatabase.getInstance().getReference().child("sectors");
+        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("suggestions");
 
         addListtoSpinner();
 
         mContentimg.setOnClickListener(this);
         mUploadpdf.setOnClickListener(this);
         mSubmit.setOnClickListener(this);
-        suggestion_to_mp.setOnClickListener(this);
-        suggestion_to_da.setOnClickListener(this);
-
 
 
     }
@@ -94,7 +90,10 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
             mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    sectorlist.add(dataSnapshot.getKey());
+                    sectorlist.clear();
+                    for (DataSnapshot dp : dataSnapshot.getChildren()) {
+                        sectorlist.add(dp.getKey());
+                    }
                 }
 
                 @Override
@@ -102,26 +101,22 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
 
                 }
             });
+        } catch (Exception e) {
         }
-        catch (Exception e){}
-        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, sectorlist);
-        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        related_sector.setAdapter(adp1);
 
         final String sector = String.valueOf(related_sector.getSelectedItem());
 
         mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
                     if (sector.equals(ds.getKey())) {
-                        mRefrence2 = mDatabase.getReference().child("sectors").child(sector);
+                        mRefrence2 = FirebaseDatabase.getInstance().getReference().child("sectors").child(sector);
                         mRefrence2.addListenerForSingleValueEvent(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
-                                    schemelist.add(ds1.getValue().toString());
+                                    schemelist.add(String.valueOf(ds1.getKey()));
                                 }
                             }
 
@@ -139,10 +134,13 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
 
             }
         });
-
-        ArrayAdapter<String> adp2 = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, sectorlist);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        related_schemes.setAdapter(adp1);
+        ArrayAdapter<String> adp2 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, schemelist);
+        adp2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         related_sector.setAdapter(adp2);
 
 
@@ -152,17 +150,17 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
     public void onClick(View v) {
 
 
-        switch (v.getId()){
+        switch (v.getId()) {
 
-            case R.id.content_img :
+            case R.id.content_img:
                 uploadimg();
                 break;
 
-            case R.id.upload_pdf :
+            case R.id.upload_pdf:
                 uploadpdf();
                 break;
 
-            case R.id.submit :
+            case R.id.submit:
                 checkdatafilled();
                 break;
 
@@ -190,51 +188,44 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
 
     private void checkdatafilled() {
 
-        if(filePath != null || pathHolder != null)
-        {
+        if (filePath != null || pathHolder != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
-            ref.putFile(filePath)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    StorageReference ref1 = storageReference.child("pdf/" + UUID.randomUUID().toString());
+                    ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            StorageReference ref1 = storageReference.child("pdf/"+ UUID.randomUUID().toString());
-                            ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
-                                    Toast.makeText(AddSuggestionActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
-
-                                }
-                            })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-
-                                            Toast.makeText(AddSuggestionActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                                        }
-                                    });
-                            progressDialog.dismiss();
-
+                            Toast.makeText(AddSuggestionActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
                         }
-                    })
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AddSuggestionActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    progressDialog.dismiss();
+
+                }
+            })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(AddSuggestionActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddSuggestionActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded image"+(int)progress+"%");
+                            progressDialog.setMessage("Uploaded image" + (int) progress + "%");
                         }
                     });
 
@@ -243,7 +234,7 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
 
         if (related_sector.getSelectedItem() != null && related_schemes.getSelectedItem() != null
                 && (mDescriptionText.getText() != null || mDescriptionText.getText().toString().trim() != "")
-                && pdffile.getText().toString() != null){
+                && pdffile.getText().toString() != null) {
 
             final HashMap<String, Object> suggestionmap = new HashMap<>();
             suggestionmap.put("related-sector", related_sector.getSelectedItem().toString());
@@ -255,9 +246,9 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
             suggestionmap.put("commentsBy", "");
             suggestionmap.put("imglink", filePath);
             suggestionmap.put("pdflink", pathHolder);
-            suggestionmap.put("suggestion-type",flag);
+            suggestionmap.put("suggestion-type", flag);
             String key = mRefrence3.push().getKey();
-            suggestionmap.put("uid",key);
+            suggestionmap.put("uid", key);
 
             mRefrence3.child(key).setValue(suggestionmap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
@@ -279,13 +270,14 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
         }
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == SELECT_FILE)
                 onSelectFromGalleryResult(data);
-            else if (requestCode == 7){
+            else if (requestCode == 7) {
                 pathHolder = data.getData();
                 String PathHolder = data.getData().getPath();
                 pdffile.setText(PathHolder);

@@ -63,7 +63,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         pdffile = findViewById(R.id.pdffilename);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-
+        storageReference1 = storage.getReference();
         mRefrence1 = FirebaseDatabase.getInstance().getReference().child("sectors");
         mRefrence3 = FirebaseDatabase.getInstance().getReference().child("complaints");
 
@@ -72,8 +72,6 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         mContentimg.setOnClickListener(this);
         mUploadpdf.setOnClickListener(this);
         mSubmit.setOnClickListener(this);
-
-
 
     }
 
@@ -114,7 +112,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                             @Override
                             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                 for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
-                                    schemelist.add(ds1.getValue().toString());
+                                    schemelist.add(String.valueOf(ds1.getValue()));
                                 }
                             }
 
@@ -137,8 +135,6 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                 android.R.layout.simple_list_item_1, sectorlist);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         related_sector.setAdapter(adp2);
-
-
     }
 
     @Override
@@ -157,9 +153,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
             case R.id.submit :
                 checkdatafilled();
                 break;
-
         }
-
     }
 
     private void uploadimg() {
@@ -168,7 +162,6 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
-
     }
 
     private void uploadpdf() {
@@ -177,7 +170,6 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         intent.setType("application/msword,application/pdf");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent, 7);
-
     }
 
     private void checkdatafilled() {
@@ -197,16 +189,12 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                             ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                                     Toast.makeText(AddPostActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
-
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override
                                 public void onFailure(@NonNull Exception e) {
-
                                     Toast.makeText(AddPostActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-
                                 }
                             });
                             progressDialog.dismiss();
@@ -251,7 +239,6 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
             mRefrence3.child(key).setValue(complaintsmap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-
                     mDescriptionText.setText("");
                     pdffile.setText("Upload pdf file related to complaint");
                     mContentimg.setBackgroundResource(R.drawable.ic_camera_alt_black_24dp);

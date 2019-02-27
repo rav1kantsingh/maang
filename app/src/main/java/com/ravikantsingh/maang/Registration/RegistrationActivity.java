@@ -94,6 +94,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     editor.putString("gender", gender);
                     editor.putString("phoneNo", contactNo);
                     editor.putString("whatsapp", whatsappNo);
+                    editor.putString("userUID",userUID);
                     editor.putInt("registered", 1);
                     editor.apply();
 
