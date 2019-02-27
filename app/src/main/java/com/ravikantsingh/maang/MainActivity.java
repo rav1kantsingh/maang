@@ -224,13 +224,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.first: {
-                //Todo add click for nav header
+                startActivity(new Intent(this,MyPost.class));
+                break;
             }
             case R.id.second: {
-
+                startActivity(new Intent(this,MySuggestion.class));
+                break;
             }
             case R.id.third: {
-
+                startActivity(new Intent(this,MyComplain.class));
+                break;
             }
         }
     }

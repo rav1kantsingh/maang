@@ -1,5 +1,6 @@
 package com.ravikantsingh.maang;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -33,17 +34,18 @@ public class PostFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.activity_post,container,false);
-        mRecyclerView = v.findViewById(R.id.suggestionRV);
 
+        mRecyclerView = v.findViewById(R.id.suggestionRV);
         mAdapter = new SuggestionAdapter(modalClassList,getContext());
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
+
         fab = v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               //Todo add post dialog/fragment
+               startActivity(new Intent(getContext(),AddPostActivity.class));
             }
         });
 

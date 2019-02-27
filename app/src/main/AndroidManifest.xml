@@ -46,6 +46,9 @@
         <activity android:name=".Authentication.LoginActivity" />
         <activity android:name=".OurMpSuggestionActivity" />
         <activity android:name=".OurMpPostActivity" />
+        <activity android:name=".MySuggestion" />
+        <activity android:name=".MyPost" />
+        <activity android:name=".MyComplain" />
     </application>
 
 </manifest>
