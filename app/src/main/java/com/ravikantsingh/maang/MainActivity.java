@@ -28,6 +28,7 @@ import com.ravikantsingh.maang.Fragments.WMSReportFrag;
 import com.ravikantsingh.maang.NavDrawer.AboutActivity;
 import com.ravikantsingh.maang.NavDrawer.FeedBackActivity;
 import com.ravikantsingh.maang.NavDrawer.JantaDarbarActivity;
+import com.ravikantsingh.maang.NavDrawer.ProfileActivity;
 import com.ravikantsingh.maang.NavDrawer.RTI;
 import com.ravikantsingh.maang.NavDrawer.SettingActivity;
 
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    PostActivity feedsFrag;
+    PostFragment feedsFrag;
     ForumsFrag forumsFrag;
     Complains_Suggestion myProfileFrag;
     OurMPFrag ourMPFrag;
@@ -90,9 +91,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         currentFragment = feedsFrag;
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        navigation.setSelectedItemId(R.id.first);
         //handling data and click event on nav-drawer header
         navigationView = findViewById(R.id.nav_view);
+
         headerview = navigationView.getHeaderView(0);
         drawerHeader1 = headerview.findViewById(R.id.first);
         drawerHeader2 = headerview.findViewById(R.id.second);
@@ -125,9 +127,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             startActivity(new Intent(MainActivity.this, FeedBackActivity.class));
                         } else if (id == R.id.f) {
                             startActivity(new Intent(MainActivity.this, SettingActivity.class));
-                        }
-                        else if (id == R.id.g) {
+                        } else if (id == R.id.g) {
                             signOut();
+                        }else if (id == R.id.h) {
+                            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                         }
 
                         return true;
@@ -153,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void switchToFragment1() {
         if (feedsFrag == null) {
-            feedsFrag = new PostActivity();
+            feedsFrag = new PostFragment();
             fm.beginTransaction().add(R.id.frame_container, feedsFrag).hide(currentFragment).show(feedsFrag).commit();
         } else {
             fm.beginTransaction().hide(currentFragment).show(feedsFrag).commit();

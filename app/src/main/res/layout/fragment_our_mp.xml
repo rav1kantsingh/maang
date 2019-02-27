@@ -135,6 +135,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/our_mp_posts"
                 android:background="@drawable/elevated"
                 android:layout_marginTop="50dp"
                 android:layout_width="150dp"
@@ -226,6 +227,7 @@
             android:layout_weight="1">
 
             <LinearLayout
+                android:id="@+id/our_mp_suggestion"
                 android:background="@drawable/elevated"
                 android:layout_marginTop="50dp"
                 android:layout_width="150dp"

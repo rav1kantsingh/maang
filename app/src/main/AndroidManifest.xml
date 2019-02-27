@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NavDrawer.RTI"></activity>
+        <activity android:name=".NavDrawer.ProfileActivity"></activity>
+        <activity android:name=".NavDrawer.RTI" />
         <activity android:name=".SuggestionActivity" />
         <activity android:name=".AddSuggestionActivity" />
         <activity android:name=".AddPostActivity" />
@@ -43,6 +44,8 @@
             android:name=".Registration.RegistrationActivity"
             android:theme="@style/NoActionAppTheme" />
         <activity android:name=".Authentication.LoginActivity" />
+        <activity android:name=".OurMpSuggestionActivity" />
+        <activity android:name=".OurMpPostActivity" />
     </application>
 
 </manifest>

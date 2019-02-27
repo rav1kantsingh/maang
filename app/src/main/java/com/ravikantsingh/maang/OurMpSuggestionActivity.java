@@ -3,12 +3,10 @@ package com.ravikantsingh.maang;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -21,26 +19,36 @@ import com.ravikantsingh.maang.ModalClass.ModalClass;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PostActivity extends Fragment {
+/**
+ * Created by Ravikant Singh on 27,February,2019
+ */
+public class OurMpSuggestionActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private SuggestionAdapter mAdapter;
     private List<ModalClass> modalClassList = new ArrayList<>();
 
-    @Nullable
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.activity_post,container,false);
-        mRecyclerView = v.findViewById(R.id.suggestionRV);
 
-        mAdapter = new SuggestionAdapter(modalClassList,getContext());
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_suggestions);
+
+        mRecyclerView = findViewById(R.id.suggestionRV);
+        mAdapter = new SuggestionAdapter(modalClassList,this);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
+        mRecyclerView.setItemAnimator(new DefaultItemAnimator());
         mRecyclerView.setAdapter(mAdapter);
 
-        try {
+        setdatattolist();
+    }
 
-            DatabaseReference mRefrence = FirebaseDatabase.getInstance().getReference().child("posts");
+    private void setdatattolist() {
+
+        try {
+//Todo change the reference from posts to my mp posts.
+            DatabaseReference mRefrence = FirebaseDatabase.getInstance().getReference().child("suggestions");
             mRefrence.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -65,8 +73,5 @@ public class PostActivity extends Fragment {
                 }
             });
         }catch (Exception e){}
-
-        return  v;
     }
-
 }

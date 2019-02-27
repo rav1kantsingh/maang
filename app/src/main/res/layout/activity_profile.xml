@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="#203a43"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/kiran"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <ImageView
+            android:id="@+id/header_cover_image"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_background"
+            />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:id="@+id/pen"
+            android:layout_alignBottom="@id/header_cover_image"
+            android:layout_alignEnd="@id/header_cover_image"
+            android:background="@drawable/ic_pencil"
+            android:layout_alignRight="@id/header_cover_image" />
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-60dp"
+            android:id="@+id/sajal"
+            android:layout_below="@+id/header_cover_image">
+            <ImageView
+                android:id="@+id/user_profile_photo"
+                android:layout_width="120dp"
+                android:layout_height="120dp"
+                android:background="@drawable/profile_circular_border_imageview"
+                android:padding="20dp" />
+            <ImageView
+                android:id="@+id/pencil"
+                android:layout_marginTop="80dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/ic_edit"
+                android:layout_alignRight="@id/user_profile_photo" />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_marginTop="65dp"
+            android:id="@+id/profile_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/header_cover_image"
+            android:background="#ebca0707"
+            android:elevation="4dp"
+            android:paddingBottom="24dp">
+            <TextView
+                android:id="@+id/user_profile_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="30dp"
+                android:text="ATUL SINGH"
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/user_profile_short_bio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/user_profile_name"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="12dp"
+                android:text="Constituency name"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_centerInParent="true"
+
+            android:paddingLeft="20dp"
+            android:id="@+id/rightt"
+            android:paddingRight="20dp"
+            android:background="#203a43"
+            android:layout_below="@+id/profile_layout">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+
+                >
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_web" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="post"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textColor="#c6ffdd" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp"
+                >
+                <ImageView
+                    android:layout_gravity="center"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="@drawable/ic_suggestion" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="suggestion"
+                    android:textColor="#c6ffdd" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="20dp">
+                <ImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_customer" />
+                <TextView
+                    android:gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="complain"
+                    android:textColor="#c6ffdd"
+                    />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView
+            android:layout_marginLeft="13dp"
+            android:layout_marginRight="13dp"
+            android:layout_marginTop="17dp"
+            android:layout_below="@id/rightt"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:background="#FFFFFF"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:id="@+id/saj"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_below="@id/saj"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content">
+            <Button
+                android:layout_below="@id/saj"
+                android:layout_centerInParent="true"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:id="@+id/raj"
+                android:textColor="#FFFFFF"
+                android:text="Want to Become The Whistler"
+                android:background="@drawable/roundshapebtn"
+                android:shadowColor="#4882ca"
+                tools:ignore="NotSibling" />
+            <ImageView
+                android:layout_marginLeft="14dp"
+                android:layout_marginRight="12dp"
+                android:layout_marginTop="66dp"
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:background="#48b2ca"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:id="@+id/saja"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp" />
+
+        </FrameLayout>
+
+
+    </RelativeLayout>
+</ScrollView>
