@@ -19,7 +19,6 @@ import com.ravikantsingh.maang.Adapters.SuggestionAdapter;
 import com.ravikantsingh.maang.ModalClass.ModalClass;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Ravikant Singh on 27,February,2019
@@ -28,10 +27,8 @@ public class MyPost extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private SuggestionAdapter mAdapter;
-    private List<ModalClass> modalClassList = new ArrayList<>();
     FloatingActionButton fab;
     String userUID;
-    ArrayList<String> postList;
     ArrayList<ModalClass> postList2;
 
     @Nullable
@@ -40,14 +37,12 @@ public class MyPost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         mRecyclerView = findViewById(R.id.suggestionRV);
-
-        mAdapter = new SuggestionAdapter(modalClassList, this);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        postList2 = new ArrayList<>();
+        mAdapter = new SuggestionAdapter(postList2, this);
+        final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         fab = findViewById(R.id.fab);
-        postList = new ArrayList<>();
-        postList2 = new ArrayList<>();
 
         SharedPreferences preferences = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE, MODE_PRIVATE);
         userUID = preferences.getString("userUID", "");
@@ -55,57 +50,44 @@ public class MyPost extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MyPost.this,AddPostActivity.class));
+                startActivity(new Intent(MyPost.this, AddPostActivity.class));
             }
         });
 
-        try {
-            DatabaseReference mRefrence = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS).child(userUID).child("posts");
-
-            mRefrence.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(DataSnapshot dataSnapshot) {
-                    postList.clear();
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        postList.add(ds.getKey());
-                    }
-                }
-
-                @Override
-                public void onCancelled(DatabaseError databaseError) {
-
-                }
-            });
-        } catch (Exception e) {
-        }
-
-        try {
-            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("posts");
-            reference.addValueEventListener(new ValueEventListener() {
+            final DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("posts");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("posts");
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     postList2.clear();
-                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        postList2.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
-                                String.valueOf(ds.child("related-schemes").getValue()),
-                                String.valueOf(ds.child("likes").getValue()),
-                                String.valueOf(ds.child("comments").getValue()),
-                                String.valueOf(ds.child("imglink").getValue()),
-                                String.valueOf(ds.child("pdflink").getValue()),
-                                String.valueOf(ds.child("description").getValue()),
-                                String.valueOf(ds.child("timestamp").getValue()),
-                                String.valueOf(ds.child("uid").getValue())));
+                    for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
+                        reference2.child(String.valueOf(ds1.getValue())).addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot ds) {
+                                postList2.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
+                                        String.valueOf(ds.child("related-scheme").getValue()),
+                                        String.valueOf(ds.child("likes").getValue()),
+                                        String.valueOf(ds.child("comments").getValue()),
+                                        String.valueOf(ds.child("imglink").getValue()),
+                                        String.valueOf(ds.child("pdflink").getValue()),
+                                        String.valueOf(ds.child("description").getValue()),
+                                        String.valueOf(ds.child("Time").getValue()),
+                                        String.valueOf(ds.child("userUID").getValue())));
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
                     }
+                    mAdapter.notifyDataSetChanged();
                 }
 
                 @Override
                 public void onCancelled(DatabaseError databaseError) {
-
+                    mAdapter.notifyDataSetChanged();
                 }
             });
-        } catch (Exception e) {
-
-        }
     }
-
 }

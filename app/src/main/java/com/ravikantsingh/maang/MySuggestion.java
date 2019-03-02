@@ -8,6 +8,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 
 import com.google.firebase.database.DataSnapshot;
@@ -19,7 +20,6 @@ import com.ravikantsingh.maang.Adapters.SuggestionAdapter;
 import com.ravikantsingh.maang.ModalClass.ModalClass;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Ravikant Singh on 27,February,2019
@@ -28,10 +28,8 @@ public class MySuggestion extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
     private SuggestionAdapter mAdapter;
-    private List<ModalClass> modalClassList = new ArrayList<>();
     FloatingActionButton fab;
-    ArrayList<String> postList;
-    ArrayList<ModalClass> postList2;
+    ArrayList<ModalClass> postList2 = new ArrayList<>();
     String userUID;
 
     @Nullable
@@ -40,15 +38,12 @@ public class MySuggestion extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
         mRecyclerView = findViewById(R.id.suggestionRV);
-
-        mAdapter = new SuggestionAdapter(modalClassList,this);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
+        mAdapter = new SuggestionAdapter(postList2, this);
+        final RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mAdapter);
         fab = findViewById(R.id.fab);
 
-        postList = new ArrayList<>();
-        postList2 = new ArrayList<>();
 
         SharedPreferences preferences = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE, MODE_PRIVATE);
         userUID = preferences.getString("userUID", "");
@@ -56,56 +51,46 @@ public class MySuggestion extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(MySuggestion.this,AddSuggestionActivity.class));
+                startActivity(new Intent(MySuggestion.this, AddSuggestionActivity.class));
             }
         });
-            try {
-                DatabaseReference mRefrence = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS).child(userUID).child("suggestions");
 
-                mRefrence.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        postList.clear();
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            postList.add(ds.getKey());
-                        }
+        final DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("posts");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("posts");
+        reference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
+                        Log.e("second_upper", ds1.toString());
+                        reference2.child(String.valueOf(ds1.getValue())).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot ds) {
+                                Log.e("second", ds.toString());
+                                postList2.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
+                                        String.valueOf(ds.child("related-scheme").getValue()),
+                                        String.valueOf(ds.child("likes").getValue()),
+                                        String.valueOf(ds.child("comments").getValue()),
+                                        String.valueOf(ds.child("imglink").getValue()),
+                                        String.valueOf(ds.child("pdflink").getValue()),
+                                        String.valueOf(ds.child("description").getValue()),
+                                        String.valueOf(ds.child("Time").getValue()),
+                                        String.valueOf(ds.child("userUID").getValue())));
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+                        mAdapter.notifyDataSetChanged();
                     }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-            } catch (Exception e) {
             }
 
-            try {
-                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("suggestions");
-                reference.addValueEventListener(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        postList2.clear();
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            postList2.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
-                                    String.valueOf(ds.child("related-schemes").getValue()),
-                                    String.valueOf(ds.child("likes").getValue()),
-                                    String.valueOf(ds.child("comments").getValue()),
-                                    String.valueOf(ds.child("imglink").getValue()),
-                                    String.valueOf(ds.child("pdflink").getValue()),
-                                    String.valueOf(ds.child("description").getValue()),
-                                    String.valueOf(ds.child("timestamp").getValue()),
-                                    String.valueOf(ds.child("uid").getValue())));
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-
-                    }
-                });
-            } catch (Exception e) {
-
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                mAdapter.notifyDataSetChanged();
             }
+        });
     }
 
 }

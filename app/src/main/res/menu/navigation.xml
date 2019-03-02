@@ -9,7 +9,7 @@
     <item
         android:id="@+id/second"
         android:icon="@drawable/ic_complaint"
-        android:title="Complain/Suggestion" />
+        android:title="Reproach" />
 
     <item
         android:id="@+id/third"

@@ -58,14 +58,14 @@ public class PostFragment extends Fragment {
                     modalClassList.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
                         modalClassList.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
-                                String.valueOf(ds.child("related-schemes").getValue()),
+                                String.valueOf(ds.child("related-scheme").getValue()),
                                 String.valueOf(ds.child("likes").getValue()),
                                 String.valueOf(ds.child("comments").getValue()),
                                 String.valueOf(ds.child("imglink").getValue()),
                                 String.valueOf(ds.child("pdflink").getValue()),
                                 String.valueOf(ds.child("description").getValue()),
-                                String.valueOf(ds.child("timestamp").getValue()),
-                                String.valueOf(ds.child("uid").getValue())));
+                                String.valueOf(ds.child("Time").getValue()),
+                                String.valueOf(ds.child("userUID").getValue())));
                     }
                     mAdapter.notifyDataSetChanged();
                 }

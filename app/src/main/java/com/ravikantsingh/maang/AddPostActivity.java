@@ -11,6 +11,7 @@ import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -19,8 +20,10 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,7 +46,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     private TextView mDescriptionText, pdffile;
     private Button mUploadpdf, mSubmit, suggestion_to_mp, suggestion_to_da;
     private ImageView mContentimg;
-    private DatabaseReference mRefrence1, mRefrence2, mRefrence3;
+    private DatabaseReference mRefrence1, mRefrence2, mRefrence3, mReference4;
     private ArrayList<String> sectorlist, schemelist;
     private int SELECT_FILE = 1;
     private Uri filePath, pathHolder;
@@ -52,13 +55,14 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     DatabaseReference userReference;
     ArrayAdapter<String> adp2, adp1;
     String userUID;
-    String pdfPath,photoPath,name;
+    String pdfPath, photoPath, name;
     int flag = 0;
+    String uploadedPhotoUrl, upLoadedPdfUrl;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_ur_complain);
+        setContentView(R.layout.activity_add_post);
 
         related_schemes = findViewById(R.id.relatedshemesspinner);
         related_sector = findViewById(R.id.relatedsectorspinner);
@@ -71,12 +75,14 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         storageReference = storage.getReference();
         userReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
 
+
         mRefrence1 = FirebaseDatabase.getInstance().getReference().child("sectors");
-        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("posts");
+        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("complaints");
+        mReference4 = FirebaseDatabase.getInstance().getReference().child("users");
         try {
             SharedPreferences preferences = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE, MODE_PRIVATE);
             userUID = preferences.getString("userUID", "hello");
-            name = preferences.getString("name","");
+            name = preferences.getString("name", "");
         } catch (Exception e) {
             userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
         }
@@ -226,27 +232,37 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            final StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+
             ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                 @Override
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     try {
-                        StorageReference ref1 = storageReference.child("pdf/" + UUID.randomUUID().toString());
+                        uploadedPhotoUrl = String.valueOf(taskSnapshot.getDownloadUrl());
+                        Log.e("uploadPhoto",uploadedPhotoUrl);
+                        final StorageReference ref1 = storageReference.child("pdf/" + UUID.randomUUID().toString());
                         ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 Toast.makeText(AddPostActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
+                                upLoadedPdfUrl = String.valueOf(taskSnapshot.getDownloadUrl());
+                                Log.e("uploadPDF",upLoadedPdfUrl);
+
                             }
                         }).addOnFailureListener(new OnFailureListener() {
                             @Override
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(AddPostActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
+                        }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                            }
                         });
-                        if(progressDialog.isShowing()){
+                        if (progressDialog.isShowing()) {
                             progressDialog.dismiss();
                         }
-                    }catch (Exception e){
+                    } catch (Exception e) {
 
                     }
 
@@ -266,59 +282,56 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                                     .getTotalByteCount());
                             progressDialog.setMessage("Uploaded image" + (int) progress + "%");
                         }
-                    });
-
-        }
-
-
-        if (related_sector.getSelectedItem() != null && related_schemes.getSelectedItem() != null
-                && (mDescriptionText.getText() != null || mDescriptionText.getText().toString().trim() != "")
-                && pdffile.getText().toString() != null) {
-
-            final HashMap<String, Object> suggestionmap = new HashMap<>();
-            suggestionmap.put("related-sector", related_sector.getSelectedItem().toString());
-            suggestionmap.put("related-scheme", related_schemes.getSelectedItem().toString());
-            suggestionmap.put("description", mDescriptionText.getText().toString());
-            suggestionmap.put("likes", "");
-            suggestionmap.put("comments", "");
-            suggestionmap.put("likesBy", "");
-            suggestionmap.put("commentsBy", "");
-            suggestionmap.put("name",name);
-            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
-            Date d = new Date();
-            String date = sdf.format(d);
-            suggestionmap.put("Time",date);
-            try {
-                suggestionmap.put("imglink", filePath.toString());
-            }catch (Exception e){
-
-            }
-            try {
-                suggestionmap.put("pdflink", pathHolder.toString());
-            }catch (Exception e){
-
-            }
-            suggestionmap.put("suggestion-type", flag);
-            suggestionmap.put("userUID", userUID);
-
-            mRefrence3.push().setValue(suggestionmap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                    }).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                 @Override
-                public void onSuccess(Void aVoid) {
+                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+                    if (related_sector.getSelectedItem() != null && related_schemes.getSelectedItem() != null
+                            && (mDescriptionText.getText() != null || mDescriptionText.getText().toString().trim() != "")
+                            && pdffile.getText().toString() != null) {
 
-                    mDescriptionText.setText("");
-                    pdffile.setText("Upload pdf file related to complaint");
-                    mContentimg.setImageBitmap(null);
-                    mContentimg.setBackgroundResource(R.drawable.ic_camera_alt_black_24dp);
-                    related_schemes.setSelection(0);
-                    related_sector.setSelection(0);
-                    flag = 0;
-                    suggestionmap.clear();
-                    Toast.makeText(AddPostActivity.this, "Suggestion Submitted", Toast.LENGTH_SHORT).show();
-                    finish();
+                        final HashMap<String, Object> suggestionmap = new HashMap<>();
+                        suggestionmap.put("related-sector", related_sector.getSelectedItem().toString());
+                        suggestionmap.put("related-scheme", related_schemes.getSelectedItem().toString());
+                        suggestionmap.put("description", mDescriptionText.getText().toString());
+                        suggestionmap.put("likes", "");
+                        suggestionmap.put("comments", "");
+                        suggestionmap.put("likesBy", "");
+                        suggestionmap.put("commentsBy", "");
+                        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+                        Date d = new Date();
+                        String date = sdf.format(d);
+                        suggestionmap.put("Time", date);
+                        suggestionmap.put("name", name);
+                        suggestionmap.put("imglink", uploadedPhotoUrl);
+                        suggestionmap.put("pdflink", upLoadedPdfUrl);
+                        suggestionmap.put("suggestion-type", flag);
+                        suggestionmap.put("userUID", userUID);
+                        final String key = mRefrence3.push().getKey();
+                        mRefrence3.child(key).setValue(suggestionmap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                mReference4.child(userUID).child("complaints").push().setValue(key);
+                                mDescriptionText.setText("");
+                                pdffile.setText("Upload pdf file related to complaint");
+                                mContentimg.setImageBitmap(null);
+                                mContentimg.setBackgroundResource(R.drawable.ic_camera_alt_black_24dp);
+                                related_schemes.setSelection(0);
+                                related_sector.setSelection(0);
+                                flag = 0;
+                                suggestionmap.clear();
+                                Toast.makeText(AddPostActivity.this, "Suggestion Submitted", Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        });
+
+                    }
                 }
             });
 
         }
+
+
+
 
     }
 

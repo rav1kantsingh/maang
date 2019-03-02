@@ -63,6 +63,7 @@
             android:id="@+id/first"
             android:layout_width="0dp"
             android:layout_height="40dp"
+            android:gravity="center"
             android:layout_weight="1"
             android:textColor="#fff"
             android:text="Post"
@@ -74,6 +75,7 @@
             android:layout_height="40dp"
             android:textColor="#fff"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Suggestion"
             android:textAlignment="center" />
 
@@ -83,6 +85,7 @@
             android:layout_height="40dp"
             android:textColor="#fff"
             android:layout_weight="1"
+            android:gravity="center"
             android:text="Complain"
             android:textAlignment="center" />
 
