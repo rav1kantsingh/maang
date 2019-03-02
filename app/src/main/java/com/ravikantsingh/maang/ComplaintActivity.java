@@ -21,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ComplaintActivity extends AppCompatActivity {
+
     private RecyclerView mRecyclerView;
     private SuggestionAdapter mAdapter;
     private List<ModalClass> modalClassList = new ArrayList<>();
