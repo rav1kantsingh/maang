@@ -12,6 +12,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".Fragments.ApplyForCompetition" />
+        <activity android:name=".Fragments.SeeSubmission" />
+
+
         <activity android:name=".MP.MPJantaDate"></activity>
         <activity android:name=".MP.MPJantaDarbar" />
         <activity
@@ -73,14 +77,18 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
+            android:label="MAANG" >
+        </activity>
             android:label="MAANG"
             android:screenOrientation="portrait" />
         <activity android:name=".SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Registration.RegistrationActivity"
