@@ -5,6 +5,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginTop="5dp"
     app:cardCornerRadius="8dp"
     android:backgroundTint="#00171d">
 
@@ -136,8 +138,48 @@
             android:layout_below="@+id/descriptiontext"
             android:background="#fff"/>
 
-        <LinearLayout
+        <Button
+            android:visibility="gone"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
             android:layout_below="@+id/divider"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:id="@+id/recommendtoda"
+            android:text="Recommend"
+            android:textSize="15dp"
+            android:background="@drawable/round_corner_button_signup_withgradient"
+            />
+        <Button
+            android:visibility="gone"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_below="@+id/divider"
+            android:textColor="#fff"
+            android:textAllCaps="false"
+            android:id="@+id/dismiss"
+            android:text="Delete"
+            android:textSize="15dp"
+            android:background="@drawable/round_corner_button_signup_withgradient"
+            />
+
+        <View
+            android:id="@+id/xyz"
+            android:layout_marginTop="3dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@+id/recommendtoda"
+            android:background="#fff"/>
+
+
+        <LinearLayout
+            android:layout_below="@+id/xyz"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -157,6 +199,7 @@
                     android:layout_height="wrap_content" />
 
             <TextView
+                android:id="@+id/like"
                 android:layout_toRightOf="@+id/thumbeup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -166,6 +209,18 @@
                 android:textStyle="bold"
                 android:textSize="20dp"
                 />
+
+                <TextView
+                    android:id="@+id/likecount"
+                    android:layout_toRightOf="@+id/like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#fff"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
 
             </RelativeLayout>
 
@@ -184,6 +239,7 @@
                     android:layout_height="wrap_content" />
 
                 <TextView
+                    android:id="@+id/comment"
                     android:layout_toRightOf="@+id/commentsimg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -193,28 +249,31 @@
                     android:textStyle="bold"
                     android:textSize="20dp"
                     />
+                <TextView
+                    android:id="@+id/commentcount"
+                    android:layout_toRightOf="@+id/comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textColor="#fff"
+                    android:layout_marginLeft="10dp"
+                    android:textStyle="bold"
+                    android:textSize="20dp"
+                    />
 
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/sharelayout"
+                android:id="@+id/reportasspam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="5dp">
 
-                <ImageView
-                    android:layout_marginTop="3dp"
-                    android:id="@+id/shareimg"
-                    android:src="@drawable/ic_share_black_24dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
                 <TextView
-                    android:layout_toRightOf="@+id/shareimg"
+                    android:id="@+id/report"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Share"
+                    android:text="Report Spam"
                     android:textColor="#fff"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
