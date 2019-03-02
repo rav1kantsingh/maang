@@ -22,14 +22,6 @@
             android:icon="@drawable/ic_questions_about_abecedary"
             android:title="About" />
         <item
-            android:id="@+id/e"
-            android:icon="@drawable/ic_rating"
-            android:title="Feedback" />
-        <item
-            android:id="@+id/f"
-            android:icon="@drawable/ic_settings"
-            android:title="Setting" />
-        <item
             android:id="@+id/g"
             android:icon="@drawable/ic_sign_out"
             android:title="Logout" />

@@ -79,8 +79,6 @@
             android:name=".MainActivity"
             android:label="MAANG" >
         </activity>
-            android:label="MAANG"
-            android:screenOrientation="portrait" />
         <activity android:name=".SplashActivity">
 
             <intent-filter>

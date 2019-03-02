@@ -1,13 +1,16 @@
 package com.ravikantsingh.maang.Adapters;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +51,7 @@ public class RecommendedWorkAdapter extends
         viewHolder.complainBtn.setOnClickListener(this);
         viewHolder.suggestionBtn.setOnClickListener(this);
         viewHolder.like.setOnClickListener(this);
-        viewHolder.share.setOnClickListener(this);
+        viewHolder.rate.setOnClickListener(this);
         viewHolder.comments.setOnClickListener(this);
     }
 
@@ -72,9 +75,30 @@ public class RecommendedWorkAdapter extends
                 Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
                 break;
             }
-            case R.id.share: {
-                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
-                break;
+            case R.id.rate: {
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle("RATE YOUR MP(On scale of 5)");
+                alertDialog.setMessage("Enter Password");
+                final EditText input = new EditText(context);
+                alertDialog.setView(input);
+
+                // Setting Positive "Yes" Button
+                alertDialog.setPositiveButton("YES",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog,int which) {
+                                // Write your code here to execute after dialog
+                                Toast.makeText(context,"Rated", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                // Setting Negative "NO" Button
+                alertDialog.setNegativeButton("NO",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Write your code here to execute after dialog
+                                dialog.cancel();
+                            }
+                        });
+                alertDialog.show();
             }
             case R.id.comments: {
                 Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
@@ -86,7 +110,7 @@ public class RecommendedWorkAdapter extends
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView sector, scheme, implimentingAgencies, recommendDate, amount, like, share, comments;
+        TextView sector, scheme, implimentingAgencies, recommendDate, amount, like, rate, comments;
         Button complainBtn, suggestionBtn;
 
         public ViewHolder(@NonNull View itemView) {
@@ -97,7 +121,7 @@ public class RecommendedWorkAdapter extends
             recommendDate = itemView.findViewById(R.id.recommend_date);
             amount = itemView.findViewById(R.id.amount);
             like = itemView.findViewById(R.id.like);
-            share = itemView.findViewById(R.id.share);
+            rate = itemView.findViewById(R.id.rate);
             comments = itemView.findViewById(R.id.comments);
             complainBtn = itemView.findViewById(R.id.complain_btn);
             suggestionBtn = itemView.findViewById(R.id.suggestion_btn);

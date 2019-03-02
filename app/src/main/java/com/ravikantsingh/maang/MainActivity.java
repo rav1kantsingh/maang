@@ -27,10 +27,8 @@ import com.ravikantsingh.maang.Fragments.OurMPFrag;
 import com.ravikantsingh.maang.Fragments.WMSReportFrag;
 import com.ravikantsingh.maang.MP.MPJantaDarbar;
 import com.ravikantsingh.maang.NavDrawer.AboutActivity;
-import com.ravikantsingh.maang.NavDrawer.FeedBackActivity;
 import com.ravikantsingh.maang.NavDrawer.ProfileActivity;
 import com.ravikantsingh.maang.NavDrawer.RTI;
-import com.ravikantsingh.maang.NavDrawer.SettingActivity;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -123,10 +121,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             startActivity(new Intent(MainActivity.this, PdfViewerActivity.class));
                         } else if (id == R.id.d) {
                             startActivity(new Intent(MainActivity.this, AboutActivity.class));
-                        } else if (id == R.id.e) {
-                            startActivity(new Intent(MainActivity.this, FeedBackActivity.class));
-                        } else if (id == R.id.f) {
-                            startActivity(new Intent(MainActivity.this, SettingActivity.class));
                         } else if (id == R.id.g) {
                             signOut();
                         }else if (id == R.id.h) {
