@@ -52,6 +52,7 @@
             android:textSize="18dp" />
 
         <EditText
+            android:id="@+id/discription"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_marginLeft="10dp"

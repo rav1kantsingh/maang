@@ -85,6 +85,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     map.put("gender", gender);
                     map.put("phoneNo", contactNo);
                     map.put("whatsapp", whatsappNo);
+                    map.put("userUID",userUID);
 
                     SharedPreferences preferences = getApplicationContext().getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE,MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();

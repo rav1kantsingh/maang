@@ -32,7 +32,7 @@ public class SuggestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_suggestions);
 
         mRecyclerView = findViewById(R.id.suggestionRV);
-        mAdapter = new SuggestionAdapter(modalClassList,this);
+        mAdapter = new SuggestionAdapter(modalClassList, this);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -58,8 +58,8 @@ public class SuggestionActivity extends AppCompatActivity {
                                 String.valueOf(ds.child("imglink").getValue()),
                                 String.valueOf(ds.child("pdflink").getValue()),
                                 String.valueOf(ds.child("description").getValue()),
-                                String.valueOf(ds.child("timestamp").getValue()),
-                                String.valueOf(ds.child("uid").getValue())));
+                                String.valueOf(ds.child("Time").getValue()),
+                                String.valueOf(ds.child("userUID").getValue()),String.valueOf(ds.child("name").getValue())));
                     }
                     mAdapter.notifyDataSetChanged();
                 }
@@ -69,6 +69,7 @@ public class SuggestionActivity extends AppCompatActivity {
 
                 }
             });
-        }catch (Exception e){}
+        } catch (Exception e) {
+        }
     }
 }

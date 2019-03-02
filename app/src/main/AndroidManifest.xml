@@ -12,28 +12,69 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".JantaUserActivity"></activity>
-        <activity android:name=".NavDrawer.ProfileActivity" />
-        <activity android:name=".NavDrawer.RTI" />
-        <activity android:name=".SuggestionActivity" />
-        <activity android:name=".AddSuggestionActivity" />
-        <activity android:name=".AddPostActivity" />
-        <activity android:name=".AddComplainActivity" />
-        <activity android:name=".PdfViewerActivity" />
-        <activity android:name=".ComplaintActivity" />
-        <activity android:name=".WMSinnerActivity.StatusWorkActivity" />
-        <activity android:name=".WMSinnerActivity.WorkDetailActivity" />
-        <activity android:name=".WMSinnerActivity.NonProgressiveWorkActivity" />
-        <activity android:name=".WMSinnerActivity.CompletedWorkActivity" />
-        <activity android:name=".WMSinnerActivity.WorkRegisterActivity" />
-        <activity android:name=".WMSinnerActivity.RecommendedWork" />
-        <activity android:name=".NavDrawer.SettingActivity" />
-        <activity android:name=".NavDrawer.FeedBackActivity" />
-        <activity android:name=".NavDrawer.AboutActivity" />
-        <activity android:name=".NavDrawer.JantaDarbarActivity" />
+        <activity android:name=".MP.MPJantaDate"></activity>
+        <activity android:name=".MP.MPJantaDarbar" />
+        <activity
+            android:name=".JantaUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.RTI"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SuggestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddSuggestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddComplainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PdfViewerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ComplaintActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.StatusWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.WorkDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.NonProgressiveWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.CompletedWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.WorkRegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.RecommendedWork"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.FeedBackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.JantaDarbarActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:label="MAANG" />
+            android:label="MAANG"
+            android:screenOrientation="portrait" />
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,13 +84,29 @@
         </activity>
         <activity
             android:name=".Registration.RegistrationActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionAppTheme" />
-        <activity android:name=".Authentication.LoginActivity" />
-        <activity android:name=".OurMpSuggestionActivity" />
-        <activity android:name=".OurMpPostActivity" />
-        <activity android:name=".MySuggestion" />
-        <activity android:name=".MyPost" />
-        <activity android:name=".MyComplain" />
+        <activity
+            android:name=".Authentication.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OurMpSuggestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OurMpPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MySuggestion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyPost"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyComplain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

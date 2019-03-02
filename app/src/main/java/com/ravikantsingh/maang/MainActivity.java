@@ -25,9 +25,9 @@ import com.ravikantsingh.maang.Fragments.FeedsFrag;
 import com.ravikantsingh.maang.Fragments.ForumsFrag;
 import com.ravikantsingh.maang.Fragments.OurMPFrag;
 import com.ravikantsingh.maang.Fragments.WMSReportFrag;
+import com.ravikantsingh.maang.MP.MPJantaDarbar;
 import com.ravikantsingh.maang.NavDrawer.AboutActivity;
 import com.ravikantsingh.maang.NavDrawer.FeedBackActivity;
-import com.ravikantsingh.maang.NavDrawer.JantaDarbarActivity;
 import com.ravikantsingh.maang.NavDrawer.ProfileActivity;
 import com.ravikantsingh.maang.NavDrawer.RTI;
 import com.ravikantsingh.maang.NavDrawer.SettingActivity;
@@ -116,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         drawerLayout.closeDrawers();
                         int id = menuItem.getItemId();
                         if (id == R.id.a) {
-                            startActivity(new Intent(MainActivity.this, JantaDarbarActivity.class));
+                            startActivity(new Intent(MainActivity.this, MPJantaDarbar.class));
                         } else if (id == R.id.b) {
                             startActivity(new Intent(MainActivity.this, RTI.class));
                         } else if (id == R.id.c) {

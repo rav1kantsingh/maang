@@ -13,6 +13,13 @@ public class BaseMessage {
         this.type = type;
     }
 
+    public BaseMessage(String message, String time, String name, int type) {
+        this.message = message;
+        this.time = time;
+        this.name = name;
+        this.type = type;
+    }
+
     public String getMessage() {
         return message;
     }
@@ -37,6 +44,14 @@ public class BaseMessage {
         this.time = time;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
     public String getName() {
         return name;
     }
@@ -45,13 +60,7 @@ public class BaseMessage {
         this.name = name;
     }
 
-    public int getType() {
-        return type;
-    }
 
-    public void setType(int type) {
-        this.type = type;
-    }
 
     public BaseMessage(String message, String userImage, String time, String name, int type) {
         this.message = message;

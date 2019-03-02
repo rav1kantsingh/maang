@@ -59,8 +59,8 @@ public class ComplaintActivity extends AppCompatActivity {
                                 String.valueOf(ds.child("imglink").getValue()),
                                 String.valueOf(ds.child("pdflink").getValue()),
                                 String.valueOf(ds.child("description").getValue()),
-                                String.valueOf(ds.child("timestamp").getValue()),
-                                String.valueOf(ds.child("uid").getValue())));
+                                String.valueOf(ds.child("Time").getValue()),
+                                String.valueOf(ds.child("userUID").getValue()),String.valueOf(ds.child("name").getValue())));
                     }
                     mAdapter.notifyDataSetChanged();
                 }

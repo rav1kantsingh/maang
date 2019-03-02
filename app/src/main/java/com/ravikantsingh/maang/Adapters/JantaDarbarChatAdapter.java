@@ -55,22 +55,22 @@ public class JantaDarbarChatAdapter extends RecyclerView.Adapter<RecyclerView.Vi
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-        RecyclerView.ViewHolder holder;
+        RecyclerView.ViewHolder holder = null;
         switch (viewType) {
-            case 0: {
+            case 1: {
                 holder = (new ViewHolder0(inflater.inflate(R.layout.item_message_sent, viewGroup, false)));
+                break;
             }
             case 2: {
                 holder = (new ViewHolder2(inflater.inflate(R.layout.item_message_received, viewGroup, false)));
+                break;
             }
-            default:
-                holder = new ViewHolder0(inflater.inflate(R.layout.item_message_sent, viewGroup, false));
         }
         return holder;
     }
@@ -78,14 +78,17 @@ public class JantaDarbarChatAdapter extends RecyclerView.Adapter<RecyclerView.Vi
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, final int position) {
         switch (holder.getItemViewType()) {
-            case 0:
+            case 1:
                 ViewHolder0 viewHolder0 = (ViewHolder0) holder;
-                //Todo
+                viewHolder0.messageSent.setText(list.get(position).getMessage());
+                viewHolder0.messageSentTime.setText(list.get(position).getTime());
                 break;
 
             case 2:
                 ViewHolder2 viewHolder2 = (ViewHolder2) holder;
-                //Todo
+                viewHolder2.messageSenderName.setText(list.get(position).getName());
+                viewHolder2.messageRecievedTime.setText(list.get(position).getTime());
+                viewHolder2.messageRecieved.setText(list.get(position).getMessage());
                 break;
         }
     }

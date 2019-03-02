@@ -2,7 +2,30 @@ package com.ravikantsingh.maang.ModalClass;
 
 public class ModalClass {
 
-    private String relatedsector,relatedscheme,likes,comments,imglink,pdflink,description,timestamp,uid;
+    private String relatedsector;
+    private String relatedscheme;
+    private String likes;
+    private String comments;
+    private String imglink;
+    private String pdflink;
+    private String description;
+    private String timestamp;
+    private String uid;
+
+    public ModalClass(String relatedsector, String relatedscheme, String likes, String comments, String imglink, String pdflink, String description, String timestamp, String uid, String userName) {
+        this.relatedsector = relatedsector;
+        this.relatedscheme = relatedscheme;
+        this.likes = likes;
+        this.comments = comments;
+        this.imglink = imglink;
+        this.pdflink = pdflink;
+        this.description = description;
+        this.timestamp = timestamp;
+        this.uid = uid;
+        this.userName = userName;
+    }
+
+    private String userName;
 
     public ModalClass(String relatedsector, String relatedscheme, String likes, String comments, String imglink, String pdflink, String description, String timestamp, String uid) {
         this.relatedsector = relatedsector;
@@ -86,5 +109,13 @@ public class ModalClass {
 
     public void setUid(String uid) {
         this.uid = uid;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 }

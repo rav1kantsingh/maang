@@ -3,6 +3,7 @@ package com.ravikantsingh.maang;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,58 +21,73 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class AddPostActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Spinner related_sector;
     private Spinner related_schemes;
-    private TextView mDescriptionText,pdffile;
-    private Button mUploadpdf,mSubmit;
+    private TextView mDescriptionText, pdffile;
+    private Button mUploadpdf, mSubmit, suggestion_to_mp, suggestion_to_da;
     private ImageView mContentimg;
-    private DatabaseReference mRefrence1,mRefrence2,mRefrence3;
-    private List<String> sectorlist,schemelist;
+    private DatabaseReference mRefrence1, mRefrence2, mRefrence3;
+    private ArrayList<String> sectorlist, schemelist;
     private int SELECT_FILE = 1;
-    private Uri filePath,pathHolder;
+    private Uri filePath, pathHolder;
     FirebaseStorage storage;
-    StorageReference storageReference,storageReference1;
+    StorageReference storageReference;
+    DatabaseReference userReference;
+    ArrayAdapter<String> adp2, adp1;
+    String userUID;
+    String pdfPath,photoPath,name;
+    int flag = 0;
 
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_ur_complain);
 
         related_schemes = findViewById(R.id.relatedshemesspinner);
-        related_sector  = findViewById(R.id.relatedsectorspinner);
-        mDescriptionText = findViewById(R.id.descriptiontext);
+        related_sector = findViewById(R.id.relatedsectorspinner);
+        mDescriptionText = findViewById(R.id.discription);
         mUploadpdf = findViewById(R.id.upload_pdf);
         mSubmit = findViewById(R.id.submit);
         mContentimg = findViewById(R.id.content_img);
         pdffile = findViewById(R.id.pdffilename);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
-        storageReference1 = storage.getReference();
+        userReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
+
         mRefrence1 = FirebaseDatabase.getInstance().getReference().child("sectors");
-        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("complaints");
+        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("posts");
+        try {
+            SharedPreferences preferences = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE, MODE_PRIVATE);
+            userUID = preferences.getString("userUID", "hello");
+            name = preferences.getString("name","");
+        } catch (Exception e) {
+            userUID = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        }
+
 
         addListtoSpinner();
 
         mContentimg.setOnClickListener(this);
         mUploadpdf.setOnClickListener(this);
         mSubmit.setOnClickListener(this);
+
 
     }
 
@@ -80,80 +96,108 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         sectorlist = new ArrayList();
         schemelist = new ArrayList();
 
+        sectorlist.add("SectorA");
+        sectorlist.add("SectorB");
+        sectorlist.add("SectorC");
 
-        try {
-            mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    sectorlist.add(dataSnapshot.getKey());
-                }
+        schemelist.add("SchemeA");
+        schemelist.add("SchemeB");
+        schemelist.add("SchemeC");
+        schemelist.add("SchemeD");
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
 
-                }
-            });
-        }
-        catch (Exception e){}
-        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
+//        try {
+//            mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
+//                @Override
+//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                    sectorlist.clear();
+//                    for (DataSnapshot dp : dataSnapshot.getChildren()) {
+//                        sectorlist.add(dp.getKey());
+//                    }
+//                }
+//
+//                @Override
+//                public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                }
+//            });
+//        } catch (Exception e) {
+//        }
+
+
+//        related_sector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                final String sector = String.valueOf(related_sector.getSelectedItem());
+//                mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                        schemelist.clear();
+//                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+//                            if (sector.equals(ds.getKey())) {
+//                                mRefrence2 = FirebaseDatabase.getInstance().getReference().child("sectors").child(sector);
+//                                mRefrence2.addListenerForSingleValueEvent(new ValueEventListener() {
+//                                    @Override
+//                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+//                                        for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
+//                                            schemelist.add(String.valueOf(ds1.getKey()));
+//                                        }
+//                                        adp2.notifyDataSetChanged();
+//                                    }
+//
+//                                    @Override
+//                                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                                    }
+//                                });
+//                            }
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError databaseError) {
+//
+//                    }
+//                });
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//
+//            }
+//        });
+        adp1 = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, sectorlist);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         related_sector.setAdapter(adp1);
 
-        final String sector = String.valueOf(related_sector.getSelectedItem());
+        adp2 = new ArrayAdapter<>(getApplicationContext(),
+                android.R.layout.simple_list_item_1, schemelist);
+        adp2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        related_schemes.setAdapter(adp2);
 
-        mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (sector.equals(ds.getKey())) {
-                        mRefrence2 = FirebaseDatabase.getInstance().getReference().child("sectors").child(sector);
-                        mRefrence2.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
-                                    schemelist.add(String.valueOf(ds1.getValue()));
-                                }
-                            }
-
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                            }
-                        });
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-        ArrayAdapter<String> adp2 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, sectorlist);
-        adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        related_sector.setAdapter(adp2);
     }
 
     @Override
     public void onClick(View v) {
 
-        switch (v.getId()){
 
-            case R.id.content_img :
+        switch (v.getId()) {
+
+            case R.id.content_img:
                 uploadimg();
                 break;
 
-            case R.id.upload_pdf :
+            case R.id.upload_pdf:
                 uploadpdf();
                 break;
 
-            case R.id.submit :
+            case R.id.submit:
                 checkdatafilled();
                 break;
+
         }
+
     }
 
     private void uploadimg() {
@@ -162,89 +206,114 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
         startActivityForResult(Intent.createChooser(intent, "Select File"), SELECT_FILE);
+
     }
 
     private void uploadpdf() {
 
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
         intent.setType("application/msword,application/pdf");
+        intent.setType("pdf/*");
         intent.addCategory(Intent.CATEGORY_OPENABLE);
         startActivityForResult(intent, 7);
+
     }
 
     private void checkdatafilled() {
 
-        if(filePath != null || pathHolder != null)
-        {
+        if (filePath != null || pathHolder != null) {
             final ProgressDialog progressDialog = new ProgressDialog(this);
             progressDialog.setTitle("Uploading...");
             progressDialog.show();
 
-            StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
-            ref.putFile(filePath)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                        @Override
-                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                            StorageReference ref1 = storageReference1.child("pdf/"+ UUID.randomUUID().toString());
-                            ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                                    Toast.makeText(AddPostActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(AddPostActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
+            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+            ref.putFile(filePath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    try {
+                        StorageReference ref1 = storageReference.child("pdf/" + UUID.randomUUID().toString());
+                        ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                Toast.makeText(AddPostActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(AddPostActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        if(progressDialog.isShowing()){
                             progressDialog.dismiss();
                         }
-                    })
+                    }catch (Exception e){
+
+                    }
+
+                }
+            })
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             progressDialog.dismiss();
-                            Toast.makeText(AddPostActivity.this, "Failed "+e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AddPostActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                            double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                            progressDialog.setMessage("Uploaded image" + (int) progress + "%");
                         }
                     });
+
         }
 
 
         if (related_sector.getSelectedItem() != null && related_schemes.getSelectedItem() != null
                 && (mDescriptionText.getText() != null || mDescriptionText.getText().toString().trim() != "")
-                && pdffile.getText().toString() != null){
+                && pdffile.getText().toString() != null) {
 
-            HashMap<String, Object> complaintsmap = new HashMap<>();
-            complaintsmap.put("related-sector", related_sector.getSelectedItem().toString());
-            complaintsmap.put("related-scheme", related_schemes.getSelectedItem().toString());
-            complaintsmap.put("description", mDescriptionText.getText());
-            complaintsmap.put("likes", "");
-            complaintsmap.put("comments", "");
-            complaintsmap.put("likesBy", "");
-            complaintsmap.put("commentsBy", "");
-            complaintsmap.put("imglink", filePath);
-            complaintsmap.put("pdflink", pathHolder);
-            // complaintsmap.put("UUID",currentuseruid);
-            String key = mRefrence3.push().getKey();
-            complaintsmap.put("uid",key);
+            final HashMap<String, Object> suggestionmap = new HashMap<>();
+            suggestionmap.put("related-sector", related_sector.getSelectedItem().toString());
+            suggestionmap.put("related-scheme", related_schemes.getSelectedItem().toString());
+            suggestionmap.put("description", mDescriptionText.getText().toString());
+            suggestionmap.put("likes", "");
+            suggestionmap.put("comments", "");
+            suggestionmap.put("likesBy", "");
+            suggestionmap.put("commentsBy", "");
+            suggestionmap.put("name",name);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
+            Date d = new Date();
+            String date = sdf.format(d);
+            suggestionmap.put("Time",date);
+            try {
+                suggestionmap.put("imglink", filePath.toString());
+            }catch (Exception e){
 
-            mRefrence3.child(key).setValue(complaintsmap).addOnSuccessListener(new OnSuccessListener<Void>() {
+            }
+            try {
+                suggestionmap.put("pdflink", pathHolder.toString());
+            }catch (Exception e){
+
+            }
+            suggestionmap.put("suggestion-type", flag);
+            suggestionmap.put("userUID", userUID);
+
+            mRefrence3.push().setValue(suggestionmap).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
+
                     mDescriptionText.setText("");
                     pdffile.setText("Upload pdf file related to complaint");
+                    mContentimg.setImageBitmap(null);
                     mContentimg.setBackgroundResource(R.drawable.ic_camera_alt_black_24dp);
                     related_schemes.setSelection(0);
                     related_sector.setSelection(0);
-
+                    flag = 0;
+                    suggestionmap.clear();
+                    Toast.makeText(AddPostActivity.this, "Suggestion Submitted", Toast.LENGTH_SHORT).show();
                     finish();
                 }
             });
@@ -252,16 +321,20 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         }
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == SELECT_FILE)
                 onSelectFromGalleryResult(data);
-            else if (requestCode == 7){
+            else if (requestCode == 7) {
                 pathHolder = data.getData();
-                String PathHolder = data.getData().getPath();
-                pdffile.setText(PathHolder);
+                try {
+                    String PathHolder = data.getData().getPath();
+                    pdffile.setText(PathHolder);
+                } catch (Exception e) {
+                }
             }
         }
     }

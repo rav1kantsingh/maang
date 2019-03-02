@@ -66,19 +66,18 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
         final ModalClass modalClass = modalClassList.get(position);
-        String desc = modalClass.getRelatedsector();
         holder.relatedsector.setText(modalClass.getRelatedsector());
         holder.relatedschemes.setText(modalClass.getRelatedscheme());
-        holder.description.setText(desc);
+        holder.description.setText(modalClass.getDescription());
         holder.time.setText(modalClass.getTimestamp());
-
+        holder.username.setText(modalClass.getUserName());
         try {
             String imgurl = modalClass.getImglink();
 
             StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl(imgurl);
             holder.contentimg.setImageURI(imgurl);
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
         holder.like.setOnClickListener(new View.OnClickListener() {
