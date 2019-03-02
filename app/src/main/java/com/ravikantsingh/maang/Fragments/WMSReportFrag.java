@@ -1,15 +1,20 @@
 package com.ravikantsingh.maang.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
-
 import com.ravikantsingh.maang.R;
+import com.ravikantsingh.maang.WMSinnerActivity.CompletedWorkActivity;
+import com.ravikantsingh.maang.WMSinnerActivity.NonProgressiveWorkActivity;
+import com.ravikantsingh.maang.WMSinnerActivity.RecommendedWork;
+import com.ravikantsingh.maang.WMSinnerActivity.StatusWorkActivity;
+import com.ravikantsingh.maang.WMSinnerActivity.WorkDetailActivity;
+import com.ravikantsingh.maang.WMSinnerActivity.WorkRegisterActivity;
 
 public class WMSReportFrag extends Fragment {
 
@@ -32,52 +37,45 @@ public class WMSReportFrag extends Fragment {
         workRegister = v.findViewById(R.id.register_work);
         fundReleaseStatement = v.findViewById(R.id.fund_release_statement);
 
-        return v;
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
         reccomendedWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().startActivity(new Intent(getActivity(), RecommendedWork.class));
             }
         });
 
         completedWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().startActivity(new Intent(getActivity(), CompletedWorkActivity.class));
             }
         });
 
         nonProgressive.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().startActivity(new Intent(getActivity(), NonProgressiveWorkActivity.class));
             }
         });
 
         workDetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().startActivity(new Intent(getActivity(), WorkDetailActivity.class));
             }
         });
 
         statusWork.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().startActivity(new Intent(getActivity(), StatusWorkActivity.class));
             }
         });
 
         workRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().startActivity(new Intent(getActivity(), WorkRegisterActivity.class));
             }
         });
 
@@ -89,5 +87,7 @@ public class WMSReportFrag extends Fragment {
         });
 
 
+        return v;
     }
+
 }

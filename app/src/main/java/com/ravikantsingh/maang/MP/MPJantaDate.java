@@ -1,15 +1,15 @@
-package com.ravikantsingh.maang.NavDrawer;
+package com.ravikantsingh.maang.MP;
 
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 
 import com.ravikantsingh.maang.R;
 
-public class RTI_Activity extends AppCompatActivity {
+public class MPJantaDate extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rti_);
+        setContentView(R.layout.activity_mpjanta_date);
     }
 }

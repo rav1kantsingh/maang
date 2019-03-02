@@ -1,6 +1,7 @@
 package com.ravikantsingh.maang;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -9,28 +10,33 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
+
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.ravikantsingh.maang.Authentication.LoginActivity;
+import com.ravikantsingh.maang.Fragments.Complains_Suggestion;
 import com.ravikantsingh.maang.Fragments.FeedsFrag;
 import com.ravikantsingh.maang.Fragments.ForumsFrag;
-import com.ravikantsingh.maang.Fragments.Complains_Suggestion;
 import com.ravikantsingh.maang.Fragments.OurMPFrag;
 import com.ravikantsingh.maang.Fragments.WMSReportFrag;
+import com.ravikantsingh.maang.MP.MPJantaDarbar;
 import com.ravikantsingh.maang.NavDrawer.AboutActivity;
-import com.ravikantsingh.maang.NavDrawer.FeedBackActivity;
-import com.ravikantsingh.maang.NavDrawer.JantaDarbarActivity;
-import com.ravikantsingh.maang.NavDrawer.RTI_Activity;
-import com.ravikantsingh.maang.NavDrawer.SettingActivity;
+import com.ravikantsingh.maang.NavDrawer.ProfileActivity;
+import com.ravikantsingh.maang.NavDrawer.RTI;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     DrawerLayout drawerLayout;
     NavigationView navigationView;
-    FeedsFrag feedsFrag;
+    PostFragment feedsFrag;
     ForumsFrag forumsFrag;
     Complains_Suggestion myProfileFrag;
     OurMPFrag ourMPFrag;
@@ -39,6 +45,10 @@ public class MainActivity extends AppCompatActivity {
     Fragment currentFragment;
     private GoogleApiClient mGoogleApiClient;
     private FirebaseAuth auth;
+    View headerview;
+    TextView drawerHeader1, drawerHeader2, drawerHeader3, name, zone;
+    SimpleDraweeView drawerProfileImage;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -81,8 +91,23 @@ public class MainActivity extends AppCompatActivity {
         currentFragment = feedsFrag;
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-
+        navigation.setSelectedItemId(R.id.first);
+        //handling data and click event on nav-drawer header
         navigationView = findViewById(R.id.nav_view);
+
+        headerview = navigationView.getHeaderView(0);
+        drawerHeader1 = headerview.findViewById(R.id.first);
+        drawerHeader2 = headerview.findViewById(R.id.second);
+        drawerHeader3 = headerview.findViewById(R.id.third);
+        name = headerview.findViewById(R.id.name);
+        zone = headerview.findViewById(R.id.zone);
+        drawerProfileImage = headerview.findViewById(R.id.profile);
+
+        drawerHeader1.setOnClickListener(this);
+        drawerHeader2.setOnClickListener(this);
+        drawerHeader3.setOnClickListener(this);
+
+
         navigationView.setNavigationItemSelectedListener(
                 new NavigationView.OnNavigationItemSelectedListener() {
                     @Override
@@ -91,27 +116,28 @@ public class MainActivity extends AppCompatActivity {
                         drawerLayout.closeDrawers();
                         int id = menuItem.getItemId();
                         if (id == R.id.a) {
-                            startActivity(new Intent(MainActivity.this, JantaDarbarActivity.class));
+                            startActivity(new Intent(MainActivity.this, MPJantaDarbar.class));
                         } else if (id == R.id.b) {
-                            startActivity(new Intent(MainActivity.this, RTI_Activity.class));
+                            startActivity(new Intent(MainActivity.this, RTI.class));
                         } else if (id == R.id.c) {
-                            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                            startActivity(new Intent(MainActivity.this, PdfViewerActivity.class));
                         } else if (id == R.id.d) {
-                            startActivity(new Intent(MainActivity.this, FeedBackActivity.class));
-                        } else if (id == R.id.e) {
-                            startActivity(new Intent(MainActivity.this, SettingActivity.class));
-                        } else if (id == R.id.f) {
-                           signOut();
+                            startActivity(new Intent(MainActivity.this, AboutActivity.class));
+                        } else if (id == R.id.g) {
+                            signOut();
+                        }else if (id == R.id.h) {
+                            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                         }
+
                         return true;
                     }
                 });
-//        Toolbar toolbar = findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
-//        ActionBar actionbar = getSupportActionBar();
-//        assert actionbar != null;
-//        actionbar.setDisplayHomeAsUpEnabled(true);
-//        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        ActionBar actionbar = getSupportActionBar();
+        assert actionbar != null;
+        actionbar.setDisplayHomeAsUpEnabled(true);
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_menu);
     }
 
     @Override
@@ -126,7 +152,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void switchToFragment1() {
         if (feedsFrag == null) {
-            feedsFrag = new FeedsFrag();
+            feedsFrag = new PostFragment();
             fm.beginTransaction().add(R.id.frame_container, feedsFrag).hide(currentFragment).show(feedsFrag).commit();
         } else {
             fm.beginTransaction().hide(currentFragment).show(feedsFrag).commit();
@@ -135,13 +161,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToFragment2() {
-        if (forumsFrag == null) {
-            forumsFrag = new ForumsFrag();
-            fm.beginTransaction().add(R.id.frame_container, forumsFrag).hide(currentFragment).show(forumsFrag).commit();
+        if (myProfileFrag == null) {
+            myProfileFrag = new Complains_Suggestion();
+            fm.beginTransaction().add(R.id.frame_container, myProfileFrag).hide(currentFragment).show(myProfileFrag).commit();
         } else {
-            fm.beginTransaction().hide(currentFragment).show(forumsFrag).commit();
+            fm.beginTransaction().hide(currentFragment).show(myProfileFrag).commit();
         }
-        currentFragment = forumsFrag;
+        currentFragment = myProfileFrag;
     }
 
     public void switchToFragment3() {
@@ -165,23 +191,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void switchToFragment5() {
-        if (myProfileFrag == null) {
-            myProfileFrag = new Complains_Suggestion();
-            fm.beginTransaction().add(R.id.frame_container, myProfileFrag).hide(currentFragment).show(myProfileFrag).commit();
+        if (forumsFrag == null) {
+            forumsFrag = new ForumsFrag();
+            fm.beginTransaction().add(R.id.frame_container, forumsFrag).hide(currentFragment).show(forumsFrag).commit();
         } else {
-            fm.beginTransaction().hide(currentFragment).show(myProfileFrag).commit();
+            fm.beginTransaction().hide(currentFragment).show(forumsFrag).commit();
         }
-        currentFragment = myProfileFrag;
+        currentFragment = forumsFrag;
     }
 
     private void signOut() {
         auth = FirebaseAuth.getInstance();
         FirebaseUser currentuser = auth.getCurrentUser();
-        if(currentuser!=null){
+        if (currentuser != null) {
             auth.signOut();
+            SharedPreferences preferences_login = getSharedPreferences("UserLoggedIn", MODE_PRIVATE);
+            SharedPreferences.Editor editor1 = preferences_login.edit();
+            editor1.putInt("UserLoggedIn", 0);
+            editor1.apply();
+
             Intent i = new Intent(MainActivity.this, LoginActivity.class);
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         }
     }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.first: {
+                startActivity(new Intent(this,MyPost.class));
+                break;
+            }
+            case R.id.second: {
+                startActivity(new Intent(this,MySuggestion.class));
+                break;
+            }
+            case R.id.third: {
+                startActivity(new Intent(this,MyComplain.class));
+                break;
+            }
+        }
+    }
 }
+

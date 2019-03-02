@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name :"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/name"/>
+
+    <EditText
+        android:layout_toRightOf="@+id/name"
+        android:layout_width="match_parent"
+        android:paddingLeft="5dp"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/editname"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Innovation :"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/innovationname"
+        android:layout_below="@+id/name"/>
+
+    <EditText
+        android:layout_toRightOf="@+id/innovationname"
+        android:layout_below="@+id/editname"
+        android:layout_width="match_parent"
+        android:paddingLeft="5dp"
+        android:layout_height="wrap_content"
+        android:hint="Name of Innovation"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/editinnovationname"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explain Your Idea"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/ideaexplain"
+        android:layout_below="@+id/innovationname"/>
+
+    <EditText
+        android:layout_below="@+id/ideaexplain"
+        android:layout_width="match_parent"
+        android:paddingLeft="5dp"
+        android:layout_height="wrap_content"
+        android:hint="Explain Your idea here..."
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/editexplainidea"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How your idea help to solve problem"
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/howusable"
+        android:layout_below="@+id/editexplainidea"/>
+
+    <EditText
+        android:layout_below="@+id/howusable"
+        android:layout_width="match_parent"
+        android:paddingLeft="5dp"
+        android:layout_height="wrap_content"
+        android:hint="Explain Your approch to solve problem here..."
+        android:textSize="15dp"
+        android:textColor="#000"
+        android:textStyle="bold"
+        android:layout_marginLeft="10dp"
+        android:id="@+id/howusableexplain"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Submit your Idea"
+        android:textAllCaps="false"
+        android:id="@+id/submitideabutton"
+        android:layout_below="@+id/howusableexplain"/>
+
+</RelativeLayout>

@@ -5,12 +5,14 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
         <activity android:name=".RatingWork"></activity>
         <activity android:name=".mpDashboard" />
         <activity android:name=".NavDrawer.SettingActivity" />
@@ -18,20 +20,109 @@
         <activity android:name=".NavDrawer.AboutActivity" />
         <activity android:name=".NavDrawer.RTI_Activity" />
         <activity android:name=".NavDrawer.JantaDarbarActivity" />
+=======
+        <activity android:name=".Fragments.ApplyForCompetition" />
+        <activity android:name=".Fragments.SeeSubmission" />
+
+
+        <activity android:name=".MP.MPJantaDate"></activity>
+        <activity android:name=".MP.MPJantaDarbar" />
+        <activity
+            android:name=".JantaUserActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.ProfileActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.RTI"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".SuggestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddSuggestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AddComplainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".PdfViewerActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ComplaintActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.StatusWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.WorkDetailActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.NonProgressiveWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.CompletedWorkActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.WorkRegisterActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".WMSinnerActivity.RecommendedWork"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.SettingActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.FeedBackActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".NavDrawer.JantaDarbarActivity"
+            android:screenOrientation="portrait" />
+>>>>>>> ec3b3a52bf4ba265b533a2260d3a15627c26c216
         <activity
             android:name=".MainActivity"
-            android:label="MAANG" />
+            android:label="MAANG" >
+        </activity>
         <activity android:name=".SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Registration.RegistrationActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/NoActionAppTheme" />
-        <activity android:name=".Authentication.LoginActivity" />
+        <activity
+            android:name=".Authentication.LoginActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OurMpSuggestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".OurMpPostActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MySuggestion"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyPost"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".MyComplain"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ChatActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>

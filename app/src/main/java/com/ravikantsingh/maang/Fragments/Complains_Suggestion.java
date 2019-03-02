@@ -1,15 +1,18 @@
 package com.ravikantsingh.maang.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.LinearLayout;
 
+import com.ravikantsingh.maang.AddComplainActivity;
+import com.ravikantsingh.maang.AddSuggestionActivity;
+import com.ravikantsingh.maang.ComplaintActivity;
 import com.ravikantsingh.maang.R;
+import com.ravikantsingh.maang.SuggestionActivity;
 
 public class Complains_Suggestion extends Fragment {
 
@@ -28,25 +31,18 @@ public class Complains_Suggestion extends Fragment {
         seeOtherComplains = v.findViewById(R.id.see_other_complains);
         addYourComplaint = v.findViewById(R.id.add_your_complaint);
 
-        return v;
-
-    }
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
 
         giveYourSuggestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+               startActivity(new Intent(getContext(), AddSuggestionActivity.class));
             }
         });
 
         seeOtherSuggestion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getContext(), SuggestionActivity.class));
             }
         });
 
@@ -54,16 +50,18 @@ public class Complains_Suggestion extends Fragment {
         seeOtherComplains.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getContext(), ComplaintActivity.class));
             }
         });
 
         addYourComplaint.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                startActivity(new Intent(getContext(), AddComplainActivity.class));
             }
         });
+
+        return v;
 
     }
 }

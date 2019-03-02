@@ -3,25 +3,25 @@
 
     <item
         android:id="@+id/first"
-        android:icon="@drawable/ic_home_black_24dp"
+        android:icon="@drawable/ic_web"
         android:title="Feeds" />
 
     <item
         android:id="@+id/second"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="Complains/Suggestion" />
+        android:icon="@drawable/ic_complaint"
+        android:title="Reproach" />
 
     <item
         android:id="@+id/third"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_note"
         android:title="WMS Report" />
     <item
         android:id="@+id/fourth"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_interview"
         android:title="Our MP" />
     <item
         android:id="@+id/fifth"
-        android:icon="@drawable/ic_notifications_black_24dp"
+        android:icon="@drawable/ic_digital_marketing"
         android:title="Forums" />
 
 </menu>
