@@ -3,6 +3,9 @@ package com.ravikantsingh.maang;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -15,14 +18,25 @@ import com.ravikantsingh.maang.Registration.RegistrationActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
+    ImageView maangSplash, splashLine;
+
     DatabaseReference databaseReference;
     String userUID = "";
     FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
+        maangSplash = (ImageView) findViewById(R.id.maang_splash) ;
+        splashLine = (ImageView) findViewById(R.id.splash_line) ;
+
+        Animation myanim = AnimationUtils.loadAnimation(this,R.anim.mytransition);
+        maangSplash.startAnimation(myanim);
+        splashLine.startAnimation(myanim);
 
         init();
         LoadUserDetails();

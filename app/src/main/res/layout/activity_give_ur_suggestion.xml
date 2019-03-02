@@ -1,155 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<ScrollView
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#40465C">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Give Your Suggestion"
-        android:textSize="25dp"
-        android:textColor="#fff"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp" />
-
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <LinearLayout
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
 
+        android:orientation="vertical" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#f3f5f5">
+
+        <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Give Your Suggestion"-->
+        <!--android:textSize="25dp"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textStyle="bold"-->
+        <!--android:background="#6a169a"-->
+        <!--android:layout_gravity="center"-->
+        <!--android:layout_marginTop="20dp" />-->
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Type"
+            android:text="Give Your Suggestion"
+            android:textSize="25dp"
             android:textColor="#fff"
-            android:textSize="15dp"
-            android:layout_weight="1"/>
+            android:textStyle="bold"
+            android:background="#6a1b9a"
+            android:textAlignment="center"
+            android:layout_paddingTop="30"/>
+        <LinearLayout
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Suggestion to Mp"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:layout_weight="1"
-            android:background="@drawable/round_corner_button_signup_withgradient"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Type"
 
-        <Button
-            android:layout_marginLeft="5dp"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Suggestion to DAs"
-            android:layout_weight="1"
-            android:background="@drawable/round_corner_button_signup_withgradient"/>
+                android:textColor="#6a1b9a"
+                android:textSize="16dp"
+                android:textStyle="bold"
+                android:layout_weight="1"/>
 
-    </LinearLayout>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="Suggestion to Mp"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:layout_weight="1"
+                android:background="@drawable/round_corner_button_signup_withgradient"/>
 
-    <Spinner
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="35dp"
-        android:background="@drawable/spinner_background">
+            <Button
+                android:layout_marginLeft="5dp"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="Suggestion to DAs"
+                android:layout_weight="1"
+                android:textStyle="bold"
+                android:background="@drawable/round_corner_button_signup_withgradient"/>
 
-    </Spinner>
+        </LinearLayout>
 
-    <Spinner
-        android:layout_marginTop="10dp"
-        android:layout_width="match_parent"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_height="35dp"
-        android:background="@drawable/spinner_background">
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="35dp"
+            android:id="@+id/relatedsectorspinner"
+            android:background="@drawable/spinner_background">
 
-    </Spinner>
+        </Spinner>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Description"
-        android:textColor="#fff"
-        android:textSize="18dp"/>
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="35dp"
+            android:id="@+id/relatedshemesspinner"
+            android:background="@drawable/spinner_background">
 
-    <EditText
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:hint="Add Detail of complain..."
-        android:background="@drawable/round_border"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="5dp"
-        android:paddingLeft="5dp"
-        android:gravity="center"
-        android:textSize="15dp"/>
+        </Spinner>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Add Attachment"
-        android:textColor="#fff"
-        android:textSize="18dp"/>
+        <Spinner
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="35dp"
+            android:id="@+id/related_section_of_people"
+            android:background="@drawable/spinner_background">
 
-    <ImageView
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="180dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:background="@drawable/dashed_border"
-        android:src="@drawable/ic_camera_alt_black_24dp"/>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        >
+        </Spinner>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
-            android:text="Upload pdf file related to Suggestion"
-            android:textColor="#fff"
+            android:layout_marginTop="10dp"
+            android:text="Description"
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
             android:textSize="18dp"/>
 
-        <Button
-            android:layout_marginLeft="15dp"
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:hint="Add Detail of complain..."
+            android:background="#f3e5f5"
+            android:textColor="#000"
+            android:textColorHint="#6a1b9a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:paddingLeft="5dp"
+            android:gravity="center"
+            android:textSize="15dp"/>
+
+        <TextView
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
-            android:text="Upload"
-            android:textColor="#fff"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Add Attachment"
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
+
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="#f3e5f5"
+            android:src="@drawable/ic_camera_alt_black_24dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Upload pdf file related to Suggestion"
+                android:textColor="#6a1b9a"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+
+            <Button
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:text="Upload"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:background="@drawable/round_corner_button_signup_withgradient"/>
+
+        </LinearLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Suggestion"
+            android:textSize="15dp"
             android:textAllCaps="false"
-            android:background="@drawable/round_corner_button_signup_withgradient"/>
+            android:textColor="#fff"
+            android:background="@drawable/round_gender_button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"/>
+
 
     </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Submit Suggestion"
-        android:textSize="15dp"
-        android:textAllCaps="false"
-        android:textColor="#fff"
-        android:background="@drawable/round_gender_button"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"/>
-
-
-</LinearLayout>
+</ScrollView>

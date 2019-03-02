@@ -1,217 +1,228 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
-    app:cardCornerRadius="8dp"
-    android:backgroundTint="#00171d">
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
+    android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        app:cardCornerRadius="8dp"
+        android:backgroundTint="#fff">
 
-        <TextView
-            android:id="@+id/userprofilepic"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recommendation Date -"
-            android:layout_marginBottom="5dp"
-            android:textColor="#fff"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"/>
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/recommend_date"
-            android:layout_toRightOf="@+id/userprofilepic"
-            android:text="23/09/17"
-            android:textColor="#fff"
-            android:layout_marginTop="5dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Amount -"
-            android:textColor="#fff"
-            android:layout_toLeftOf="@+id/amount"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"/>
-        <TextView
-            android:id="@+id/amount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="50000.00"
-            android:textColor="#fff"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="4dp"/>
-
-        <view
-            android:id="@+id/divider1"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/userprofilepic"
-            android:background="#fff"/>
-
-        <TextView
-            android:id="@+id/sector"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/userprofilepic"
-            android:textSize="15dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="#fff"
-            android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."/>
-
-        <TextView
-            android:id="@+id/scheme"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/sector"
-            android:textSize="15dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="#fff"
-            android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."/>
-        <TextView
-            android:id="@+id/implimentingAgencies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/scheme"
-            android:textSize="15dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="#fff"
-            android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."/>
-
-
-        <Button
-            android:id="@+id/complain_btn"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textColor="#fff"
-            android:layout_below="@+id/implimentingAgencies"
-            android:text="Add your complain"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:textAllCaps="false"
-            android:background="@drawable/round_in_complain"/>
-
-        <Button
-            android:id="@+id/suggestion_btn"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:textColor="#fff"
-            android:layout_below="@+id/complain_btn"
-            android:text="Give your suggestion"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:textAllCaps="false"
-            android:background="@drawable/round_in_complain"/>
-
-        <view
-            android:id="@+id/divider"
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/suggestion_btn"
-            android:background="#fff"/>
-
-        <LinearLayout
-            android:layout_below="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/userprofilepic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="Recommendation Date -"
+                android:textColor="#6a1b9a"
+                android:textSize="16dp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_marginTop="2dp"
-                    android:id="@+id/thumbeup"
-                    android:src="@drawable/ic_thumb_up"
-                    android:layout_marginLeft="3dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_toRightOf="@+id/thumbeup"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/like"
-                    android:text="Like"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="10dp"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
+                android:id="@+id/recommend_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1">
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_toRightOf="@+id/userprofilepic"
+                android:text="23/09/17"
+                android:textColor="#6a1b9a"
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
-                <ImageView
-                    android:layout_marginTop="3dp"
-                    android:id="@+id/commentsimg"
-                    android:src="@drawable/ic_message_black_24dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:layout_toRightOf="@+id/commentsimg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Comment"
-                    android:id="@+id/comments"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="10dp"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    />
-
-            </RelativeLayout>
-
-            <RelativeLayout
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="5dp">
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_toLeftOf="@+id/amount"
+                android:text="Amount -"
+                android:textColor="#6a1b9a" />
 
-                <ImageView
-                    android:layout_marginTop="3dp"
-                    android:id="@+id/shareimg"
-                    android:src="@drawable/ic_share_black_24dp"
-                    android:layout_marginLeft="3dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/amount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="4dp"
+                android:text="50000.00"
+                android:textColor="#6a1b9a"
+                android:textSize="12dp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_toRightOf="@+id/shareimg"
+            <view
+                android:id="@+id/divider1"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/userprofilepic"
+                android:background="#fff" />
+
+            <TextView
+                android:id="@+id/sector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/userprofilepic"
+                android:layout_marginLeft="5dp"
+                android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."
+                android:textColor="#000"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/scheme"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sector"
+                android:layout_marginLeft="5dp"
+                android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."
+                android:textColor="#000"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/implimentingAgencies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/scheme"
+                android:layout_marginLeft="5dp"
+                android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."
+                android:textColor="#000"
+                android:textSize="15dp" />
+
+
+            <Button
+                android:id="@+id/complain_btn"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/implimentingAgencies"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="5dp"
+                android:background="#6a1b9a"
+                android:text="Add your complain"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+
+            <Button
+                android:id="@+id/suggestion_btn"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:layout_below="@+id/complain_btn"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="#6a1b9a"
+                android:text="Give your suggestion"
+                android:textAllCaps="false"
+                android:textColor="#fff" />
+
+            <view
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_below="@+id/suggestion_btn"
+                android:layout_marginTop="3dp"
+                android:background="#b3b3b3" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/divider"
+                android:orientation="horizontal">
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Share"
-                    android:id="@+id/share"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="10dp"
-                    android:textStyle="bold"
-                    android:textSize="20dp"
-                    />
+                    android:layout_weight="1">
 
-            </RelativeLayout>
-        </LinearLayout>
+                    <ImageView
+                        android:id="@+id/thumbeup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/ic_thumb_up" />
+
+                    <TextView
+                        android:id="@+id/like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/thumbeup"
+                        android:text="Like"
+                        android:textColor="#6a1b9a"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <ImageView
+                        android:id="@+id/commentsimg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/ic_comment" />
+
+                    <TextView
+                        android:id="@+id/comments"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/commentsimg"
+                        android:text="Comment"
+                        android:textColor="#6a1b9a"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp">
+
+                    <ImageView
+                        android:id="@+id/shareimg"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="3dp"
+                        android:layout_marginTop="3dp"
+                        android:src="@drawable/ic_star" />
+
+                    <TextView
+                        android:id="@+id/share"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toRightOf="@+id/shareimg"
+                        android:text="Rate"
+                        android:textColor="#6a1b9a"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </LinearLayout>
 
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-</android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+</ScrollView>

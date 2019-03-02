@@ -1,5 +1,6 @@
 package com.ravikantsingh.maang.Adapters;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -70,7 +71,7 @@ public class RecommendedWorkAdapter extends
                 break;
             }
             case R.id.share: {
-                Toast.makeText(context, "clicked", Toast.LENGTH_SHORT).show();
+                showDialog();
                 break;
             }
             case R.id.comments: {
@@ -79,6 +80,10 @@ public class RecommendedWorkAdapter extends
             }
 
         }
+    }
+
+    private void showDialog() {
+
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -98,6 +103,8 @@ public class RecommendedWorkAdapter extends
             comments = itemView.findViewById(R.id.comments);
             complainBtn = itemView.findViewById(R.id.complain_btn);
             suggestionBtn = itemView.findViewById(R.id.suggestion_btn);
+
+
         }
     }
 }

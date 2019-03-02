@@ -1,9 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NavDrawer.AboutActivity">
+    android:orientation="vertical"
+    android:background="#f3f5f5"
+    >
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#6a1b9a">
 
-</android.support.constraint.ConstraintLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="About"
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:textSize="35dp"
+            android:layout_margin="10dp"
+            android:id="@+id/about"/>
+
+
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="20dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginLeft="10dp"
+
+        android:text="A multi-user app that ensures better governance by bridging the gap between people and their elected representatives through a two way communication facility.
+
+The app enable the citizens to suggest the work needed to be done in the constituency and endorse works suggested by others as well.
+
+It also enables the MPs to showcase his/her work and select work from citizen's recommendations based on locally felt needs.
+
+Enabled with features like RTI and JANTA DARBAR, the app brings the transparency and accountability in the system.
+
+The app has the vision to bring responsiveness among the representatives and establish a system where people’s consent holds importance.      "
+
+        android:textColor="#6a1b9a" />
+    
+</RelativeLayout>
+</ScrollView>

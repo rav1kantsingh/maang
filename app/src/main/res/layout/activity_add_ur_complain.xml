@@ -3,8 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#40465C">
+    android:background="#f3f5f5">
 
+    <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Add Your Complain"-->
+        <!--android:textSize="25dp"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textAlignment="center"-->
+        <!--android:layout_marginTop="20dp"/>-->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -12,9 +21,9 @@
         android:textSize="25dp"
         android:textColor="#fff"
         android:textStyle="bold"
+        android:background="#6a1b9a"
         android:textAlignment="center"
-        android:layout_marginTop="20dp"/>
-
+        android:layout_paddingTop="30"/>
     <Spinner
         android:id="@+id/relatedsectorspinner"
         android:layout_marginTop="10dp"
@@ -26,8 +35,21 @@
 
     </Spinner>
 
+
+
     <Spinner
         android:id="@+id/relatedshemesspinner"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_height="35dp"
+        android:background="@drawable/spinner_background">
+
+    </Spinner>
+
+    <Spinner
+        android:id="@+id/related_section_of_people"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_marginLeft="10dp"
@@ -43,16 +65,17 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="Description"
-        android:textColor="#fff"
+        android:textColor="#6a1b9a"
+        android:textStyle="bold"
         android:textSize="18dp"/>
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:hint="Add Detail of complain..."
-        android:background="@drawable/round_border"
-        android:textColor="#fff"
-        android:textColorHint="#fff"
+        android:background="#f3e5f5"
+        android:textColor="#000"
+        android:textColorHint="#6a1b9a"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="5dp"
@@ -66,7 +89,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
         android:text="Add Attachment"
-        android:textColor="#fff"
+        android:textColor="#6a1b9a"
+        android:textStyle="bold"
         android:textSize="18dp"/>
 
     <ImageView
@@ -76,7 +100,7 @@
         android:layout_height="180dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:background="@drawable/dashed_border"
+        android:background="#f3e5f5"
         android:src="@drawable/ic_camera_alt_black_24dp"/>
 
     <LinearLayout
@@ -91,7 +115,8 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:text="Upload pdf file related to complain"
-        android:textColor="#fff"
+        android:textColor="#6a1b9a"
+        android:textStyle="bold"
         android:textSize="18dp"/>
 
     <Button

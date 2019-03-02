@@ -6,13 +6,14 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.ravikantsingh.maang.R;
 
 public class Complains_Suggestion extends Fragment {
 
-    LinearLayout giveYourSuggestion, seeOtherSuggestion, addYourComplaint, seeOtherComplains;
+    Button giveYourSuggestion, seeOtherSuggestion, addYourComplaint, seeOtherComplains;
 
     public Complains_Suggestion() {
     }

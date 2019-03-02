@@ -6,13 +6,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.ravikantsingh.maang.R;
 
 public class WMSReportFrag extends Fragment {
 
-    LinearLayout reccomendedWork, completedWork, nonProgressive, workDetail, statusWork, workRegister, fundReleaseStatement;
+    LinearLayout reccomendedWork, completedWork, nonProgressive, workDetail, statusWork, workRegister;
+    Button fundReleaseStatement;
 
     public WMSReportFrag() {
 
