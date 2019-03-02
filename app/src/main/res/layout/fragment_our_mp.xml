@@ -9,12 +9,14 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
     <LinearLayout
+        android:layout_gravity="center"
         android:background="@drawable/gradient_for_mp"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <ImageView
+            android:id="@+id/mpimage"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:layout_marginLeft="20dp"
@@ -32,6 +34,7 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/mpname"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_marginRight="10dp"
@@ -42,14 +45,16 @@
                 android:textStyle="bold"/>
 
             <TextView
+                android:id="@+id/housename"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="16th LokSabha"
+                android:text="16th LokSabha MP"
                 android:textColor="#fff"/>
 
             <TextView
+                android:id="@+id/constituencyname"
                 android:layout_marginTop="5dp"
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
@@ -115,6 +120,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/chatrequestbtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Send him Chat Request"
@@ -162,6 +168,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/fundreleased"
                 android:layout_marginTop="50dp"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
@@ -169,13 +176,20 @@
                 android:background="@drawable/elevated"
                 android:layout_gravity="center">
 
-                <ImageView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22.50 Cr."
+                    android:textSize="20dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_person_outline"/>
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    />
 
                 <TextView
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Fund\nReleased"
@@ -185,11 +199,12 @@
                     android:layout_marginRight="20dp"
                     android:layout_marginBottom="10dp"
                     android:textColor="#fff"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/workrecommended"
                 android:background="@drawable/elevated"
                 android:layout_marginTop="50dp"
                 android:layout_width="150dp"
@@ -198,13 +213,20 @@
                 android:orientation="vertical"
                 android:layout_gravity="center">
 
-                <ImageView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="256"
+                    android:textSize="20dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_person_outline"/>
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    />
 
                 <TextView
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Works\nRecommended"
@@ -214,7 +236,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:textColor="#fff"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
 
             </LinearLayout>
 
@@ -254,6 +276,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/expenditure"
                 android:layout_marginTop="50dp"
                 android:layout_width="150dp"
                 android:layout_height="100dp"
@@ -261,11 +284,17 @@
                 android:orientation="vertical"
                 android:layout_gravity="center">
 
-                <ImageView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="22.50 Cr."
+                    android:textSize="20dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_person_outline"/>
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -278,11 +307,12 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:textColor="#fff"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/workcompleted"
                 android:background="@drawable/elevated"
                 android:layout_marginTop="50dp"
                 android:layout_width="150dp"
@@ -290,13 +320,20 @@
                 android:orientation="vertical"
                 android:layout_gravity="center">
 
-                <ImageView
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="178"
+                    android:textSize="20dp"
+                    android:textColor="#fff"
+                    android:textStyle="bold"
                     android:layout_gravity="center"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:src="@drawable/ic_person_outline"/>
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="10dp"
+                    />
 
                 <TextView
+                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Total Works\nCompleted"
@@ -306,7 +343,7 @@
                     android:layout_marginRight="10dp"
                     android:layout_marginBottom="10dp"
                     android:textColor="#fff"
-                    android:textSize="20dp"/>
+                    android:textSize="15dp"/>
 
             </LinearLayout>
 
@@ -316,6 +353,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/graphicaldata"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="See Graphical Data"

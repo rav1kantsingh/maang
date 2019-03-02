@@ -30,15 +30,22 @@
         <activity android:name=".NavDrawer.FeedBackActivity" />
         <activity android:name=".NavDrawer.AboutActivity" />
         <activity android:name=".NavDrawer.JantaDarbarActivity" />
+        <activity android:name=".Fragments.ApplyForCompetition" />
+        <activity android:name=".Fragments.SeeSubmission" />
+
+
         <activity
             android:name=".MainActivity"
-            android:label="MAANG" />
+            android:label="MAANG" >
+        </activity>
         <activity android:name=".SplashActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".Registration.RegistrationActivity"
