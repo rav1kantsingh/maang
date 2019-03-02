@@ -73,8 +73,6 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
         mContentimg.setOnClickListener(this);
         mUploadpdf.setOnClickListener(this);
         mSubmit.setOnClickListener(this);
-
-
     }
 
     private void addListtoSpinner() {
@@ -87,7 +85,9 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
             mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    sectorlist.add(dataSnapshot.getKey());
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        sectorlist.add(ds.getKey());
+                    }
                 }
 
                 @Override
@@ -97,7 +97,7 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
             });
         } catch (Exception e) {
         }
-        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adp1 = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, sectorlist);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         related_sector.setAdapter(adp1);
@@ -133,10 +133,10 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
             }
         });
 
-        ArrayAdapter<String> adp2 = new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, sectorlist);
+        ArrayAdapter<String> adp2 = new ArrayAdapter<>(this,
+                android.R.layout.simple_list_item_1, schemelist);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        related_sector.setAdapter(adp2);
+        related_schemes.setAdapter(adp2);
 
 
     }
@@ -196,19 +196,14 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
                             ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                                 @Override
                                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-
                                     Toast.makeText(AddComplainActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
-
                                 }
-                            })
-                                    .addOnFailureListener(new OnFailureListener() {
-                                        @Override
-                                        public void onFailure(@NonNull Exception e) {
-
-                                            Toast.makeText(AddComplainActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
-
-                                        }
-                                    });
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(AddComplainActivity.this, "Failed " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
                             progressDialog.dismiss();
                         }
                     })

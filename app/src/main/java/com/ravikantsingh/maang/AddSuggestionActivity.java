@@ -11,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -33,7 +34,6 @@ import com.google.firebase.storage.UploadTask;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.UUID;
 
 public class AddSuggestionActivity extends AppCompatActivity implements View.OnClickListener {
@@ -44,7 +44,7 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
     private Button mUploadpdf, mSubmit, suggestion_to_mp, suggestion_to_da;
     private ImageView mContentimg;
     private DatabaseReference mRefrence1, mRefrence2, mRefrence3;
-    private List<String> sectorlist, schemelist;
+    private ArrayList<String> sectorlist, schemelist;
     private int SELECT_FILE = 1;
     private Uri filePath, pathHolder;
     FirebaseStorage storage;
@@ -104,41 +104,53 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
         } catch (Exception e) {
         }
 
-        final String sector = String.valueOf(related_sector.getSelectedItem());
 
-        mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
+
+        related_sector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (sector.equals(ds.getKey())) {
-                        mRefrence2 = FirebaseDatabase.getInstance().getReference().child("sectors").child(sector);
-                        mRefrence2.addListenerForSingleValueEvent(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
-                                    schemelist.add(String.valueOf(ds1.getKey()));
-                                }
-                            }
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                final String sector = String.valueOf(related_sector.getSelectedItem());
+                mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            if (sector.equals(ds.getKey())) {
+                                mRefrence2 = FirebaseDatabase.getInstance().getReference().child("sectors").child(sector);
+                                mRefrence2.addListenerForSingleValueEvent(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                        for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
+                                            schemelist.add(String.valueOf(ds1.getKey()));
+                                        }
+                                    }
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError databaseError) {
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError databaseError) {
 
+                                    }
+                                });
                             }
-                        });
+                        }
                     }
-                }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                    }
+                });
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
+            public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
-        ArrayAdapter<String> adp1 = new ArrayAdapter<String>(this,
+
+        ArrayAdapter<String> adp1 = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, sectorlist);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         related_schemes.setAdapter(adp1);
-        ArrayAdapter<String> adp2 = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adp2 = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, schemelist);
         adp2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         related_sector.setAdapter(adp2);
