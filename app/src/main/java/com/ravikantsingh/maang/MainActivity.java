@@ -15,9 +15,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.facebook.drawee.view.SimpleDraweeView;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private FirebaseAuth auth;
     View headerview;
     TextView drawerHeader1, drawerHeader2, drawerHeader3, name, zone;
-    SimpleDraweeView drawerProfileImage;
+    ImageView drawerProfileImage;
 
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -91,6 +91,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         currentFragment = feedsFrag;
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        SharedPreferences preferences = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE,MODE_PRIVATE);
+        String name_1 = preferences.getString("name","");
+        String zone_1 = preferences.getString("zone","");
+
         navigation.setSelectedItemId(R.id.first);
         //handling data and click event on nav-drawer header
         navigationView = findViewById(R.id.nav_view);
@@ -99,9 +104,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         drawerHeader1 = headerview.findViewById(R.id.first);
         drawerHeader2 = headerview.findViewById(R.id.second);
         drawerHeader3 = headerview.findViewById(R.id.third);
+
         name = headerview.findViewById(R.id.name);
         zone = headerview.findViewById(R.id.zone);
         drawerProfileImage = headerview.findViewById(R.id.profile);
+
+        name.setText(name_1);
+        zone.setText(zone_1);
 
         drawerHeader1.setOnClickListener(this);
         drawerHeader2.setOnClickListener(this);
@@ -127,6 +136,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             signOut();
                         }else if (id == R.id.h) {
                             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
+                        }else if(id == R.id.l){
+                            startActivity(new Intent(MainActivity.this, ChatbotActivity.class));
+                        }
+                        else if(id == R.id.n){
+//                            startActivity(new Intent(MainActivity.this, MapsActivity.class));
+                        }
+                        else if(id == R.id.k){
+                            startActivity(new Intent(MainActivity.this, KnowYourContituency.class));
                         }
 
                         return true;

@@ -2,7 +2,7 @@
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/gradient_splash"
+    android:background="#6a1b9a"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <ImageView
@@ -11,7 +11,14 @@
         android:src="@drawable/white"
         android:id="@+id/maang_splash"
         android:layout_centerInParent="true"/>
-
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content" -->
+        <!--android:text="Mobile Application for New age Governance"-->
+        <!--android:textColor="#fff"-->
+        <!--android:layout_above="@+id/splash_line"-->
+        <!--android:layout_marginBottom="10dp"-->
+        <!--android:layout_centerInParent="true"/>-->
     <ImageView
         android:layout_width="200dp"
         android:layout_height="16dp"

@@ -13,7 +13,7 @@ public class StringVariables {
     public static final String SECTOR = "Sector";
     public static final String IMPLEMENTING_AGENCY = "ImplementingAgency";
     public static final String SCHEME = "Scheme";
-    public static final String WMS_NON_PROGRESSIVE = "work-nonprogressive";
+    public static final String WMS_NON_PROGRESSIVE = "NonProgressive";
 
     //shared preference file name.
     public static final String SHARED_PREFERENCE_FILE = "user_shared_preference";

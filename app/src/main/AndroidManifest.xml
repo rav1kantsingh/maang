@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ravikantsingh.maang">
-
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
@@ -9,6 +9,10 @@
     -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:name=".MyApplication"
@@ -18,7 +22,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".mpComplaintActivity"></activity>
+        <activity android:name=".TotalWorkRecommended" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -29,12 +34,21 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCYDBJTHVVdk8RojorLKcMvfVXMtc7S2js" />
+            android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Map.MapsActivity"
-            android:label="@string/title_activity_maps">
-        </activity>
+            android:name=".MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".KnowYourContituency" />
+        <activity android:name=".ChatbotActivity" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
         <activity android:name=".Fragments.ApplyForCompetition" />
         <activity android:name=".Fragments.SeeSubmission" />
         <activity android:name=".MP.MPJantaDate" />
@@ -98,14 +112,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
-            android:label="MAANG"></activity>
-        <activity android:name=".SplashActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:label="MAANG" />
+        <activity android:name=".SplashActivity" />
         <activity
             android:name=".Registration.RegistrationActivity"
             android:screenOrientation="portrait"
@@ -131,6 +139,14 @@
         <activity
             android:name=".ChatActivity"
             android:screenOrientation="portrait" />
+        <activity android:name=".FundRelease" />
+        <activity android:name=".mpDashboard">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

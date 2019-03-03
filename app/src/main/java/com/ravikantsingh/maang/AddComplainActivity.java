@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
     String pdfPath, photoPath, name;
     int flag = 0;
     String uploadedPhotoUrl, upLoadedPdfUrl;
+    EditText text;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -299,6 +301,7 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
                         suggestionmap.put("commentsBy", "");
                         SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-YYYY");
                         Date d = new Date();
+
                         String date = sdf.format(d);
                         suggestionmap.put("Time", date);
                         suggestionmap.put("name", name);
@@ -306,6 +309,8 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
                         suggestionmap.put("pdflink", upLoadedPdfUrl);
                         suggestionmap.put("suggestion-type", flag);
                         suggestionmap.put("userUID", userUID);
+                        String text2 = text.getText().toString();
+                        suggestionmap.put("tag",text2);
                         final String key = mRefrence3.push().getKey();
                         mRefrence3.child(key).setValue(suggestionmap).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override

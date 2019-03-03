@@ -26,8 +26,8 @@ import java.util.HashMap;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    EditText nameTv, emailTv, passwordTv, confirm_passwordTv, aadharTv, dobTv, contactNoTv, whatsappNoTv;
-    String name = "", email = "", password = "", confirm_password = "", aadhar, dob = "", contactNo = "", whatsappNo = "", gender = "";
+    EditText nameTv, emailTv, passwordTv, confirm_passwordTv, aadharTv, dobTv, contactNoTv, whatsappNoTv,zoneTv;
+    String name = "", email = "", password = "", confirm_password = "", aadhar, dob = "", contactNo = "", whatsappNo = "", gender = "",zone = "";
     Button submitBtn, male, female, other;
     DatabaseReference databaseReference;
     String userUID = "";
@@ -86,6 +86,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     map.put("phoneNo", contactNo);
                     map.put("whatsapp", whatsappNo);
                     map.put("userUID",userUID);
+                    map.put("zone",zone);
 
                     SharedPreferences preferences = getApplicationContext().getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE,MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -97,6 +98,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     editor.putString("whatsapp", whatsappNo);
                     editor.putString("userUID",userUID);
                     editor.putInt("registered", 1);
+                    editor.putString("zone",zone);
                     editor.apply();
 
                     databaseReference.child(userUID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -126,6 +128,7 @@ public class RegistrationActivity extends AppCompatActivity {
         male = findViewById(R.id.male);
         female = findViewById(R.id.female);
         other = findViewById(R.id.other);
+        zoneTv = findViewById(R.id.zone);
     }
 
     void readValue() {
@@ -134,6 +137,7 @@ public class RegistrationActivity extends AppCompatActivity {
         dob = String.valueOf(dobTv.getText());
         contactNo = String.valueOf(contactNoTv.getText());
         whatsappNo = String.valueOf(whatsappNoTv.getText());
+        zone = String.valueOf(zoneTv.getText());
     }
 
     boolean checkDataEntered() {
@@ -152,7 +156,9 @@ public class RegistrationActivity extends AppCompatActivity {
             Toast.makeText(this, "Please enter a valid Mobile No", Toast.LENGTH_LONG).show();
         } else if (!isValidMobile(whatsappNo)) {
             Toast.makeText(this, "Please enter a valid Whatsapp No", Toast.LENGTH_LONG).show();
-        } else {
+        } else if(isEmpty(zone)){
+            Toast.makeText(this, "Please enter your Constituency", Toast.LENGTH_LONG).show();
+        }else {
             isAllRight = true;
         }
         return isAllRight;

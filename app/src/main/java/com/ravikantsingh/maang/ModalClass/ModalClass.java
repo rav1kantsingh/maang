@@ -11,6 +11,29 @@ public class ModalClass {
     private String description;
     private String timestamp;
     private String uid;
+    String textHash;
+
+    public String getTextHash() {
+        return textHash;
+    }
+
+    public void setTextHash(String textHash) {
+        this.textHash = textHash;
+    }
+
+    public ModalClass(String relatedsector, String relatedscheme, String likes, String comments, String imglink, String pdflink, String description, String timestamp, String uid, String textHash, String userName) {
+        this.relatedsector = relatedsector;
+        this.relatedscheme = relatedscheme;
+        this.likes = likes;
+        this.comments = comments;
+        this.imglink = imglink;
+        this.pdflink = pdflink;
+        this.description = description;
+        this.timestamp = timestamp;
+        this.uid = uid;
+        this.textHash = textHash;
+        this.userName = userName;
+    }
 
     public ModalClass(String relatedsector, String relatedscheme, String likes, String comments, String imglink, String pdflink, String description, String timestamp, String uid, String userName) {
         this.relatedsector = relatedsector;

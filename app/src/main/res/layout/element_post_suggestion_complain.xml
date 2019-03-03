@@ -1,24 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    android:layout_height="wrap_content"
+    >
+
+
+<android.support.v7.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_marginLeft="5dp"
     android:layout_marginRight="5dp"
-    android:layout_marginBottom="5dp"
-    android:layout_marginTop="5dp"
     app:cardCornerRadius="8dp"
-    android:backgroundTint="#00171d">
+    android:backgroundTint="#fff">
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+
+
         <ImageView
             android:id="@+id/userprofilepic"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:src="@drawable/ic_person_outline"/>
 
         <TextView
@@ -27,14 +38,16 @@
             android:layout_height="wrap_content"
             android:layout_toRightOf="@+id/userprofilepic"
             android:text="Username"
-            android:textColor="#fff"
+            android:textColor="#6a1b9a"
+            android:textSize="16dp"
+            android:textStyle="bold"
             android:layout_marginTop="5dp"/>
         <TextView
             android:id="@+id/timestamp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="5 min ago"
-            android:textColor="#fff"
+            android:textColor="#6a1b9a"
             android:layout_alignParentRight="true"
             android:layout_marginTop="5dp"
             android:layout_marginRight="4dp"/>
@@ -44,142 +57,69 @@
         android:id="@+id/contentimg"
         android:layout_width="match_parent"
         android:layout_height="180dp"
-        android:layout_marginLeft="2dp"
-        android:layout_marginRight="2dp"
-        app:placeholderImage="@drawable/common_google_signin_btn_icon_dark_normal"/>
-
-        <View
-            android:id="@+id/divider1"
-            android:layout_marginTop="5dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/contentimg"
-            android:background="#fff"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/RelatedSector"
-            android:layout_marginLeft="5dp"
-            android:text="Related Sector :"
-            android:textSize="12dp"
-            android:textColor="#fff"
-            android:layout_below="@+id/divider1"
-            android:layout_marginTop="3dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/relatedsector"
-            android:layout_toRightOf="@+id/RelatedSector"
-            android:layout_below="@+id/divider1"
-            android:text="Sector Name"
-            android:textSize="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#fff"
-            android:layout_marginLeft="5dp"/>
-
-        <View
-            android:id="@+id/divider2"
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/RelatedSector"
-            android:background="#fff"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/RelatedSchemes"
-            android:layout_marginLeft="5dp"
-            android:text="Related Schemes :"
-            android:textSize="12dp"
-            android:textColor="#fff"
-            android:layout_below="@+id/divider2"
-            android:layout_marginTop="3dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/relatedschemes"
-            android:layout_toRightOf="@+id/RelatedSchemes"
-            android:layout_below="@+id/divider2"
-            android:text="Scheme Name"
-            android:textSize="10dp"
-            android:layout_marginTop="5dp"
-            android:textColor="#fff"
-            android:layout_marginLeft="5dp"/>
-
-        <View
-            android:id="@+id/divider4"
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/RelatedSchemes"
-            android:background="#fff"/>
-
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:src="#b3b3b3"/>
 
         <TextView
             android:id="@+id/descriptiontext"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:layout_below="@+id/divider4"
-            android:textSize="10dp"
-            android:layout_marginLeft="5dp"
-            android:textColor="#fff"
-            android:text="Though i was iphone user for 11 year, I switched from an iphone to a samsung galaxy note 9..."/>
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/contentimg"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/relatedsector"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/descriptiontext"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text=""/>
+        <TextView
+            android:id="@+id/relatedschemes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_below="@+id/relatedsector"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text=""/>
+
+        <TextView
+            android:id="@+id/related_section_of_people"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_below="@+id/relatedschemes"
+            android:textSize="15dp"
+            android:textColor="#000"
+            android:text=""/>
 
         <View
             android:id="@+id/divider"
             android:layout_marginTop="3dp"
             android:layout_width="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
             android:layout_height="1dp"
-            android:layout_below="@+id/descriptiontext"
+            android:layout_below="@+id/related_section_of_people"
             android:background="#fff"/>
-
-        <Button
-            android:visibility="gone"
-            android:layout_alignParentLeft="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_below="@+id/divider"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:id="@+id/recommendtoda"
-            android:text="Recommend"
-            android:textSize="15dp"
-            android:background="@drawable/round_corner_button_signup_withgradient"
-            />
-        <Button
-            android:visibility="gone"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_below="@+id/divider"
-            android:textColor="#fff"
-            android:textAllCaps="false"
-            android:id="@+id/dismiss"
-            android:text="Delete"
-            android:textSize="15dp"
-            android:background="@drawable/round_corner_button_signup_withgradient"
-            />
-
-        <View
-            android:id="@+id/xyz"
-            android:layout_marginTop="3dp"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@+id/recommendtoda"
-            android:background="#fff"/>
-
 
         <LinearLayout
-            android:layout_below="@+id/xyz"
+            android:layout_below="@+id/divider"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -199,28 +139,27 @@
                     android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/like"
                 android:layout_toRightOf="@+id/thumbeup"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Like"
-                android:textColor="#fff"
-                android:layout_marginLeft="10dp"
                 android:layout_centerVertical="true"
+                android:id="@+id/temp"
+                android:textColor="#6a1b9a"
+                android:layout_marginLeft="10dp"
                 android:textStyle="bold"
-                android:textSize="15dp"
                 />
 
                 <TextView
-                    android:id="@+id/likecount"
-                    android:layout_toRightOf="@+id/like"
+                    android:layout_toRightOf="@+id/temp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textColor="#fff"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/likecount"
+                    android:textColor="#6a1b9a"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
-                    android:textSize="20dp"
                     />
 
             </RelativeLayout>
@@ -234,54 +173,60 @@
                 <ImageView
                     android:layout_marginTop="3dp"
                     android:id="@+id/commentsimg"
-                    android:src="@drawable/ic_message_black_24dp"
+                    android:src="@drawable/ic_comment"
                     android:layout_marginLeft="3dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 
                 <TextView
-                    android:id="@+id/comment"
                     android:layout_toRightOf="@+id/commentsimg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Comment"
-                    android:textColor="#fff"
-                    android:layout_marginLeft="10dp"
                     android:layout_centerVertical="true"
+                    android:text="Comment"
+                    android:id="@+id/temp2"
+                    android:textColor="#6a1b9a"
+                    android:layout_marginLeft="10dp"
                     android:textStyle="bold"
-                    android:textSize="15dp"
+
                     />
+
                 <TextView
-                    android:id="@+id/commentcount"
-                    android:layout_toRightOf="@+id/comment"
+                    android:layout_toRightOf="@+id/temp2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="0"
-                    android:textColor="#fff"
+                    android:layout_centerVertical="true"
+                    android:id="@+id/commentcount"
+                    android:textColor="#6a1b9a"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
-                    android:textSize="20dp"
                     />
-
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/reportasspam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginRight="5dp">
 
-                <TextView
-                    android:id="@+id/report"
+                <ImageView
+                    android:id="@+id/shareimg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Report Spam"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="3dp"
+                    android:src="@drawable/ic_share" />
+
+                <TextView
+                    android:layout_toRightOf="@+id/shareimg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Report"
                     android:layout_centerVertical="true"
-                    android:textColor="#fff"
+                    android:textColor="#6a1b9a"
                     android:layout_marginLeft="10dp"
                     android:textStyle="bold"
-                    android:textSize="15dp"
                     />
 
             </RelativeLayout>
@@ -291,3 +236,4 @@
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>
+</ScrollView>

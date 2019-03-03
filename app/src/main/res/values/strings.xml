@@ -8,4 +8,37 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_activity_maps">Map</string>
+    <string name="Select_State">Select_State</string>
+    <string name="Select_Region">Select_Region</string>
+    <string-array name="state">
+        <item>AndhraPradesh</item>
+        <item>Arunachal-Pradesh</item>
+        <item>Assam</item>
+        <item>Bihar</item>
+        <item>Chhattisgarh</item>
+        <item>Goa</item>
+        <item>Gujarat</item>
+        <item>Haryana</item>
+        <item>Himachal Pradesh</item>
+        <item>Jammu-Kashmir</item>
+        <item>Jharkhand</item>
+        <item>Karnataka</item>
+        <item>Kerala</item>
+        <item>Madhya-Pradesh</item>
+        <item>Maharashtra</item>
+        <item>Manipur</item>
+        <item>Meghalaya</item>
+        <item>Mizoram</item>
+        <item>Nagaland</item>
+        <item>Orissa</item>
+        <item>Punjab</item>
+        <item>Rajasthan</item>
+        <item>Sikkim</item>
+        <item>Tamil-Nadu</item>
+        <item>Telangana</item>
+        <item>Tripura</item>
+        <item>Uttar-Pradesh</item>
+        <item>Uttarakhand</item>
+        <item>West-Bengal</item>
+    </string-array>
 </resources>

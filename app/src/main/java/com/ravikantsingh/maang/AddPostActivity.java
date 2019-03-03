@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -58,6 +59,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
     String pdfPath, photoPath, name;
     int flag = 0;
     String uploadedPhotoUrl, upLoadedPdfUrl;
+    EditText text;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -305,6 +307,8 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
                         suggestionmap.put("imglink", uploadedPhotoUrl);
                         suggestionmap.put("pdflink", upLoadedPdfUrl);
                         suggestionmap.put("suggestion-type", flag);
+                        String text2 = text.getText().toString();
+                        suggestionmap.put("tag",text2);
                         suggestionmap.put("userUID", userUID);
                         final String key = mRefrence3.push().getKey();
                         mRefrence3.child(key).setValue(suggestionmap).addOnSuccessListener(new OnSuccessListener<Void>() {

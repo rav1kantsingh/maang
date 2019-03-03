@@ -10,18 +10,17 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <com.facebook.drawee.view.SimpleDraweeView
+    <ImageView
         android:id="@+id/profile"
         android:layout_width="80dp"
         android:layout_height="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:src="@drawable/ic_person_outline"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.048"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.142"
-        app:placeholderImage="@drawable/common_google_signin_btn_icon_dark_normal"
-        app:roundAsCircle="true" />
+        app:layout_constraintVertical_bias="0.142" />
 
     <TextView
         android:id="@+id/name"
@@ -63,7 +62,6 @@
             android:id="@+id/first"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:gravity="center"
             android:layout_weight="1"
             android:textColor="#fff"
             android:text="Post"
@@ -75,7 +73,6 @@
             android:layout_height="40dp"
             android:textColor="#fff"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="Suggestion"
             android:textAlignment="center" />
 
@@ -85,11 +82,9 @@
             android:layout_height="40dp"
             android:textColor="#fff"
             android:layout_weight="1"
-            android:gravity="center"
             android:text="Complain"
             android:textAlignment="center" />
 
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
-

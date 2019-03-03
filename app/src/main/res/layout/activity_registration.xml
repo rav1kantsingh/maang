@@ -5,32 +5,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@drawable/gradient_parent_layout"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@drawable/gradient_parent_layout">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Registration"
-            android:textColor="#fff"
-            android:textStyle="normal"
-            android:textSize="30dp"
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
+            android:textSize="35dp"
             android:layout_marginTop="50dp"
             android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="WHO YOU ARE?"
-            android:textColor="#6470B1"
+            android:text="WHO ARE YOU?"
+            android:textColor="#6a1b9a"
             android:textStyle="bold"
-            android:textSize="15dp"
+            android:textSize="20dp"
             android:layout_marginTop="40dp"
             android:layout_gravity="center"/>
 
@@ -49,10 +49,10 @@
                 android:layout_marginRight="20dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_group"
+                    android:src="@drawable/ic_team"
 
                     />
 
@@ -61,7 +61,9 @@
                     android:layout_height="wrap_content"
                     android:text="People"
                     android:textSize="15dp"
-                    android:textColor="#FAF471"
+                    android:textColor="#6a1b9a"
+                    android:textStyle="bold"
+
                     android:layout_marginLeft="3dp"/>
 
             </LinearLayout>
@@ -70,20 +72,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:id="@+id/mpside">
+                android:id="@+id/mpside"
+                android:layout_marginLeft="50dp">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_person_black_24dp"/>
+                    android:src="@drawable/ic_employee"/>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="MP"
                     android:textSize="15dp"
-                    android:textColor="#ED6933"
+                    android:textStyle="bold"
+                    android:textColor="#6a1b9a"
                     android:layout_gravity="center"
                     />
 
@@ -125,8 +129,9 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Gender"
-                android:textColor="#fff"
-                android:textSize="12dp"/>
+                android:textColor="#6a1b9a"
+                android:textStyle="bold"
+                android:textSize="16dp"/>
 
             <Button
                 android:id="@+id/male"
@@ -180,11 +185,11 @@
                     android:id="@+id/name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
+                    android:background="@drawable/spinner_background"
                     android:gravity="center"
                     android:hint="Your Name"
-                    android:textColor="#fff"
-                    android:textColorHint="#545E8A"
+                    android:textColor="#6a1b9a"
+                    android:textColorHint="#6a1b9a"
                     android:layout_marginLeft="60dp"
                     android:layout_marginRight="60dp"
                     android:drawableLeft="@drawable/ic_person_outline"
@@ -270,12 +275,12 @@
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
+                    android:background="@drawable/spinner_background"
                     android:gravity="center"
                     android:hint="AADHAR NO."
-                    android:textColor="#fff"
+                    android:textColor="#6a1b9a"
                     android:inputType="text"
-                    android:textColorHint="#545E8A"
+                    android:textColorHint="#6a1b9a"
                     android:drawableLeft="@drawable/ic_lock_outline"
                     android:paddingLeft="5dp"
                     android:maxLines="1"
@@ -289,13 +294,13 @@
                     android:id="@+id/dob"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
+                    android:background="@drawable/spinner_background"
                     android:gravity="center"
                     android:layout_marginTop="15dp"
                     android:hint="D.O.B"
                     android:inputType="text"
-                    android:textColor="#fff"
-                    android:textColorHint="#545E8A"
+                    android:textColor="#6a1b9a"
+                    android:textColorHint="#6a1b9a"
                     android:layout_marginLeft="60dp"
                     android:layout_marginRight="60dp"
                     android:drawableLeft="@drawable/ic_today_black"
@@ -314,12 +319,12 @@
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
+                    android:background="@drawable/spinner_background"
                     android:gravity="center"
                     android:inputType="text"
                     android:hint="Contact No."
-                    android:textColor="#fff"
-                    android:textColorHint="#545E8A"
+                    android:textColor="#6a1b9a"
+                    android:textColorHint="#6a1b9a"
                     android:drawableLeft="@drawable/ic_call_black"
                     android:paddingLeft="5dp"
                     android:maxLines="1"
@@ -336,11 +341,33 @@
                     android:layout_marginTop="15dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/round_border"
+                    android:background="@drawable/spinner_background"
                     android:gravity="center"
                     android:hint="Whatsapp No."
-                    android:textColor="#fff"
-                    android:textColorHint="#545E8A"
+                    android:textColor="#6a1b9a"
+                    android:textColorHint="#6a1b9a"
+                    android:inputType="text"
+                    android:drawableLeft="@drawable/ic_call_black"
+                    android:paddingLeft="5dp"
+                    android:maxLines="1"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:paddingRight="5dp"
+                    android:textSize="20sp"
+                    android:maxLength="20" />
+
+                <EditText
+                    android:id="@+id/zone"
+                    android:layout_marginLeft="60dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/spinner_background"
+                    android:gravity="center"
+                    android:hint="Zone"
+                    android:textColor="#6a1b9a"
+                    android:textColorHint="#6a1b9a"
                     android:inputType="text"
                     android:drawableLeft="@drawable/ic_call_black"
                     android:paddingLeft="5dp"
@@ -537,7 +564,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="60dp"
             android:layout_marginRight="60dp"
-            android:text="Reguster"
+            android:text="Register"
             android:background="@drawable/round_corner_button_signup_withgradient"
             android:textStyle="bold"
             android:textAllCaps="false"

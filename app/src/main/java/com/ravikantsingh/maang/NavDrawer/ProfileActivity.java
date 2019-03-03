@@ -15,6 +15,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.facebook.drawee.view.SimpleDraweeView;
 import com.ravikantsingh.maang.R;
 import com.ravikantsingh.maang.StringVariables;
 
@@ -24,7 +25,7 @@ public class ProfileActivity extends AppCompatActivity {
     public ImageView backprofilebtn;
     public ImageView backprofilepic;
     public int REQUEST_CAMERA = 1, SELECT_File = 0;
-    public ImageView userprofile;
+    public SimpleDraweeView userprofile;
     TextView userName,constName;
 
     @Override

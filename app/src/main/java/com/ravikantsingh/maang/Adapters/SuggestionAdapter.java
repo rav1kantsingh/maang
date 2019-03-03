@@ -73,8 +73,15 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final ModalClass modalClass = modalClassList.get(position);
         holder.relatedsector.setText(modalClass.getRelatedsector());
+        if(modalClass.getDescription().equals("null")){
+            modalClass.getDescription().equals("");
+        }
+        if(modalClass.getTextHash().equals("null")){
+            modalClass.getTextHash().equals("");
+        }
+        String temp = modalClass.getDescription()+"\n\n"+modalClass.getTextHash();
         holder.relatedschemes.setText(modalClass.getRelatedscheme());
-        holder.description.setText(modalClass.getDescription());
+        holder.description.setText(temp);
         holder.time.setText(modalClass.getTimestamp());
         final String key = modalClass.getUid();
 
@@ -85,7 +92,12 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
             String imgurl = modalClass.getImglink();
 
             StorageReference ref = FirebaseStorage.getInstance().getReferenceFromUrl(imgurl);
-            holder.contentimg.setImageURI(imgurl);
+            if(!(imgurl.equals("")||imgurl.equals("null"))){
+                holder.contentimg.setImageURI(imgurl);
+            }else {
+                holder.contentimg.setVisibility(View.GONE);
+            }
+
 
         } catch (Exception e) {
 
@@ -99,7 +111,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
                 mDatabase.updateChildren(map, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        Toast.makeText(context,"Updated bro",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Updated",Toast.LENGTH_LONG).show();
                     }
                 });
                 mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -127,7 +139,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
                 mDatabase.updateChildren(map, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        Toast.makeText(context,"Updated bro",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Updated",Toast.LENGTH_LONG).show();
                     }
                 });
                 mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -158,7 +170,7 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
                 mDatabase.updateChildren(map, new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(DatabaseError databaseError, DatabaseReference databaseReference) {
-                        Toast.makeText(context,"Reported bro",Toast.LENGTH_LONG).show();
+                        Toast.makeText(context,"Reported",Toast.LENGTH_LONG).show();
                     }
                 });
                 mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {

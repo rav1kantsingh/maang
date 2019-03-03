@@ -74,7 +74,7 @@ public class MySuggestion extends AppCompatActivity {
                                         String.valueOf(ds.child("pdflink").getValue()),
                                         String.valueOf(ds.child("description").getValue()),
                                         String.valueOf(ds.child("Time").getValue()),
-                                        String.valueOf(ds.child("userUID").getValue())));
+                                        String.valueOf(ds.child("userUID").getValue()),String.valueOf(ds.child("tag").getValue()),String.valueOf(ds.child("name").getValue())));
                             }
 
                             @Override

@@ -6,6 +6,10 @@
             android:icon="@drawable/ic_salesman"
             android:title="My Profile" />
         <item
+            android:id="@+id/l"
+            android:icon="@drawable/ic_bot"
+            android:title="Sahayak" />
+        <item
             android:id="@+id/a"
             android:icon="@drawable/ic_meeting"
             android:title="Janta Darbar" />
@@ -14,9 +18,17 @@
             android:icon="@drawable/ic_application"
             android:title="RTI" />
         <item
+            android:id="@+id/k"
+            android:icon="@drawable/ic_groups"
+            android:title="Know Your Constituency" />
+        <item
             android:id="@+id/c"
             android:icon="@drawable/ic_instruction"
             android:title="MPLADS Guidelines" />
+        <item
+            android:id="@+id/n"
+            android:icon="@drawable/ic_location"
+            android:title="Maps" />
         <item
             android:id="@+id/d"
             android:icon="@drawable/ic_questions_about_abecedary"

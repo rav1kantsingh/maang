@@ -1,46 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#40465C"
-    android:orientation="vertical">
+    >
 
     <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#40465C"
-        android:orientation="vertical">
-
+        android:layout_height="wrap_content"
+        android:background="#f3f5f5">
+        <!--<TextView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Add Your Complain"-->
+        <!--android:textSize="25dp"-->
+        <!--android:textColor="#fff"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textAlignment="center"-->
+        <!--android:layout_marginTop="20dp"/>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:text="Add Your Post"
-            android:textAlignment="center"
-            android:textColor="#fff"
             android:textSize="25dp"
-            android:textStyle="bold" />
-
+            android:textColor="#fff"
+            android:textStyle="bold"
+            android:background="#6a1b9a"
+            android:textAlignment="center"
+            android:paddingTop="0dp" />
         <Spinner
             android:id="@+id/relatedsectorspinner"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_height="35dp"
             android:background="@drawable/spinner_background">
 
         </Spinner>
+
+
 
         <Spinner
             android:id="@+id/relatedshemesspinner"
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
+            android:layout_height="35dp"
             android:background="@drawable/spinner_background">
+
         </Spinner>
+
+        <EditText
+            android:id="@+id/related_section_of_people"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="35dp"
+            android:hint="#add_your_interest"
+            android:background="@drawable/spinner_background">
+
+        </EditText>
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,23 +71,24 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="Description"
-            android:textColor="#fff"
-            android:textSize="18dp" />
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <EditText
             android:id="@+id/discription"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/round_border"
-            android:gravity="center"
             android:hint="Add Detail of Post..."
+            android:background="#f3e5f5"
+            android:textColor="#000"
+            android:textColorHint="#6a1b9a"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
             android:paddingLeft="5dp"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:textSize="15dp" />
+            android:gravity="center"
+            android:textSize="15dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,24 +96,26 @@
             android:layout_marginLeft="10dp"
             android:layout_marginTop="10dp"
             android:text="Add Attachment"
-            android:textColor="#fff"
-            android:textSize="18dp" />
+            android:textColor="#6a1b9a"
+            android:textStyle="bold"
+            android:textSize="18dp"/>
 
         <ImageView
             android:id="@+id/content_img"
+            android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="180dp"
             android:layout_marginLeft="10dp"
-            android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
-            android:background="@drawable/dashed_border"
-            android:src="@drawable/ic_camera_alt_black_24dp" />
+            android:background="#f3e5f5"
+            android:src="@drawable/ic_camera_alt_black_24dp"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:orientation="horizontal">
+            >
 
             <TextView
                 android:id="@+id/pdffilename"
@@ -97,18 +123,19 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="Upload pdf file related to Post"
-                android:textColor="#fff"
-                android:textSize="18dp" />
+                android:textColor="#6a1b9a"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
 
             <Button
                 android:id="@+id/upload_pdf"
+                android:layout_marginLeft="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
-                android:layout_marginLeft="15dp"
-                android:background="@drawable/round_corner_button_signup_withgradient"
                 android:text="Upload"
+                android:textColor="#fff"
                 android:textAllCaps="false"
-                android:textColor="#fff" />
+                android:background="@drawable/round_corner_button_signup_withgradient"/>
 
         </LinearLayout>
 
@@ -116,15 +143,15 @@
             android:id="@+id/submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/round_gender_button"
-            android:text="Submit Complain"
+            android:text="Submit Post"
+            android:textSize="15dp"
             android:textAllCaps="false"
-            android:layout_marginBottom="16dp"
             android:textColor="#fff"
-            android:textSize="15dp" />
+            android:background="@drawable/round_gender_button"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"/>
 
     </LinearLayout>
 </ScrollView>

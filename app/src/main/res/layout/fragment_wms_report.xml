@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#212025"
+    android:background="#fff"
     android:orientation="vertical">
 <RelativeLayout
     android:layout_width="match_parent"
@@ -10,18 +10,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#212025"
+        android:background="#fff"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="30dp"
-            android:text="WMS Report of Mp"
-            android:textColor="#fff"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#6a1b9a">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="85dp"
+                android:text="Work Report of MP"
+                android:textColor="#fff"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,7 +53,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_person_outline" />
+                    android:src="@drawable/ic_portfolio" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -53,8 +61,8 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     android:textStyle="bold"
-                    android:text="Register Work"
-                    android:textColor="#fff" />
+                    android:text="Registered Work"
+                    android:textColor="#6a1b9a" />
 
             </LinearLayout>
 
@@ -73,7 +81,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_person_outline" />
+                    android:src="@drawable/ic_portfolio" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -81,7 +89,7 @@
                     android:layout_gravity="center"
                     android:textStyle="bold"
                     android:text="Recommended Work"
-                    android:textColor="#fff" />
+                    android:textColor="#6a1b9a" />
 
             </LinearLayout>
 
@@ -108,7 +116,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_person_outline" />
+                    android:src="@drawable/ic_portfolio" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -117,7 +125,7 @@
                     android:layout_marginBottom="10dp"
                     android:textStyle="bold"
                     android:text="Completed Work"
-                    android:textColor="#fff" />
+                    android:textColor="#6a1b9a" />
 
             </LinearLayout>
 
@@ -136,7 +144,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_person_outline" />
+                    android:src="@drawable/ic_portfolio" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,7 +152,7 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     android:text="Non Progressive Work"
-                    android:textColor="#fff"
+                    android:textColor="#6a1b9a"
                     android:textStyle="bold" />
 
             </LinearLayout>
@@ -173,7 +181,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_person_outline" />
+                    android:src="@drawable/ic_portfolio" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -182,7 +190,7 @@
                     android:textStyle="bold"
                     android:layout_marginBottom="10dp"
                     android:text="Work Details"
-                    android:textColor="#fff" />
+                    android:textColor="#6a1b9a" />
 
             </LinearLayout>
 
@@ -202,7 +210,7 @@
                     android:layout_height="60dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_person_outline" />
+                    android:src="@drawable/ic_portfolio" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -210,8 +218,8 @@
                     android:layout_gravity="center"
                     android:layout_marginBottom="10dp"
                     android:textStyle="bold"
-                    android:text="Status Of Work"
-                    android:textColor="#fff" />
+                    android:text="Work Status"
+                    android:textColor="#6a1b9a" />
 
             </LinearLayout>
 
@@ -223,11 +231,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="0dp"
-        android:background="#fff"
+        android:background="#6a1b9a"
         android:id="@+id/fund_release_statement"
         android:text="Fund Release Statements"
         android:textAllCaps="false"
-        android:textColor="#212025"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="bold" />
 </RelativeLayout>

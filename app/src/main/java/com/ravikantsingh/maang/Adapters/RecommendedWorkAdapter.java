@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -108,10 +109,15 @@ public class RecommendedWorkAdapter extends
         }
     }
 
+    private void showDialog() {
+
+    }
+
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView sector, scheme, implimentingAgencies, recommendDate, amount, like, rate, comments;
+        TextView sector, scheme, implimentingAgencies, recommendDate, amount, like, comments;
         Button complainBtn, suggestionBtn;
+        RelativeLayout rate;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -125,6 +131,8 @@ public class RecommendedWorkAdapter extends
             comments = itemView.findViewById(R.id.comments);
             complainBtn = itemView.findViewById(R.id.complain_btn);
             suggestionBtn = itemView.findViewById(R.id.suggestion_btn);
+
+
         }
     }
 }

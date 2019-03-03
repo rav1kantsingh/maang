@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+
+import com.ravikantsingh.maang.FundRelease;
 import com.ravikantsingh.maang.R;
 import com.ravikantsingh.maang.WMSinnerActivity.CompletedWorkActivity;
 import com.ravikantsingh.maang.WMSinnerActivity.NonProgressiveWorkActivity;
@@ -82,7 +84,7 @@ public class WMSReportFrag extends Fragment {
         fundReleaseStatement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                getActivity().startActivity(new Intent(getActivity(), FundRelease.class));
             }
         });
 

@@ -81,11 +81,7 @@ public class OurMPFrag extends Fragment implements View.OnClickListener {
 
 
     private void workrecomendeddialog() {
-        final Dialog mDialog = new Dialog(getContext());
-        mDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        mDialog.setCancelable(true);
-        mDialog.setContentView(R.layout.pop_up_recommended);
-        mDialog.show();
+
     }
 
     private void workcompleateddialog() {
