@@ -157,7 +157,7 @@
                 android:layout_gravity="center"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/ic_medical_history"/>
+                android:src="@drawable/ic_web"/>
 
                 <TextView
                     android:layout_width="wrap_content"

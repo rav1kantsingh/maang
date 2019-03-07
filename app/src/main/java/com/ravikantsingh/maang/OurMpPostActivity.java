@@ -42,21 +42,14 @@ public class OurMpPostActivity extends AppCompatActivity {
 
         try {
 //Todo change the reference from posts to my mp posts.
-            DatabaseReference mRefrence = FirebaseDatabase.getInstance().getReference().child("posts");
+            DatabaseReference mRefrence = FirebaseDatabase.getInstance().getReference().child("MPnode").child("hajipur").child("MPmessages");
             mRefrence.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     modalClassList.clear();
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        modalClassList.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
-                                String.valueOf(ds.child("related-schemes").getValue()),
-                                String.valueOf(ds.child("likes").getValue()),
-                                String.valueOf(ds.child("comments").getValue()),
-                                String.valueOf(ds.child("imglink").getValue()),
-                                String.valueOf(ds.child("pdflink").getValue()),
-                                String.valueOf(ds.child("description").getValue()),
-                                String.valueOf(ds.child("timestamp").getValue()),
-                                String.valueOf(ds.child("uid").getValue())));
+                        modalClassList.add(new ModalClass(String.valueOf(ds.child("broadcasttype").getValue()),
+                                String.valueOf(ds.child("message").getValue())));
                     }
                     mAdapter.notifyDataSetChanged();
                 }
@@ -70,3 +63,4 @@ public class OurMpPostActivity extends AppCompatActivity {
     }
 
 }
+

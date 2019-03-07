@@ -7,7 +7,9 @@
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the 'MyLocation' functionality.
     -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission
@@ -22,7 +24,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mpComplaintActivity"></activity>
+        <activity android:name=".mpPostActivity"></activity>
+        <activity android:name=".mpComplaintActivity" />
         <activity android:name=".TotalWorkRecommended" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -34,11 +37,10 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyAf_LIITvvWQg5lmHNzWA6kK61AgJkuGXw" />
 
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps" />
+
+
         <activity android:name=".KnowYourContituency" />
         <activity android:name=".ChatbotActivity" />
         <!--
@@ -73,7 +75,8 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".AddComplainActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait" >
+        </activity>
         <activity
             android:name=".PdfViewerActivity"
             android:screenOrientation="portrait" />
@@ -113,7 +116,16 @@
         <activity
             android:name=".MainActivity"
             android:label="MAANG" />
-        <activity android:name=".SplashActivity" />
+        <activity android:name=".SplashActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".MapsActivity" >
+
+        </activity>
         <activity
             android:name=".Registration.RegistrationActivity"
             android:screenOrientation="portrait"
@@ -141,11 +153,7 @@
             android:screenOrientation="portrait" />
         <activity android:name=".FundRelease" />
         <activity android:name=".mpDashboard">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

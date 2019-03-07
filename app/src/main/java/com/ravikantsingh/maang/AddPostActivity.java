@@ -44,7 +44,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
 
     private Spinner related_sector;
     private Spinner related_schemes;
-    private TextView mDescriptionText, pdffile;
+    private TextView mDescriptionText, pdffile,location, addlocation;
     private Button mUploadpdf, mSubmit, suggestion_to_mp, suggestion_to_da;
     private ImageView mContentimg;
     private DatabaseReference mRefrence1, mRefrence2, mRefrence3, mReference4;
@@ -76,10 +76,33 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         userReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
+        text = findViewById(R.id.related_section_of_people);
+
+        addlocation = findViewById(R.id.addlocation);
+        location = findViewById(R.id.location);
+
+
+        addlocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapintent = new Intent(AddPostActivity.this, MapsActivity.class);
+                startActivity(mapintent);
+            }
+        });
+
+        Bundle extra = getIntent().getExtras();
+        Log.d("Location", String.valueOf(extra));
+        if (extra != null) {
+            String title = extra.getString("title");
+            String lat = extra.getString("lat");
+            String lng = extra.getString("lng");
+            location.setText(title);
+        }
+
 
 
         mRefrence1 = FirebaseDatabase.getInstance().getReference().child("sectors");
-        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("complaints");
+        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("posts");
         mReference4 = FirebaseDatabase.getInstance().getReference().child("users");
         try {
             SharedPreferences preferences = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE, MODE_PRIVATE);

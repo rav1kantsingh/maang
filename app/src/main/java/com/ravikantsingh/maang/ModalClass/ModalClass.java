@@ -13,6 +13,11 @@ public class ModalClass {
     private String uid;
     String textHash;
 
+    public ModalClass(String relatedsector, String relatedscheme) {
+        this.relatedsector = relatedsector;
+        this.relatedscheme = relatedscheme;
+    }
+
     public String getTextHash() {
         return textHash;
     }

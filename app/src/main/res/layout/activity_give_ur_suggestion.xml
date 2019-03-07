@@ -64,6 +64,34 @@
             android:background="@drawable/spinner_background">
 
         </EditText>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/addlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Add Location"
+                android:background="@drawable/round_border"
+                android:textColor="#fff"
+                android:textStyle="normal"
+                android:textSize="15dp"/>
+
+            <TextView
+                android:id="@+id/location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Description"
+                android:textColor="#6a1b9a"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"

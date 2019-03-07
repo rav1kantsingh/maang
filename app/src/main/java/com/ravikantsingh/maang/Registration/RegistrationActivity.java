@@ -12,7 +12,9 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +23,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.ravikantsingh.maang.MainActivity;
 import com.ravikantsingh.maang.R;
 import com.ravikantsingh.maang.StringVariables;
+import com.ravikantsingh.maang.mpDashboard;
 
 import java.util.HashMap;
 
@@ -32,6 +35,9 @@ public class RegistrationActivity extends AppCompatActivity {
     DatabaseReference databaseReference;
     String userUID = "";
     ProgressDialog progressDialog;
+    boolean mp = false;
+    LinearLayout userSide,Mpside;
+    String  userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,22 @@ public class RegistrationActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_registration);
+
+        userSide = findViewById(R.id.userside);
+        Mpside = findViewById(R.id.mpside);
+
+        userSide.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp = false;
+            }
+        });
+        Mpside.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mp = true;
+            }
+        });
 
         init();
         try {
@@ -77,6 +99,12 @@ public class RegistrationActivity extends AppCompatActivity {
                     progressDialog = new ProgressDialog(RegistrationActivity.this);
                     progressDialog.setMessage("Creating User");
                     progressDialog.show();
+                    if(mp==false){
+                        userType = "1";
+                    }
+                    else {
+                        userType = "2";
+                    }
 
                     HashMap<String, String> map = new HashMap<>();
                     map.put("name", name);
@@ -87,6 +115,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     map.put("whatsapp", whatsappNo);
                     map.put("userUID",userUID);
                     map.put("zone",zone);
+                    map.put("userType",String.valueOf(userType));
 
                     SharedPreferences preferences = getApplicationContext().getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE,MODE_PRIVATE);
                     SharedPreferences.Editor editor = preferences.edit();
@@ -99,6 +128,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     editor.putString("userUID",userUID);
                     editor.putInt("registered", 1);
                     editor.putString("zone",zone);
+                    editor.putString("userType",String.valueOf(userType));
                     editor.apply();
 
                     databaseReference.child(userUID).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -107,9 +137,15 @@ public class RegistrationActivity extends AppCompatActivity {
                             if (progressDialog.isShowing()) {
                                 progressDialog.dismiss();
                             }
-                            Intent i = new Intent(RegistrationActivity.this, MainActivity.class);
-                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                            startActivity(i);
+                            if(mp==false) {
+                                Intent i = new Intent(RegistrationActivity.this, MainActivity.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }else if(mp ==true){
+                                Intent i = new Intent(RegistrationActivity.this, mpDashboard.class);
+                                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                startActivity(i);
+                            }
                         }
                     });
                 }

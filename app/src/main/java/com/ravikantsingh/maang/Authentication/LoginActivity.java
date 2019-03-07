@@ -26,7 +26,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,6 +36,7 @@ import com.ravikantsingh.maang.MainActivity;
 import com.ravikantsingh.maang.R;
 import com.ravikantsingh.maang.Registration.RegistrationActivity;
 import com.ravikantsingh.maang.StringVariables;
+import com.ravikantsingh.maang.mpDashboard;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -156,7 +156,8 @@ public class LoginActivity extends AppCompatActivity {
                                                 dob = String.valueOf(dataSnapshot.child(userUID).child("DOB")),
                                                 gender = String.valueOf(dataSnapshot.child(userUID).child("gender")),
                                                 contactNo = String.valueOf(dataSnapshot.child(userUID).child("phoneNo")),
-                                                whatsappNo = String.valueOf(dataSnapshot.child(userUID).child("whatsapp"));
+                                                whatsappNo = String.valueOf(dataSnapshot.child(userUID).child("whatsapp")),
+                                                userType = String.valueOf(dataSnapshot.child(userUID).child("userType"));
 
                                         editor1.putString("name", name);
                                         editor1.putString("aadhar", aadhar);
@@ -166,10 +167,21 @@ public class LoginActivity extends AppCompatActivity {
                                         editor1.putString("whatsapp", whatsappNo);
                                         editor1.putString("userUID",userUID);
                                         editor1.putInt("registered", 1);
+                                        editor1.putString("userType",userType);
+
                                         editor.apply();
-                                        Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                                        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                                        startActivity(i);
+
+
+                                        if(userType.equals("2")) {
+                                            Intent i = new Intent(LoginActivity.this, mpDashboard.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(i);
+                                        }
+                                        else{
+                                            Intent i = new Intent(LoginActivity.this, MainActivity.class);
+                                            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                            startActivity(i);
+                                        }
                                     }
                                 }
 

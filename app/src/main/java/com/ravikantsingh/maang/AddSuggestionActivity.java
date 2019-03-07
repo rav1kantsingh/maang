@@ -44,7 +44,7 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
 
     private Spinner related_sector;
     private Spinner related_schemes;
-    private TextView mDescriptionText, pdffile;
+    private TextView mDescriptionText, pdffile,location, addlocation;
     private Button mUploadpdf, mSubmit, suggestion_to_mp, suggestion_to_da;
     private ImageView mContentimg;
     private DatabaseReference mRefrence1, mRefrence2, mRefrence3, mReference4;
@@ -65,7 +65,7 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_give_ur_suggestion);
-
+text =findViewById(R.id.related_section_of_people);
         related_schemes = findViewById(R.id.relatedshemesspinner);
         related_sector = findViewById(R.id.relatedsectorspinner);
         mDescriptionText = findViewById(R.id.discription);
@@ -77,9 +77,30 @@ public class AddSuggestionActivity extends AppCompatActivity implements View.OnC
         storageReference = storage.getReference();
         userReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
 
+        addlocation = findViewById(R.id.addlocation);
+        location = findViewById(R.id.location);
+
+
+        addlocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapintent = new Intent(AddSuggestionActivity.this, MapsActivity.class);
+                startActivity(mapintent);
+            }
+        });
+
+        Bundle extra = getIntent().getExtras();
+        Log.d("Location", String.valueOf(extra));
+        if (extra != null) {
+            String title = extra.getString("title");
+            String lat = extra.getString("lat");
+            String lng = extra.getString("lng");
+            location.setText(title);
+        }
+
 
         mRefrence1 = FirebaseDatabase.getInstance().getReference().child("sectors");
-        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("complaints");
+        mRefrence3 = FirebaseDatabase.getInstance().getReference().child("suggestions");
         mReference4 = FirebaseDatabase.getInstance().getReference().child("users");
         try {
             SharedPreferences preferences = getSharedPreferences(StringVariables.SHARED_PREFERENCE_FILE, MODE_PRIVATE);

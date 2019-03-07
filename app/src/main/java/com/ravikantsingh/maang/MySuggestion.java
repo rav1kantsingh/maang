@@ -54,12 +54,12 @@ public class MySuggestion extends AppCompatActivity {
                 startActivity(new Intent(MySuggestion.this, AddSuggestionActivity.class));
             }
         });
-
-        final DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("posts");
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("posts");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+        try {
+            final DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("suggestions");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("suggestions");
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
                         Log.e("second_upper", ds1.toString());
                         reference2.child(String.valueOf(ds1.getValue())).addListenerForSingleValueEvent(new ValueEventListener() {
@@ -74,7 +74,7 @@ public class MySuggestion extends AppCompatActivity {
                                         String.valueOf(ds.child("pdflink").getValue()),
                                         String.valueOf(ds.child("description").getValue()),
                                         String.valueOf(ds.child("Time").getValue()),
-                                        String.valueOf(ds.child("userUID").getValue()),String.valueOf(ds.child("tag").getValue()),String.valueOf(ds.child("name").getValue())));
+                                        String.valueOf(ds.child("userUID").getValue()), String.valueOf(ds.child("tag").getValue()), String.valueOf(ds.child("name").getValue())));
                             }
 
                             @Override
@@ -84,13 +84,16 @@ public class MySuggestion extends AppCompatActivity {
                         });
                         mAdapter.notifyDataSetChanged();
                     }
-            }
+                }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                mAdapter.notifyDataSetChanged();
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    mAdapter.notifyDataSetChanged();
+                }
+            });
+        } catch (Exception e) {
+
+        }
+
     }
-
 }

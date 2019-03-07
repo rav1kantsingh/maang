@@ -216,7 +216,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="3dp"
                     android:layout_marginTop="3dp"
-                    android:src="@drawable/ic_share" />
+                    android:src="@drawable/ic_medical_history" />
 
                 <TextView
                     android:layout_toRightOf="@+id/shareimg"

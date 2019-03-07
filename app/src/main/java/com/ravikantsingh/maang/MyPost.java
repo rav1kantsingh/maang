@@ -53,7 +53,7 @@ public class MyPost extends AppCompatActivity {
                 startActivity(new Intent(MyPost.this, AddPostActivity.class));
             }
         });
-
+        try {
             final DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("posts");
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("posts");
             reference.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -72,7 +72,7 @@ public class MyPost extends AppCompatActivity {
                                         String.valueOf(ds.child("pdflink").getValue()),
                                         String.valueOf(ds.child("description").getValue()),
                                         String.valueOf(ds.child("Time").getValue()),
-                                        String.valueOf(ds.child("userUID").getValue()),String.valueOf(ds.child("tag").getValue()),String.valueOf(ds.child("name").getValue())));
+                                        String.valueOf(ds.child("userUID").getValue()), String.valueOf(ds.child("tag").getValue()), String.valueOf(ds.child("name").getValue())));
                             }
 
                             @Override
@@ -89,5 +89,8 @@ public class MyPost extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
                 }
             });
+        } catch (Exception e) {
+
+        }
     }
 }

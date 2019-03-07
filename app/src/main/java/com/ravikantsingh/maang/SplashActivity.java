@@ -47,10 +47,19 @@ public class SplashActivity extends AppCompatActivity {
             // user is login.
 
             if (preferences.getInt("registered", 0) == 1) {
+
+                if(preferences.getString("userType","1").equals("2")){
+                    Intent i = new Intent(SplashActivity.this, mpDashboard.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                }
+                else if(preferences.getString("userType","1").equals("1")){
+                    Intent i = new Intent(SplashActivity.this, MainActivity.class);
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(i);
+                }
+
                 // user is registered.
-                Intent i = new Intent(SplashActivity.this, MainActivity.class);
-                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(i);
 
             } else {
                 //user is not registered.

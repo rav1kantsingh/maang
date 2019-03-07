@@ -73,11 +73,14 @@ public class SuggestionAdapter extends RecyclerView.Adapter<SuggestionAdapter.My
     public void onBindViewHolder(final MyViewHolder holder, int position) {
         final ModalClass modalClass = modalClassList.get(position);
         holder.relatedsector.setText(modalClass.getRelatedsector());
+        try{
         if(modalClass.getDescription().equals("null")){
             modalClass.getDescription().equals("");
         }
         if(modalClass.getTextHash().equals("null")){
             modalClass.getTextHash().equals("");
+        }}catch (Exception e){
+
         }
         String temp = modalClass.getDescription()+"\n\n"+modalClass.getTextHash();
         holder.relatedschemes.setText(modalClass.getRelatedscheme());

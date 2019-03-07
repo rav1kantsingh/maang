@@ -44,7 +44,7 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
 
     private Spinner related_sector;
     private Spinner related_schemes;
-    private TextView mDescriptionText, pdffile;
+    private TextView mDescriptionText, pdffile, location, addlocation;
     private Button mUploadpdf, mSubmit, suggestion_to_mp, suggestion_to_da;
     private ImageView mContentimg;
     private DatabaseReference mRefrence1, mRefrence2, mRefrence3, mReference4;
@@ -76,7 +76,27 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         userReference = FirebaseDatabase.getInstance().getReference().child(StringVariables.USERS);
+        text = findViewById(R.id.related_section_of_people);
+        addlocation = findViewById(R.id.addlocation);
+        location = findViewById(R.id.location);
 
+
+        addlocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent mapintent = new Intent(AddComplainActivity.this, MapsActivity.class);
+                startActivity(mapintent);
+            }
+        });
+
+        Bundle extra = getIntent().getExtras();
+        Log.d("Location", String.valueOf(extra));
+        if (extra != null) {
+            String title = extra.getString("title");
+            String lat = extra.getString("lat");
+            String lng = extra.getString("lng");
+            location.setText(title);
+        }
 
         mRefrence1 = FirebaseDatabase.getInstance().getReference().child("sectors");
         mRefrence3 = FirebaseDatabase.getInstance().getReference().child("complaints");
@@ -241,14 +261,14 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
                 public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                     try {
                         uploadedPhotoUrl = String.valueOf(taskSnapshot.getDownloadUrl());
-                        Log.e("uploadPhoto",uploadedPhotoUrl);
+                        Log.e("uploadPhoto", uploadedPhotoUrl);
                         final StorageReference ref1 = storageReference.child("pdf/" + UUID.randomUUID().toString());
                         ref1.putFile(pathHolder).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
                             public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                                 Toast.makeText(AddComplainActivity.this, "Uploaded pdf", Toast.LENGTH_SHORT).show();
                                 upLoadedPdfUrl = String.valueOf(taskSnapshot.getDownloadUrl());
-                                Log.e("uploadPDF",upLoadedPdfUrl);
+                                Log.e("uploadPDF", upLoadedPdfUrl);
 
                             }
                         }).addOnFailureListener(new OnFailureListener() {
@@ -310,7 +330,7 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
                         suggestionmap.put("suggestion-type", flag);
                         suggestionmap.put("userUID", userUID);
                         String text2 = text.getText().toString();
-                        suggestionmap.put("tag",text2);
+                        suggestionmap.put("tag", text2);
                         final String key = mRefrence3.push().getKey();
                         mRefrence3.child(key).setValue(suggestionmap).addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -334,8 +354,6 @@ public class AddComplainActivity extends AppCompatActivity implements View.OnCli
             });
 
         }
-
-
 
 
     }

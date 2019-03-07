@@ -52,7 +52,7 @@ public class PostFragment extends Fragment {
         try {
 
             DatabaseReference mRefrence = FirebaseDatabase.getInstance().getReference().child("posts");
-            mRefrence.addListenerForSingleValueEvent(new ValueEventListener() {
+            mRefrence.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     modalClassList.clear();

@@ -365,7 +365,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/spinner_background"
                     android:gravity="center"
-                    android:hint="Zone"
+                    android:hint="Loksabha Kshetra"
                     android:textColor="#6a1b9a"
                     android:textColorHint="#6a1b9a"
                     android:inputType="text"

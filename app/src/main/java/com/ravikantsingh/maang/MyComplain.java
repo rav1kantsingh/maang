@@ -55,42 +55,45 @@ public class MyComplain extends AppCompatActivity {
                 startActivity(new Intent(MyComplain.this, AddComplainActivity.class));
             }
         });
-        final DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("posts");
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("posts");
-        reference.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                postList2.clear();
-                for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
-                    reference2.child(String.valueOf(ds1.getValue())).addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(DataSnapshot ds) {
-                            postList2.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
-                                    String.valueOf(ds.child("related-scheme").getValue()),
-                                    String.valueOf(ds.child("likes").getValue()),
-                                    String.valueOf(ds.child("comments").getValue()),
-                                    String.valueOf(ds.child("imglink").getValue()),
-                                    String.valueOf(ds.child("pdflink").getValue()),
-                                    String.valueOf(ds.child("description").getValue()),
-                                    String.valueOf(ds.child("Time").getValue()),
-                                    String.valueOf(ds.child("userUID").getValue()),
-                                    String.valueOf(ds.child("tag").getValue()),
-                                    String.valueOf(ds.child("name").getValue())));
-                        }
+        try {
+            final DatabaseReference reference2 = FirebaseDatabase.getInstance().getReference().child("complaints");
+            DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("users").child(userUID).child("complaints");
+            reference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
+                    postList2.clear();
+                    for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
+                        reference2.child(String.valueOf(ds1.getValue())).addListenerForSingleValueEvent(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(DataSnapshot ds) {
+                                postList2.add(new ModalClass(String.valueOf(ds.child("related-sector").getValue()),
+                                        String.valueOf(ds.child("related-scheme").getValue()),
+                                        String.valueOf(ds.child("likes").getValue()),
+                                        String.valueOf(ds.child("comments").getValue()),
+                                        String.valueOf(ds.child("imglink").getValue()),
+                                        String.valueOf(ds.child("pdflink").getValue()),
+                                        String.valueOf(ds.child("description").getValue()),
+                                        String.valueOf(ds.child("Time").getValue()),
+                                        String.valueOf(ds.child("userUID").getValue()),
+                                        String.valueOf(ds.child("tag").getValue()),
+                                        String.valueOf(ds.child("name").getValue())));
+                            }
 
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
 
-                        }
-                    });
+                            }
+                        });
+                    }
+                    mAdapter.notifyDataSetChanged();
                 }
-                mAdapter.notifyDataSetChanged();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                mAdapter.notifyDataSetChanged();
-            }
-        });
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
+                    mAdapter.notifyDataSetChanged();
+                }
+            });
+        } catch (Exception e) {
+        }
     }
 }

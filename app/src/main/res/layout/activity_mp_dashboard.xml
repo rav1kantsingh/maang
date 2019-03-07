@@ -110,6 +110,7 @@
     </LinearLayout>
 
     <Button
+        android:id="@+id/broadcastbutton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Broadcast Information"
@@ -148,7 +149,7 @@
             android:layout_marginLeft="60dp">
 
             <LinearLayout
-                android:id="@+id/mp_feeds"
+                android:id="@+id/myfeedlinear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -173,7 +174,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/janta_mp"
+                android:id="@+id/jantadarbarlinear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -208,7 +209,7 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/mp_notification"
+                android:id="@+id/notificationlinear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -233,7 +234,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/MyConstituency"
+                android:id="@+id/myconstituencylinear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
