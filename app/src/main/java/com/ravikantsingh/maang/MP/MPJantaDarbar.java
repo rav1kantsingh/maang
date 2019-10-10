@@ -35,12 +35,6 @@ public class MPJantaDarbar extends AppCompatActivity {
         mpJantaStart = findViewById(R.id.mp_janta_start);
         jantaDateRecycler = findViewById(R.id.mp_dates_janta);
         constitution = "Hazipur";
-        //Todo get Constitution name.
-        /*
-         * get constitution name.
-         *
-         * */
-
         mAdapter = new JantaDateAdapter(this, list);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(this);
         jantaDateRecycler.setLayoutManager(mLayoutManager);

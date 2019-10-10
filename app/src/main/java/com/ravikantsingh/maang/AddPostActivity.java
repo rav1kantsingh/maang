@@ -135,68 +135,7 @@ public class AddPostActivity extends AppCompatActivity implements View.OnClickLi
         schemelist.add("SchemeB");
         schemelist.add("SchemeC");
         schemelist.add("SchemeD");
-
-
-//        try {
-//            mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
-//                @Override
-//                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                    sectorlist.clear();
-//                    for (DataSnapshot dp : dataSnapshot.getChildren()) {
-//                        sectorlist.add(dp.getKey());
-//                    }
-//                }
-//
-//                @Override
-//                public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                }
-//            });
-//        } catch (Exception e) {
-//        }
-
-
-//        related_sector.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                final String sector = String.valueOf(related_sector.getSelectedItem());
-//                mRefrence1.addListenerForSingleValueEvent(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                        schemelist.clear();
-//                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-//                            if (sector.equals(ds.getKey())) {
-//                                mRefrence2 = FirebaseDatabase.getInstance().getReference().child("sectors").child(sector);
-//                                mRefrence2.addListenerForSingleValueEvent(new ValueEventListener() {
-//                                    @Override
-//                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                                        for (DataSnapshot ds1 : dataSnapshot.getChildren()) {
-//                                            schemelist.add(String.valueOf(ds1.getKey()));
-//                                        }
-//                                        adp2.notifyDataSetChanged();
-//                                    }
-//
-//                                    @Override
-//                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                                    }
-//                                });
-//                            }
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//                    }
-//                });
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
+        
         adp1 = new ArrayAdapter<>(this,
                 android.R.layout.simple_list_item_1, sectorlist);
         adp1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);

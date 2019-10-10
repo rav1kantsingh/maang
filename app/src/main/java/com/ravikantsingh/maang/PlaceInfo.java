@@ -3,10 +3,6 @@ package com.ravikantsingh.maang;
 import android.net.Uri;
 
 import com.google.android.gms.maps.model.LatLng;
-
-/**
- * Created by Ravikant Singh on 03,March,2019
- */
 public class PlaceInfo {
     private String name;
         private String address;

@@ -23,10 +23,8 @@ public class KnowYourContituency extends AppCompatActivity implements
         wb=findViewById(R.id.map);
         wb.setWebViewClient(new WebViewClient());
 
-        //Getting the instance of Spinner and applying OnItemSelectedListener on it
         spin= (Spinner) findViewById(R.id.spinner1);
         spin2= (Spinner) findViewById(R.id.spinner2);
-        //Creating the ArrayAdapter instance having the country list
 
         ArrayAdapter adapter= ArrayAdapter.createFromResource(this,
                 R.array.state, android.R.layout.simple_spinner_item);
@@ -35,8 +33,6 @@ public class KnowYourContituency extends AppCompatActivity implements
 
         spin.setOnItemSelectedListener(this);
     }
-
-    //Performing action onItemSelected and onNothing selected
     @Override
     public void onItemSelected(final AdapterView<?> arg0, View arg1, int position, long id) {
         String state[]=null;

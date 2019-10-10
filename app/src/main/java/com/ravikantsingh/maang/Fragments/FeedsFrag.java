@@ -23,8 +23,6 @@ public class FeedsFrag extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //not used instead use postFragment.
-
     }
 
 }

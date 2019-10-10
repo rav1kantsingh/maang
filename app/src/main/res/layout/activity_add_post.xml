@@ -10,15 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#f3f5f5">
-        <!--<TextView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:text="Add Your Complain"-->
-        <!--android:textSize="25dp"-->
-        <!--android:textColor="#fff"-->
-        <!--android:textStyle="bold"-->
-        <!--android:textAlignment="center"-->
-        <!--android:layout_marginTop="20dp"/>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -20,9 +20,6 @@ import com.ravikantsingh.maang.ModalClass.ModalClass;
 
 import java.util.ArrayList;
 
-/**
- * Created by Ravikant Singh on 27,February,2019
- */
 public class MyPost extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;

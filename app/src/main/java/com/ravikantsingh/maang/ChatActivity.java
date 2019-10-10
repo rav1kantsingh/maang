@@ -10,7 +10,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,15 +18,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.ravikantsingh.maang.Adapters.JantaDarbarChatAdapter;
 import com.ravikantsingh.maang.ModalClass.BaseMessage;
-
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 
-/**
- * Created by Ravikant Singh on 28,February,2019
- */
 public class ChatActivity extends AppCompatActivity {
 
     EditText writeMessage;
@@ -63,7 +58,6 @@ public class ChatActivity extends AppCompatActivity {
         date = gotIntent.split("#!#")[1];
 
         constituency = "Hazipur";
-        // TODO constituency by shared preference.
 
         chatRefference = FirebaseDatabase.getInstance().getReference().child("janta-darbar").child(constituency).child(date).child(user);
 

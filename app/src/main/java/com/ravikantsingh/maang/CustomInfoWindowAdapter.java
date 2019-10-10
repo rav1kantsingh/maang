@@ -10,9 +10,6 @@ import android.widget.TextView;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.Marker;
 
-/**
- * Created by Ravikant Singh on 03,March,2019
- */
 public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
 
     private final View mWindow;
@@ -40,9 +37,6 @@ public class CustomInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
                 Log.e("suggest---","clicked");
                  Intent intent = new Intent(mContext,AddComplainActivity.class);
                  intent.putExtra("Title",title);
-////                intent.putExtra("lat",.latitude);
-////                intent.putExtra("lng",latLng.longitude);
-//                mContext.startActivity(intent);
             }
         });
 

@@ -26,31 +26,13 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by Ravikant Singh on 03,March,2019
- */
 public class PlaceAutocompleteAdapter extends ArrayAdapter<AutocompletePrediction> implements Filterable {
 
     private static final String TAG = "PlaceAutoCompleteAd";
     private static final CharacterStyle STYLE_BOLD = new StyleSpan(Typeface.BOLD);
-    /**
-     * Current results returned by this adapter.
-     */
     private ArrayList<AutocompletePrediction> mResultList;
-
-    /**
-     * Handles autocomplete requests.
-     */
     private GoogleApiClient mGoogleApiClient;
-
-    /**
-     * The bounds used for Places Geo Data autocomplete API requests.
-     */
     private LatLngBounds mBounds;
-
-    /**
-     * The autocomplete filter used to restrict queries to a specific set of place types.
-     */
     private AutocompleteFilter mPlaceFilter;
 
     /**

@@ -7,15 +7,12 @@
     android:background="#00171d"
     android:paddingTop="5dp"
     tools:context=".ChatbotActivity">
-
-    <!--List view for displaying chat messages-->
     <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/send_message_layout"
         android:divider="@null" />
-    <!--To type and send the message-->
     <LinearLayout
         android:id="@+id/send_message_layout"
         android:layout_width="match_parent"

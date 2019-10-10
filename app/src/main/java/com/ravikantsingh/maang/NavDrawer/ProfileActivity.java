@@ -100,8 +100,6 @@ public class ProfileActivity extends AppCompatActivity {
             if (Requestcode == REQUEST_CAMERA) {
                 Bundle bundle = data.getExtras();
                 final Bitmap bitmap = (Bitmap) bundle.get("data");
-                //Bitmap resized = Bitmap.createScaledBitmap(imp, 600, 600, true);
-                //Bitmap conv_bm = getRoundedRectBitmap(resized, 600);
                 if (x == 3) {
                     userprofile.setImageBitmap(bitmap);
                 } else if (x == 2) {

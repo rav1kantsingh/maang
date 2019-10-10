@@ -15,9 +15,6 @@ import com.ravikantsingh.maang.R;
 
 import java.util.List;
 
-/**
- * Created by Ravikant Singh on 02,March,2019
- */
 public class JantaUserAdapter extends
         RecyclerView.Adapter<JantaUserAdapter.ViewHolder> implements View.OnClickListener {
 

@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String zone_1 = preferences.getString("zone","");
 
         navigation.setSelectedItemId(R.id.first);
-        //handling data and click event on nav-drawer header
         navigationView = findViewById(R.id.nav_view);
 
         headerview = navigationView.getHeaderView(0);
@@ -138,9 +137,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                             startActivity(new Intent(MainActivity.this, ProfileActivity.class));
                         }else if(id == R.id.l){
                             startActivity(new Intent(MainActivity.this, ChatbotActivity.class));
-                        }
-                        else if(id == R.id.n){
-//                            startActivity(new Intent(MainActivity.this, MapsActivity.class));
                         }
                         else if(id == R.id.k){
                             startActivity(new Intent(MainActivity.this, KnowYourContituency.class));
